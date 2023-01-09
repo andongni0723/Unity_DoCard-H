@@ -18,9 +18,15 @@ public static class EventHanlder
         CardOnClick?.Invoke(sprite);
     }
 
-    public static event Action PlayTheCard;
-    public static void CallPlayTheCard()
+    public static event Action<CardDetail_SO> PlayTheCard;
+    public static void CallPlayTheCard(CardDetail_SO cardDetail)
     {
-        PlayTheCard?.Invoke();
+        PlayTheCard?.Invoke(cardDetail);
+    }
+
+    public static event Action ConfirmTheCard;
+    public static void CallConfirmTheCard( )
+    {
+        ConfirmTheCard?.Invoke();
     }
 }

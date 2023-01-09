@@ -7,6 +7,7 @@ using DG.Tweening;
 
 public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
+    public CardDetail_SO cardDetail;
     public Vector4 halfPadding = new Vector4(0, 0, 90, 0); // half padding can let pointer easy Choose card
     public Vector4 zeroPadding = new Vector4(0, 0, 0, 0);  // zero padding can let pointer easy Drag card
     public Image image;
@@ -98,7 +99,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        // TODO: Event of Play a card or Canel play a card
+        //Event of Play a card or Canel play a card
         EventAtCardEndDrag(eventData);
     }
 
@@ -127,9 +128,11 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (eventData.position.y > targetCardYPos) // Play the card
         {
-            //TODO: Play the card
+            // Play the card
             transform.DOScale(scale * 0f, 0.3f);
             Destroy(gameObject);
+
+            EventHanlder.CallPlayTheCard(cardDetail);
         }
         else // Canel play the card
         {
