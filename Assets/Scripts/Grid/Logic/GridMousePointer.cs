@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class GridMousePointer : MonoBehaviour, IPointerClickHandler
+public class GridMousePointer : MonoBehaviour
 {
     BoxCollider2D coll;
 
     public Vector2 BasicColliderSize = new Vector2(1.3f, 1.3f);
+    public Vector2 sizeMag;
 
     bool isCofirmArea;
 
@@ -30,29 +31,30 @@ public class GridMousePointer : MonoBehaviour, IPointerClickHandler
 
     private void OnEnable()
     {
-        EventHanlder.PlayTheCard += OnPlayTheCard;
-    }
-    private void OnDisable()
-    {
-        EventHanlder.PlayTheCard -= OnPlayTheCard;
+        EventHanlder.CardOnDrag += OnCardOnDrag;
+        EventHanlder.CardEndDrag += OnCardEndDrag;
     }
 
-    private void OnPlayTheCard(CardDetail_SO cardDetail)
-    {
-        // setting mouse pointer offset
-        coll.size = cardDetail.cardOffset * BasicColliderSize; 
-        isCofirmArea = true;
-    }
     
 
-    public void OnPointerClick(PointerEventData eventData)
+    private void OnDisable()
     {
-        //FIXME: Click bug
-        //TODO: Grid Manager to sent data about confirm grids
-        Debug.Log("click");
-        Init();
-        EventHanlder.CallConfirmTheCard();
+        EventHanlder.CardOnDrag -= OnCardOnDrag;
+        EventHanlder.CardEndDrag -= OnCardEndDrag;
+
     }
+
+    private void OnCardOnDrag(CardDetail_SO cardDetail)
+    {
+        // setting mouse pointer offset
+        coll.size = ((cardDetail.cardOffset - Vector2.one) * sizeMag) + BasicColliderSize ; 
+        isCofirmArea = true;
+    }
+    private void OnCardEndDrag()
+    {
+        isCofirmArea = false;
+    }
+
 
     private void Init()
     {

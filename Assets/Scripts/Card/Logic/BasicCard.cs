@@ -94,6 +94,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnDrag(PointerEventData eventData)
     {
         ScaleAtCardOnDrag(eventData);
+        EventHanlder.CallCardOnDrag(cardDetail);
     }
 
 
@@ -101,6 +102,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         //Event of Play a card or Canel play a card
         EventAtCardEndDrag(eventData);
+        EventHanlder.CallCardEndDrag();
     }
 
 
@@ -126,21 +128,28 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void EventAtCardEndDrag(PointerEventData eventData)
     {
-        if (eventData.position.y > targetCardYPos) // Play the card
-        {
-            // Play the card
-            transform.DOScale(scale * 0f, 0.3f);
-            Destroy(gameObject);
+        // if (eventData.position.y > targetCardYPos) // Play the card
+        // {
+        //     // Play the card
+        //     transform.DOScale(scale * 0f, 0.3f);
+        //     Destroy(gameObject);
 
-            EventHanlder.CallPlayTheCard(cardDetail);
-        }
-        else // Canel play the card
+        //     EventHanlder.CallPlayTheCard(cardDetail);
+        // }
+        // else // Canel play the card
+        // {
+        //     transform.DOScale(scale * 1f, 0.3f);
+        //     OnCardUpdatePosition();
+        //     image.raycastPadding = halfPadding;
+        // }
+
+        // Canel play the card
+        if (eventData.position.y < targetCardYPos)
         {
             transform.DOScale(scale * 1f, 0.3f);
             OnCardUpdatePosition();
             image.raycastPadding = halfPadding;
         }
-
         isDrag = false;
     }
 

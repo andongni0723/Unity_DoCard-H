@@ -5,7 +5,12 @@ using UnityEngine;
 public class Grid : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
+    public ConfirmGrid gridID;
+
+    [Header("Grid Setting")]
+    [SerializeField] bool isEnemyGrid = false;
     [SerializeField] bool isPlayerOn = false;
+    public bool isMouseOnArea = false;
 
     public Color basicColor = new Color(255, 255, 255, 76);
     public Color playerOnColor = new Color(0, 255, 40, 76);
@@ -53,16 +58,25 @@ public class Grid : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(!isEnemyGrid) return;
+
         // When Mouse Cofirm the area, the grid color will change
         if (other.CompareTag("mousePointer"))
         {
             spriteRenderer.color = mouseAreaColor;
+            isMouseOnArea = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        // Init the color
-        spriteRenderer.color = basicColor;
+        if(!isEnemyGrid) return;
+        
+        if (other.CompareTag("mousePointer"))
+        {
+            // Init the color
+            spriteRenderer.color = basicColor;
+            isMouseOnArea = false;
+        }
     }
 }
