@@ -20,4 +20,5 @@ public class ConfirmGrid
 public class ConfirmAreaGridData
 {
     public List<ConfirmGrid> ConfirmGridsList = new List<ConfirmGrid>();
+    public CardDetail_SO cardDetail;
 }

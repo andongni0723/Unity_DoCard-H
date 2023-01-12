@@ -29,10 +29,12 @@ public class GridMousePointer : MonoBehaviour
         }
     }
 
+#region Event
     private void OnEnable()
     {
         EventHanlder.CardOnDrag += OnCardOnDrag;
         EventHanlder.CardEndDrag += OnCardEndDrag;
+        EventHanlder.CancelPlayTheCard += OnCancelPlayTheCard;
     }
 
     
@@ -41,11 +43,14 @@ public class GridMousePointer : MonoBehaviour
     {
         EventHanlder.CardOnDrag -= OnCardOnDrag;
         EventHanlder.CardEndDrag -= OnCardEndDrag;
-
+        EventHanlder.CancelPlayTheCard += OnCancelPlayTheCard;
     }
+
 
     private void OnCardOnDrag(CardDetail_SO cardDetail)
     {
+        if(GameManager.instance.isPayCard) return;
+        
         // setting mouse pointer offset
         coll.size = ((cardDetail.cardOffset - Vector2.one) * sizeMag) + BasicColliderSize ; 
         isCofirmArea = true;
@@ -54,7 +59,11 @@ public class GridMousePointer : MonoBehaviour
     {
         isCofirmArea = false;
     }
-
+    private void OnCancelPlayTheCard()
+    {
+        Init();
+    }
+#endregion
 
     private void Init()
     {

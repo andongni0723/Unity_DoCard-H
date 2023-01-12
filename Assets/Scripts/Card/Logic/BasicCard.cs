@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using System;
 
 public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
@@ -11,6 +12,8 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public Vector4 halfPadding = new Vector4(0, 0, 90, 0); // half padding can let pointer easy Choose card
     public Vector4 zeroPadding = new Vector4(0, 0, 0, 0);  // zero padding can let pointer easy Drag card
     public Image image;
+
+    public Transform originParent; // CardManager
     public int id;
     public float yPos;
     float targetCardYPos = 540;
@@ -21,48 +24,76 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private void Awake()
     {
         id = transform.GetSiblingIndex();
+        originParent = GameObject.FindWithTag("CardManager").transform; // CardManager
         image = GetComponent<Image>();
         scale = transform.localScale.x;
         //transform.DOMove(new Vector2(transform.position.x + 200, transform.position.y), 1);
     }
 
+    #region Event
     private void OnEnable()
     {
-        EventHanlder.CardUpdatePosition += CardIDChange;
+        EventHanlder.CardUpdatePosition += OnCardIDChange;
         EventHanlder.CardUpdatePosition += OnCardUpdatePosition;
+        EventHanlder.EndDragCardUpdateData += OnEndDragCardUpdateData;
+        EventHanlder.CancelPlayTheCard += OnCancelPlayTheCard;
     }
     private void OnDisable()
     {
-        EventHanlder.CardUpdatePosition -= CardIDChange;
+        EventHanlder.CardUpdatePosition -= OnCardIDChange;
         EventHanlder.CardUpdatePosition -= OnCardUpdatePosition;
-
+        EventHanlder.EndDragCardUpdateData -= OnEndDragCardUpdateData;
+        EventHanlder.CancelPlayTheCard -= OnCancelPlayTheCard;
     }
 
-    private void CardIDChange()
+
+
+    private void OnCardIDChange()
     {
         id = transform.GetSiblingIndex();
     }
 
     private void OnCardUpdatePosition()
     {
-        var CardManager = transform.parent.GetComponent<CardManager>();
-
-        transform.DOMove(CardManager.CardPositionList[id], 0.5f).OnComplete
-        (
-            () =>
+        // The card maybe by play the card
+        if(transform.parent != null)
+        {
+            // The card maybe by payCard parent
+            if (transform.parent.TryGetComponent(out CardManager cardManager))
             {
-                yPos = transform.position.y;
+                transform.DOMove(cardManager.CardPositionList[id], 0.5f).OnComplete
+                (
+                    () =>
+                    {
+                        yPos = transform.position.y;
+                    }
+                );
             }
-        );
-        //Debug.Log("set" + id);
+        }
+
+
+    }
+    private CardDetail_SO OnEndDragCardUpdateData()
+    {
+        return cardDetail;
     }
 
+    private void OnCancelPlayTheCard()
+    {
+        transform.DOScale(scale * 1f, 0.3f);
+        transform.parent = GameObject.FindGameObjectWithTag("CardManager").transform;
+        OnCardUpdatePosition();
+        image.raycastPadding = halfPadding;
+    }
+    #endregion 
 
 
     #region Pointer Event
     public void OnPointerEnter(PointerEventData eventData)
     {
-        transform.SetAsLastSibling(); // Let layer on first
+        if (!GameManager.instance.isPayCard)
+            transform.SetAsLastSibling(); // Let layer on first
+
         transform.DOScale(scale * 1.5f, 0.3f);
     }
 
@@ -87,22 +118,24 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     #region Drag Event
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if(transform.parent != originParent) return; // Card is Paying
+
         isDrag = true;
         transform.DOScale(scale * 0.3f, 0.3f);
         image.raycastPadding = zeroPadding;
     }
     public void OnDrag(PointerEventData eventData)
     {
+        if(transform.parent != originParent) return; // Card is Paying
+
         ScaleAtCardOnDrag(eventData);
         EventHanlder.CallCardOnDrag(cardDetail);
     }
-
-
     public void OnEndDrag(PointerEventData eventData)
     {
-        //Event of Play a card or Canel play a card
+        if(transform.parent != originParent) return; // Card is Paying
+        
         EventAtCardEndDrag(eventData);
-        EventHanlder.CallCardEndDrag();
     }
 
 
@@ -128,27 +161,28 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void EventAtCardEndDrag(PointerEventData eventData)
     {
-        // if (eventData.position.y > targetCardYPos) // Play the card
-        // {
-        //     // Play the card
-        //     transform.DOScale(scale * 0f, 0.3f);
-        //     Destroy(gameObject);
-
-        //     EventHanlder.CallPlayTheCard(cardDetail);
-        // }
-        // else // Canel play the card
-        // {
-        //     transform.DOScale(scale * 1f, 0.3f);
-        //     OnCardUpdatePosition();
-        //     image.raycastPadding = halfPadding;
-        // }
-
         // Canel play the card
         if (eventData.position.y < targetCardYPos)
         {
             transform.DOScale(scale * 1f, 0.3f);
             OnCardUpdatePosition();
             image.raycastPadding = halfPadding;
+        }
+        else
+        {
+            var lastPos = transform.position; // Let card Position not be different after change parent
+            transform.parent = null;
+            transform.position = lastPos;
+
+            // Is play card to attack, OR want pay card to let other card attack
+            if (GameManager.instance.isPayCard)
+            {
+                EventHanlder.CallPayTheCard(gameObject);
+            }
+            else
+            {
+                EventHanlder.CallCardEndDrag();
+            }
         }
         isDrag = false;
     }

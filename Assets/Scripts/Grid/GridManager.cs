@@ -25,9 +25,9 @@ public class GridManager : MonoBehaviour
         EventHanlder.EndDragGridUpdateData -= UpdateData;
     }
 
-    private ConfirmAreaGridData UpdateData()
+    private List<ConfirmGrid> UpdateData()
     {
-        ConfirmAreaGridData data = new ConfirmAreaGridData();
+        List<ConfirmGrid> dataList = new List<ConfirmGrid>();
 
         // Find object which "isMouseOnArea" is true to return data 
         foreach (var grid in GridsList)
@@ -39,13 +39,14 @@ public class GridManager : MonoBehaviour
             if(gridCS.isMouseOnArea)
             {
                 //ConfirmAreaGridData
+                // |- ...
                 // |- ConfirmGrid
                 //          |- gridX, gridY  => can get form script
 
-                data.ConfirmGridsList.Add(gridCS.gridID);
+                dataList.Add(gridCS.gridID);
             }
         }
 
-        return data;
+        return dataList;
     }
 }
