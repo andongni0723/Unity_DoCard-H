@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3087ffe51a4ef4f9c9184acb695cb0, type: 3}
   m_Name: CardDetail-Test
   m_EditorClassIdentifier: 
-  payCardNum: 0
-  cardOffset: {x: 0, y: 0}
+  cardType: 2
+  payCardNum: 2
+  cardOffset: {x: 2, y: 1}

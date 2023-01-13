@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3087ffe51a4ef4f9c9184acb695cb0, type: 3}
   m_Name: CardDetail-1x1
   m_EditorClassIdentifier: 
+  cardType: 2
   payCardNum: 1
   cardOffset: {x: 1, y: 1}
