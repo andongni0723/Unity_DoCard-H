@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,17 +6,23 @@ using UnityEngine;
 public class Grid : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
+
+    [Header("Script Setting")]
+    public bool isEnemyGrid = false;
     public ConfirmGrid gridID;
 
     [Header("Grid Setting")]
-    [SerializeField] bool isEnemyGrid = false;
-    [SerializeField] bool isPlayerOn = false;
+    public bool isPlayerOn = false;
     public bool isMouseOnArea = false;
+    public bool isSkilArea = false;
 
     public Color basicColor = new Color(255, 255, 255, 76);
     public Color playerOnColor = new Color(0, 255, 40, 76);
 
     public Color mouseAreaColor = new Color(255, 255, 255, 255);
+    public Color skillAreaColor = new Color(255, 255, 0, 255);
+
+    public Color dangerousColor = Color.black;
 
     private void Awake()
     {
@@ -26,11 +33,38 @@ public class Grid : MonoBehaviour
         FindPlayer();
     }
 
+
+    #region Event
+    private void OnEnable()
+    {
+        EventHanlder.ReloadGridColor += OnReloadGridColor;
+    }
+    private void OnDisable()
+    {
+        EventHanlder.ReloadGridColor -= OnReloadGridColor;
+
+    }
+
+    private void OnReloadGridColor(List<ConfirmGrid> grids)
+    {
+        isSkilArea = false;
+
+        foreach (ConfirmGrid grid in grids)
+        {
+            if (grid == gridID)
+            {
+                isSkilArea = true;
+                CheckGridColor();
+            }
+        }
+    }
+    #endregion
+
+
     private void OnTransformChildrenChanged()
     {
         FindPlayer();
     }
-
 
     /// <summary>
     /// Find Player in children
@@ -50,33 +84,68 @@ public class Grid : MonoBehaviour
         }
 
         // Setting grid color
-        if (isPlayerOn)
-            spriteRenderer.color = playerOnColor;
-        else
-            spriteRenderer.color = basicColor;
+        CheckGridColor();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(!isEnemyGrid) return;
-
-        // When Mouse Cofirm the area, the grid color will change
-        if (other.CompareTag("mousePointer"))
+        if (CheckPlayingCardType())
         {
-            spriteRenderer.color = mouseAreaColor;
-            isMouseOnArea = true;
+            // When Mouse Cofirm the area, the grid color will change
+            if (other.CompareTag("mousePointer"))
+            {
+                isMouseOnArea = true;
+                CheckGridColor();
+            }
         }
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(!isEnemyGrid) return;
-        
         if (other.CompareTag("mousePointer"))
+            {
+                // Init the color
+                isMouseOnArea = false;
+                CheckGridColor();
+            }
+    }
+
+    /// <summary>
+    /// Check Playing Card Type to decid open the confirm area
+    /// </summary>
+    /// <returns></returns>
+    public bool CheckPlayingCardType()
+    {
+        CardDetail_SO playingCard = GameManager.instance.playingCard;
+
+        if(playingCard.cardType == CardType.Attack && isEnemyGrid) return true; //Playing a attack card
+        if(playingCard.cardType == CardType.Move && !isEnemyGrid) return true;  //Playing a move card
+        
+        return false; //Playing a tank card
+    }
+
+    public void CheckGridColor()
+    {
+        if (isMouseOnArea)
         {
-            // Init the color
+            spriteRenderer.color = mouseAreaColor;
+        }
+        else if (isSkilArea && isPlayerOn) // Player on skill attack area
+        {
+            spriteRenderer.color = dangerousColor;
+        }
+        else if (isSkilArea)
+        {
+            spriteRenderer.color = skillAreaColor;
+        }
+        else if (isPlayerOn)
+        {
+            spriteRenderer.color = playerOnColor;
+        }
+        else
+        {
             spriteRenderer.color = basicColor;
-            isMouseOnArea = false;
         }
     }
 }

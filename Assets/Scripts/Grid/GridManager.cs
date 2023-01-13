@@ -6,6 +6,8 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     public List<GameObject> GridsList;
+
+    
     public List<ConfirmAreaGridData> isConfirmGridsList;
 
     private void Awake() 
@@ -18,12 +20,15 @@ public class GridManager : MonoBehaviour
     private void OnEnable()
     {
         EventHanlder.EndDragGridUpdateData += UpdateData;
+        //EventHanlder.ReloadGridData += OnReloadGridData;
     }
 
     private void OnDisable()
     {
         EventHanlder.EndDragGridUpdateData -= UpdateData;
+        //EventHanlder.ReloadGridData -= OnReloadGridData;
     }
+
 
     private List<ConfirmGrid> UpdateData()
     {
@@ -39,7 +44,7 @@ public class GridManager : MonoBehaviour
             if(gridCS.isMouseOnArea)
             {
                 //ConfirmAreaGridData
-                // |- ...
+                // |-
                 // |- ConfirmGrid
                 //          |- gridX, gridY  => can get form script
 
@@ -49,4 +54,10 @@ public class GridManager : MonoBehaviour
 
         return dataList;
     }
+
+    // private void OnReloadGridData(ConfirmAreaGridData data)
+    // {
+    //     //isConfirmGridsList.Add(data);
+    //     EventHanlder.CallReloadGridColor(data);
+    // }
 }

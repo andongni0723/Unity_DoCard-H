@@ -83,4 +83,19 @@ public static class EventHanlder
     {
         PayCardComplete?.Invoke();
     }
+
+
+    // // GameManager Reload confirm data 
+    // public static event Action<List<ConfirmGrid>> ReloadGridData;
+    // public static void CallReloadGridData(List<ConfirmGrid> grids)
+    // {
+    //     ReloadGridData?.Invoke(grids);
+    // }
+
+    // GridManager -> Grid
+    public static event Action<List<ConfirmGrid>> ReloadGridColor;
+    public static void CallReloadGridColor(List<ConfirmGrid> grids)
+    {
+        ReloadGridColor?.Invoke(grids);
+    }
 }

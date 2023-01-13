@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 
-
+// Class
 [System.Serializable]
 public class ConfirmGrid
 {
     public int GridX;
     public int GridY;
-    private ConfirmGrid gridID;
+    // private ConfirmGrid gridID;
 
-    public ConfirmGrid(ConfirmGrid gridID)
-    {
-        this.gridID = gridID;
-    }
+    // public ConfirmGrid(ConfirmGrid gridID)
+    // {
+    //     this.gridID = gridID;
+    // }
 }
 
 
@@ -23,7 +23,13 @@ public class ConfirmAreaGridData
     public CardDetail_SO cardDetail;
 }
 
+// Enum
 public enum GameStep
 {
     StepStart, PlayerStep, CommonStep, PayCardStep, EnemySettlement, EnemyStep, AIStep, PlayerSettlement, StepEnd
+}
+
+public enum CardType
+{
+    Move, Tank, Attack 
 }

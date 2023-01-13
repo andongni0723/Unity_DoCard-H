@@ -11,7 +11,7 @@ public class GridMousePointer : MonoBehaviour
     public Vector2 BasicColliderSize = new Vector2(1.3f, 1.3f);
     public Vector2 sizeMag;
 
-    bool isCofirmArea;
+    [SerializeField]bool isCofirmArea;
 
     private void Awake()
     {
