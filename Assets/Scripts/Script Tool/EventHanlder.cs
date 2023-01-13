@@ -39,7 +39,8 @@ public static class EventHanlder
         CardEndDrag?.Invoke();
 
         // cardDetail: "BasicCard" will sent CardDetail_SO
-        // ConfirmGridsList: "GridManager" confirm the grid of mouse choose , then sent data to "GameManager" to check data
+        // ConfirmGridsList: "GridManager" confirm the grid of mouse choose 
+        // Then sent data to "GameManager" to check data
         ConfirmAreaGridData data = new ConfirmAreaGridData();
 
         data.cardDetail = EndDragCardUpdateData?.Invoke();
@@ -61,6 +62,12 @@ public static class EventHanlder
     public static void CallPayTheCard(GameObject card)
     {
         PayTheCard?.Invoke(card);
+    }
+
+    public static event Action<GameObject> PayTheCardError;
+    public static void CallPayTheCardError(GameObject card)
+    {
+        PayTheCardError?.Invoke(card);
     }
 
     public static event Action CancelPlayTheCard;

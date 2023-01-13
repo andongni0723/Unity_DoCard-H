@@ -22,3 +22,8 @@ public class ConfirmAreaGridData
     public List<ConfirmGrid> ConfirmGridsList = new List<ConfirmGrid>();
     public CardDetail_SO cardDetail;
 }
+
+public enum GameStep
+{
+    StepStart, PlayerStep, CommonStep, PayCardStep, EnemySettlement, EnemyStep, AIStep, PlayerSettlement, StepEnd
+}

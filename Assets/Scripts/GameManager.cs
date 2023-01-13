@@ -6,7 +6,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public bool isPayCard;
+
+    public GameStep gameStep;
     private void Awake()
     {
         if(instance == null)
@@ -51,11 +52,11 @@ public class GameManager : MonoBehaviour
 
     private void OnPlayTheCard(CardDetail_SO obj)
     {
-        isPayCard = true;
+        gameStep = GameStep.PayCardStep;
     }
     private void OnCancelPlayTheCard()
     {
-        isPayCard = false;
+        gameStep = GameStep.CommonStep;
     }    
 #endregion
 }

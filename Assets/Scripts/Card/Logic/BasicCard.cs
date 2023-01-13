@@ -14,6 +14,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public Image image;
 
     public Transform originParent; // CardManager
+    [SerializeField] public Transform playCardParent; // After play the card, will set parent to it
     public int id;
     public float yPos;
     float targetCardYPos = 540;
@@ -25,6 +26,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         id = transform.GetSiblingIndex();
         originParent = GameObject.FindWithTag("CardManager").transform; // CardManager
+        playCardParent = GameObject.FindWithTag("PlayCardParent").transform;
         image = GetComponent<Image>();
         scale = transform.localScale.x;
         //transform.DOMove(new Vector2(transform.position.x + 200, transform.position.y), 1);
@@ -37,6 +39,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         EventHanlder.CardUpdatePosition += OnCardUpdatePosition;
         EventHanlder.EndDragCardUpdateData += OnEndDragCardUpdateData;
         EventHanlder.CancelPlayTheCard += OnCancelPlayTheCard;
+        EventHanlder.PayTheCardError += OnPayTheCardError;
     }
     private void OnDisable()
     {
@@ -44,9 +47,8 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         EventHanlder.CardUpdatePosition -= OnCardUpdatePosition;
         EventHanlder.EndDragCardUpdateData -= OnEndDragCardUpdateData;
         EventHanlder.CancelPlayTheCard -= OnCancelPlayTheCard;
+        EventHanlder.PayTheCardError -= OnPayTheCardError;
     }
-
-
 
     private void OnCardIDChange()
     {
@@ -56,7 +58,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private void OnCardUpdatePosition()
     {
         // The card maybe by play the card
-        if(transform.parent != null)
+        if (transform.parent != null)
         {
             // The card maybe by payCard parent
             if (transform.parent.TryGetComponent(out CardManager cardManager))
@@ -85,13 +87,23 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         OnCardUpdatePosition();
         image.raycastPadding = halfPadding;
     }
+
+    private void OnPayTheCardError(GameObject targetCard)
+    {
+        // This card haven't pay because the pay cards is enough
+        if(transform.parent == null) 
+        {
+            transform.parent = originParent;
+        }
+    }
+
     #endregion 
 
 
     #region Pointer Event
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!GameManager.instance.isPayCard)
+        if (GameManager.instance.gameStep != GameStep.PayCardStep)
             transform.SetAsLastSibling(); // Let layer on first
 
         transform.DOScale(scale * 1.5f, 0.3f);
@@ -118,7 +130,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     #region Drag Event
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if(transform.parent != originParent) return; // Card is Paying
+        if (transform.parent != originParent) return; // Card is Paying
 
         isDrag = true;
         transform.DOScale(scale * 0.3f, 0.3f);
@@ -126,15 +138,15 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     }
     public void OnDrag(PointerEventData eventData)
     {
-        if(transform.parent != originParent) return; // Card is Paying
+        if (transform.parent != originParent) return; // Card is Paying
 
         ScaleAtCardOnDrag(eventData);
         EventHanlder.CallCardOnDrag(cardDetail);
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-        if(transform.parent != originParent) return; // Card is Paying
-        
+        if (transform.parent != originParent) return; // Card is Paying
+
         EventAtCardEndDrag(eventData);
     }
 
@@ -175,12 +187,13 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             transform.position = lastPos;
 
             // Is play card to attack, OR want pay card to let other card attack
-            if (GameManager.instance.isPayCard)
-            {
+            if (GameManager.instance.gameStep == GameStep.PayCardStep)
+            {         
                 EventHanlder.CallPayTheCard(gameObject);
             }
             else
             {
+                transform.parent = playCardParent;
                 EventHanlder.CallCardEndDrag();
             }
         }

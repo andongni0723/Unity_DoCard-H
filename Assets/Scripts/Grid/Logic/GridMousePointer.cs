@@ -49,7 +49,7 @@ public class GridMousePointer : MonoBehaviour
 
     private void OnCardOnDrag(CardDetail_SO cardDetail)
     {
-        if(GameManager.instance.isPayCard) return;
+        if(GameManager.instance.gameStep == GameStep.PayCardStep) return;
         
         // setting mouse pointer offset
         coll.size = ((cardDetail.cardOffset - Vector2.one) * sizeMag) + BasicColliderSize ; 
