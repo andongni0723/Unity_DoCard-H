@@ -32,7 +32,7 @@ public static class EventHanlder
     public static Func<CardDetail_SO> EndDragCardUpdateData;
 
     public static Func<List<ConfirmGrid>> EndDragGridUpdateData;
-    public static event Action<ConfirmAreaGridData> EndDragCofirmData; //TODO: GameManager: EndDragCofirmData
+    public static event Action<ConfirmAreaGridData> EndDragCofirmData; //GameManager: EndDragCofirmData
 
     public static void CallCardEndDrag()
     {
@@ -52,9 +52,11 @@ public static class EventHanlder
 
 
     // After End Drag
+    public static event Action GameStepChange; // GameManager
     public static event Action<CardDetail_SO> PlayTheCard;
     public static void CallPlayTheCard(CardDetail_SO cardDetail)
     {
+        GameStepChange?.Invoke();
         PlayTheCard?.Invoke(cardDetail);
     }
 
@@ -74,5 +76,11 @@ public static class EventHanlder
     public static void CallCancelPlayTheCard()
     {
         CancelPlayTheCard?.Invoke();
+    }
+
+    public static event Action PayCardComplete;
+    public static void CallPayCardComplete()
+    {
+        PayCardComplete?.Invoke();
     }
 }

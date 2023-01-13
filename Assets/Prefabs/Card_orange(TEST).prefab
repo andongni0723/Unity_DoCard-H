@@ -89,9 +89,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f45ffd452ed65c4f87ac5c7285c3f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardDetail: {fileID: 11400000, guid: 161e8fff06186834680e8757a7978bc8, type: 2}
+  cardDetail: {fileID: 11400000, guid: 175ed80d0d42ae949a5c10180aa2ce9a, type: 2}
   halfPadding: {x: 0, y: 0, z: 90, w: 0}
   zeroPadding: {x: 0, y: 0, z: 0, w: 0}
   image: {fileID: 0}
+  originParent: {fileID: 0}
+  playCardParent: {fileID: 0}
   id: 0
   yPos: 0

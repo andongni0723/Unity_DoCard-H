@@ -40,6 +40,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         EventHanlder.EndDragCardUpdateData += OnEndDragCardUpdateData;
         EventHanlder.CancelPlayTheCard += OnCancelPlayTheCard;
         EventHanlder.PayTheCardError += OnPayTheCardError;
+        EventHanlder.PayCardComplete += OnPayCardComplete;
     }
     private void OnDisable()
     {
@@ -48,7 +49,10 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         EventHanlder.EndDragCardUpdateData -= OnEndDragCardUpdateData;
         EventHanlder.CancelPlayTheCard -= OnCancelPlayTheCard;
         EventHanlder.PayTheCardError -= OnPayTheCardError;
+        EventHanlder.PayCardComplete -= OnPayCardComplete;
+
     }
+
 
     private void OnCardIDChange()
     {
@@ -57,7 +61,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private void OnCardUpdatePosition()
     {
-        // The card maybe by play the card
+        // The card maybe by the card of played
         if (transform.parent != null)
         {
             // The card maybe by payCard parent
@@ -72,8 +76,6 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 );
             }
         }
-
-
     }
     private CardDetail_SO OnEndDragCardUpdateData()
     {
@@ -94,6 +96,15 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if(transform.parent == null) 
         {
             transform.parent = originParent;
+        }
+    }
+
+    private void OnPayCardComplete()
+    {
+        // Destroy card which paid OR played
+        if(transform.parent != originParent)
+        {
+            Destroy(gameObject);
         }
     }
 

@@ -37,10 +37,18 @@ public class CardPayPanel : MonoBehaviour
 
     private void OnPlayTheCard(CardDetail_SO data)
     {
-        panel.SetActive(true);
-        cardData = data;
+        // If The card don't pay any card to play
+        if (data.payCardNum == 0) 
+        {
+            PayCardComplete();
+        }
+        else
+        {
+            panel.SetActive(true);
+            cardData = data;
 
-        PayCardTextCheck();
+            PayCardTextCheck();
+        }
     }
 
     private void OnPayTheCard(GameObject card)
@@ -49,15 +57,9 @@ public class CardPayPanel : MonoBehaviour
         PayCardIsDoneCheck(cardData, card);
         PayCardTextCheck();
     }
-
-    public void CancelPlayTheCard() // Cancel Button Event
-    {
-        confirmButton.SetActive(false);
-        EventHanlder.CallCancelPlayTheCard();
-    }
     #endregion
 
-    
+
     /// <summary>
     /// If pay cards num NOT enough, to let card parent add in 'payCardsTable'
     /// </summary>
@@ -67,8 +69,9 @@ public class CardPayPanel : MonoBehaviour
     {
         if (GameManager.instance.gameStep == GameStep.PayCardStep)
         {
-            if(payCards.transform.childCount != data.payCardNum) // not complete
+            if (payCards.transform.childCount != data.payCardNum) // not complete
             {
+                cardObj.transform.position = payCards.transform.position;
                 cardObj.transform.parent = payCards.transform;
             }
         }
@@ -91,10 +94,22 @@ public class CardPayPanel : MonoBehaviour
             }
         }
     }
-
     private void PayCardTextCheck()
     {
         int needCardNum = cardData.payCardNum - payCards.transform.childCount;
         mainText.text = $"卡牌召喚還需要{needCardNum}張卡";
     }
+
+    #region Button Event
+    public void CancelPlayTheCard() // Cancel Button Event
+    {
+        confirmButton.SetActive(false);
+        EventHanlder.CallCancelPlayTheCard();
+    }
+
+    public void PayCardComplete()
+    {
+        EventHanlder.CallPayCardComplete();
+    }
+    #endregion
 }

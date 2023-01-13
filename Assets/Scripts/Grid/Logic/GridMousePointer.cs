@@ -35,6 +35,7 @@ public class GridMousePointer : MonoBehaviour
         EventHanlder.CardOnDrag += OnCardOnDrag;
         EventHanlder.CardEndDrag += OnCardEndDrag;
         EventHanlder.CancelPlayTheCard += OnCancelPlayTheCard;
+        EventHanlder.PayCardComplete += OnPayCardComplete;
     }
 
     
@@ -43,9 +44,9 @@ public class GridMousePointer : MonoBehaviour
     {
         EventHanlder.CardOnDrag -= OnCardOnDrag;
         EventHanlder.CardEndDrag -= OnCardEndDrag;
-        EventHanlder.CancelPlayTheCard += OnCancelPlayTheCard;
+        EventHanlder.CancelPlayTheCard -= OnCancelPlayTheCard;
+        EventHanlder.PayCardComplete -= OnPayCardComplete;
     }
-
 
     private void OnCardOnDrag(CardDetail_SO cardDetail)
     {
@@ -60,6 +61,11 @@ public class GridMousePointer : MonoBehaviour
         isCofirmArea = false;
     }
     private void OnCancelPlayTheCard()
+    {
+        Init();
+    }
+
+    private void OnPayCardComplete()
     {
         Init();
     }
