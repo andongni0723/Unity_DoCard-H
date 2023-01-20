@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee3087ffe51a4ef4f9c9184acb695cb0, type: 3}
-  m_Name: CardDetail-1x3
+  m_Name: CardDetail- Free Move
   m_EditorClassIdentifier: 
-  cardType: 2
+  cardType: 0
   cardName: 
-  payCardNum: 2
+  payCardNum: 0
   cardDestription: 
   attackTypeDetails:
     cardHurtHP: 0
@@ -26,5 +26,5 @@ MonoBehaviour:
     addHealth: 0
     CardInstantiateCardList: []
   moveTypeDetails:
-    moveType: 0
-    cardMoveOffset: {x: 0, y: 0}
+    moveType: 3
+    cardMoveOffset: {x: 1, y: 1}

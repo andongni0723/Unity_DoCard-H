@@ -2902,9 +2902,6 @@ MonoBehaviour:
   gameStep: 0
   SkillHurtGridList: []
   AllConfirmGridList: []
-  temporaryData:
-    ConfirmGridsList: []
-    cardDetail: {fileID: 0}
   playingCard: {fileID: 0}
   gameStepText: {fileID: 1768472376}
 --- !u!4 &1532374491
@@ -4712,7 +4709,7 @@ GameObject:
   - component: {fileID: 1952079453}
   - component: {fileID: 1952079454}
   m_Layer: 5
-  m_Name: Cards
+  m_Name: Card Manager
   m_TagString: CardManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4751,12 +4748,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CardPositionList: []
+  CardDetailPrefabList:
+  - {fileID: 11400000, guid: eca1eedb560fd6a4d992ddc6a103d571, type: 2}
   CardPrefabList:
   - {fileID: 1567381325940116902, guid: d4acbdc9735e7f849b33b194044be59c, type: 3}
   - {fileID: 1567381325940116902, guid: dc80c32f4b730b6499e41d6a09148672, type: 3}
   - {fileID: 1567381325940116902, guid: 109fbf684d4fffd49b34072e275f5ebb, type: 3}
   cardPrefabs: {fileID: 1567381325940116902, guid: d4acbdc9735e7f849b33b194044be59c, type: 3}
   cardInstPoint: {fileID: 1023761313}
+  cardAttackSprite: {fileID: 21300000, guid: 30f806b6b053646499124886a706a201, type: 3}
+  cardTankSprite: {fileID: 21300000, guid: c511fa22c1adfa14088dc385cdffde5f, type: 3}
+  cardMoveSprite: {fileID: 21300000, guid: 73fa10e145264a54eac32a321e54f1a5, type: 3}
   cardWidth: 286
   moveX: 20
   maxCardNum: 5

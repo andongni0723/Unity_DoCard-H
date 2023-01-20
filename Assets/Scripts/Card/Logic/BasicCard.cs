@@ -36,11 +36,11 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private void OnEnable()
     {
         EventHanlder.CardUpdatePosition += OnCardIDChange;
-        EventHanlder.CardUpdatePosition += OnCardUpdatePosition;
-        EventHanlder.EndDragCardUpdateData += OnEndDragCardUpdateData;
-        EventHanlder.CancelPlayTheCard += OnCancelPlayTheCard;
-        EventHanlder.PayTheCardError += OnPayTheCardError;
-        EventHanlder.PayCardComplete += OnPayCardComplete;
+        EventHanlder.CardUpdatePosition += OnCardUpdatePosition; // Update Position
+        EventHanlder.EndDragCardUpdateData += OnEndDragCardUpdateData; // Get CardDetail_SO
+        EventHanlder.CancelPlayTheCard += OnCancelPlayTheCard; // Back to CardManager, and INIT
+        EventHanlder.PayTheCardError += OnPayTheCardError; // Cancel pay card, back to CardManager
+        EventHanlder.PayCardComplete += OnPayCardComplete; // Destroy card which paid OR played
     }
     private void OnDisable()
     {
@@ -62,19 +62,26 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private void OnCardUpdatePosition()
     {
         // The card maybe by the card of played
-        if (transform.parent != null)
+        if (transform.parent == originParent)
         {
-            // The card maybe by payCard parent
-            if (transform.parent.TryGetComponent(out CardManager cardManager))
-            {
-                transform.DOMove(cardManager.CardPositionList[id], 0.5f).OnComplete
-                (
-                    () =>
-                    {
-                        yPos = transform.position.y;
-                    }
-                );
-            }
+            transform.DOMove(GetComponentInParent<CardManager>().CardPositionList[id], 0.5f).OnComplete
+            (
+                () =>
+                {
+                    yPos = transform.position.y;
+                }
+            );
+            // //The card maybe by payCard parent
+            // if (transform.parent.TryGetComponent(out CardManager cardManager))
+            // {
+            //     transform.DOMove(GetComponentInParent<CardManager>().CardPositionList[id], 0.5f).OnComplete
+            //     (
+            //         () =>
+            //         {
+            //             yPos = transform.position.y;
+            //         }
+            //     );
+            // }
         }
     }
     private CardDetail_SO OnEndDragCardUpdateData()
@@ -86,6 +93,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         transform.DOScale(scale * 1f, 0.3f);
         transform.parent = GameObject.FindGameObjectWithTag("CardManager").transform;
+        //EventHanlder.CallCardUpdeatePosition();
         OnCardUpdatePosition();
         image.raycastPadding = halfPadding;
     }
@@ -93,7 +101,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private void OnPayTheCardError(GameObject targetCard)
     {
         // This card haven't pay because the pay cards is enough
-        if(transform.parent == null) 
+        if (transform.parent == null)
         {
             transform.parent = originParent;
         }
@@ -102,7 +110,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private void OnPayCardComplete()
     {
         // Destroy card which paid OR played
-        if(transform.parent != originParent)
+        if (transform.parent != originParent)
         {
             Destroy(gameObject);
         }
@@ -141,22 +149,22 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     #region Drag Event
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (transform.parent != originParent) return; // Card is Paying
+        if (transform.parent != originParent && isDrag) return; // Card was Paid
 
         isDrag = true;
-        transform.DOScale(scale * 0.3f, 0.3f);
+        //transform.DOScale(scale * 0.3f, 0.3f);
         image.raycastPadding = zeroPadding;
     }
     public void OnDrag(PointerEventData eventData)
     {
-        if (transform.parent != originParent) return; // Card is Paying
-
+        if (transform.parent != originParent) return; // Card was Paid
+        transform.position = eventData.position;
         ScaleAtCardOnDrag(eventData);
         EventHanlder.CallCardOnDrag(cardDetail);
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (transform.parent != originParent) return; // Card is Paying
+        if (transform.parent != originParent) return; // Card was Paid
 
         EventAtCardEndDrag(eventData);
     }
@@ -170,15 +178,15 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     /// <param name="eventData"></param>
     public void ScaleAtCardOnDrag(PointerEventData eventData)
     {
+
+        // Change Scale
         if (eventData.position.y > targetCardYPos) // Play the card
         {
-            transform.DOScale(scale * 0.3f, 0.3f);
-            transform.position = eventData.position;
+            transform.DOScale(scale * 0.3f, 0.2f);
         }
         else // Canel play the card
         {
-            transform.DOScale(scale * 1f, 0.3f);
-            transform.position = eventData.position;
+            transform.DOScale(scale * 1f, 0.2f);
         }
     }
 
@@ -199,7 +207,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
             // Is play card to attack, OR want pay card to let other card attack
             if (GameManager.instance.gameStep == GameStep.PayCardStep)
-            {         
+            {
                 EventHanlder.CallPayTheCard(gameObject);
             }
             else

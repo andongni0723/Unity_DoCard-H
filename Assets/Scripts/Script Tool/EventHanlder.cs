@@ -52,11 +52,12 @@ public static class EventHanlder
 
 
     // After End Drag
-    public static event Action GameStepChange; // GameManager
+    //public static event Action GameStepChange; // GameManager //FIXME: if not use , del.
     public static event Action<CardDetail_SO> PlayTheCard;
     public static void CallPlayTheCard(CardDetail_SO cardDetail)
     {
-        GameStepChange?.Invoke();
+        //GameStepChange?.Invoke();
+        GameManager.instance.ChangeGameStep(GameStep.PayCardStep);
         PlayTheCard?.Invoke(cardDetail);
     }
 
@@ -75,13 +76,16 @@ public static class EventHanlder
     public static event Action CancelPlayTheCard;
     public static void CallCancelPlayTheCard()
     {
+        GameManager.instance.ChangeGameStep(GameStep.CommonStep);
         CancelPlayTheCard?.Invoke();
     }
 
     public static event Action PayCardComplete;
     public static void CallPayCardComplete()
     {
+        GameManager.instance.ChangeGameStep(GameStep.CommonStep);
         PayCardComplete?.Invoke();
+        EventHanlder.CallCardUpdeatePosition();
     }
 
 

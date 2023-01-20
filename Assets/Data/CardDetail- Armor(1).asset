@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee3087ffe51a4ef4f9c9184acb695cb0, type: 3}
-  m_Name: CardDetail-1x3
+  m_Name: CardDetail- Armor(1)
   m_EditorClassIdentifier: 
-  cardType: 2
-  cardName: 
-  payCardNum: 2
-  cardDestription: 
+  cardType: 1
+  cardName: "\u683C\u64CB"
+  payCardNum: 0
+  cardDestription: "\u589E\u52A0\u8B77\u75321\u9EDE"
   attackTypeDetails:
     cardHurtHP: 0
     cardAttackOffset: {x: 0, y: 0}
     CardEffectList: []
     CardInstantiateCardList: []
   tankTypeDetails:
-    addArmor: 0
+    addArmor: 1
     addHealth: 0
     CardInstantiateCardList: []
   moveTypeDetails:

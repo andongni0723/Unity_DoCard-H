@@ -11,7 +11,7 @@ public class GridMousePointer : MonoBehaviour
     public Vector2 BasicColliderSize = new Vector2(1.3f, 1.3f);
     public Vector2 sizeMag;
 
-    [SerializeField]bool isCofirmArea;
+    [SerializeField] bool isCofirmArea;
 
     private void Awake()
     {
@@ -22,23 +22,23 @@ public class GridMousePointer : MonoBehaviour
     private void Update()
     {
         // Move with Mouse
-        if(isCofirmArea)
+        if (isCofirmArea)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = mousePos;
         }
     }
 
-#region Event
+    #region Event
     private void OnEnable()
     {
-        EventHanlder.CardOnDrag += OnCardOnDrag;
-        EventHanlder.CardEndDrag += OnCardEndDrag;
-        EventHanlder.CancelPlayTheCard += OnCancelPlayTheCard;
-        EventHanlder.PayCardComplete += OnPayCardComplete;
+        EventHanlder.CardOnDrag += OnCardOnDrag; // Move with mouse
+        EventHanlder.CardEndDrag += OnCardEndDrag; // Cancel move with mouse
+        EventHanlder.CancelPlayTheCard += OnCancelPlayTheCard; // INIT
+        EventHanlder.PayCardComplete += OnPayCardComplete; // INIT
     }
 
-    
+
 
     private void OnDisable()
     {
@@ -50,10 +50,24 @@ public class GridMousePointer : MonoBehaviour
 
     private void OnCardOnDrag(CardDetail_SO cardDetail)
     {
-        if(GameManager.instance.gameStep == GameStep.PayCardStep) return;
-        
+        if (GameManager.instance.gameStep == GameStep.PayCardStep) return;
+
         // setting mouse pointer offset
-        coll.size = ((cardDetail.cardOffset - Vector2.one) * sizeMag) + BasicColliderSize ; 
+        switch (cardDetail.cardType)
+        {
+            case CardType.Attack:
+                coll.size = ((cardDetail.attackTypeDetails.cardAttackOffset - Vector2.one) * sizeMag) + BasicColliderSize;
+                break;
+
+            case CardType.Move:
+                coll.size = ((cardDetail.moveTypeDetails.cardMoveOffset - Vector2.one) * sizeMag) + BasicColliderSize;
+                break;
+
+            case CardType.Tank:
+                coll.size = Vector2.zero;
+                break;
+        }
+
         isCofirmArea = true;
     }
     private void OnCardEndDrag()
@@ -69,7 +83,7 @@ public class GridMousePointer : MonoBehaviour
     {
         Init();
     }
-#endregion
+    #endregion
 
     private void Init()
     {

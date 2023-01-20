@@ -23,6 +23,13 @@ public class ConfirmAreaGridData
     public CardDetail_SO cardDetail;
 }
 
+[System.Serializable]
+public class Effect
+{
+    public EffectType effectType;
+    public int effectLayerNum;
+}
+
 // Enum
 public enum GameStep
 {
@@ -32,4 +39,13 @@ public enum GameStep
 public enum CardType
 {
     Move, Tank, Attack 
+}
+public enum EffectType
+{
+    Poisoned, Bleed, Imprison
+}
+
+public enum MoveType
+{
+    Forward, Back, UpAndDown, Free
 }
