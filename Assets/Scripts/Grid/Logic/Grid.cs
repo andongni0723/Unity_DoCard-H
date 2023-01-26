@@ -117,7 +117,7 @@ public class Grid : MonoBehaviour
     /// <returns></returns>
     public bool CheckPlayingCardType()
     {
-        CardDetail_SO playingCard = GameManager.instance.playingCard;
+        CardDetail_SO playingCard = GameManager.Instance.playingCard;
 
         if(playingCard.cardType == CardType.Attack && isEnemyGrid) return true; //Playing a attack card
         if(playingCard.cardType == CardType.Move && !isEnemyGrid) return true;  //Playing a move card

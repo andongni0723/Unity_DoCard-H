@@ -29,7 +29,17 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         playCardParent = GameObject.FindWithTag("PlayCardParent").transform;
         image = GetComponent<Image>();
         scale = transform.localScale.x;
+
+        image.raycastPadding = halfPadding;
         //transform.DOMove(new Vector2(transform.position.x + 200, transform.position.y), 1);
+    }
+
+    private void Update()
+    {
+        if (transform.parent == originParent && isDrag)
+        {
+            transform.position = Input.mousePosition;
+        }
     }
 
     #region Event
@@ -50,7 +60,6 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         EventHanlder.CancelPlayTheCard -= OnCancelPlayTheCard;
         EventHanlder.PayTheCardError -= OnPayTheCardError;
         EventHanlder.PayCardComplete -= OnPayCardComplete;
-
     }
 
 
@@ -74,13 +83,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             // //The card maybe by payCard parent
             // if (transform.parent.TryGetComponent(out CardManager cardManager))
             // {
-            //     transform.DOMove(GetComponentInParent<CardManager>().CardPositionList[id], 0.5f).OnComplete
-            //     (
-            //         () =>
-            //         {
-            //             yPos = transform.position.y;
-            //         }
-            //     );
+            //  
             // }
         }
     }
@@ -95,7 +98,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         transform.parent = GameObject.FindGameObjectWithTag("CardManager").transform;
         //EventHanlder.CallCardUpdeatePosition();
         OnCardUpdatePosition();
-        image.raycastPadding = halfPadding;
+        image.raycastPadding = halfPadding; //FIXME: padding
     }
 
     private void OnPayTheCardError(GameObject targetCard)
@@ -122,10 +125,12 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     #region Pointer Event
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (GameManager.instance.gameStep != GameStep.PayCardStep)
+        //if (!eventData.fullyExited) return; // Unity bug "IPointerEnter/Exit"
+        if (GameManager.Instance.gameStep != GameStep.PayCardStep)
             transform.SetAsLastSibling(); // Let layer on first
 
         transform.DOScale(scale * 1.5f, 0.3f);
+        //Debug.Log("enter");
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -134,14 +139,17 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         //Show big card detail
         //TODO: The image will change to detail sprite "Card Detail Sprite" in future
-        EventHanlder.CallCardOnClick(image.sprite);
+        EventHanlder.CallCardOnClick(cardDetail);
     }
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (!eventData.fullyExited) return; // Unity bug "IPointerEnter/Exit"
         transform.SetSiblingIndex(id); // Let layer become before
         transform.DOScale(scale * 1f, 0.3f);
 
         EventHanlder.CallCardOnClick(null);
+
+        //Debug.Log("exit");
     }
 
     #endregion
@@ -153,12 +161,12 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         isDrag = true;
         //transform.DOScale(scale * 0.3f, 0.3f);
-        image.raycastPadding = zeroPadding;
+        image.raycastPadding = zeroPadding;  //FIXME: padding
     }
     public void OnDrag(PointerEventData eventData)
     {
         if (transform.parent != originParent) return; // Card was Paid
-        transform.position = eventData.position;
+        //transform.position = eventData.position; //FIXME: move
         ScaleAtCardOnDrag(eventData);
         EventHanlder.CallCardOnDrag(cardDetail);
     }
@@ -168,8 +176,6 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         EventAtCardEndDrag(eventData);
     }
-
-
     #endregion
 
     /// <summary>
@@ -197,7 +203,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             transform.DOScale(scale * 1f, 0.3f);
             OnCardUpdatePosition();
-            image.raycastPadding = halfPadding;
+            image.raycastPadding = halfPadding; //FIXME: padding
         }
         else
         {
@@ -206,7 +212,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             transform.position = lastPos;
 
             // Is play card to attack, OR want pay card to let other card attack
-            if (GameManager.instance.gameStep == GameStep.PayCardStep)
+            if (GameManager.Instance.gameStep == GameStep.PayCardStep)
             {
                 EventHanlder.CallPayTheCard(gameObject);
             }

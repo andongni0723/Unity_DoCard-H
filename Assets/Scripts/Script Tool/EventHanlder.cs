@@ -21,10 +21,10 @@ public static class EventHanlder
         CardOnDrag?.Invoke(cardDetail);
     }
 
-    public static event Action<Sprite> CardOnClick;
-    public static void CallCardOnClick(Sprite sprite)
+    public static event Action<CardDetail_SO> CardOnClick;
+    public static void CallCardOnClick(CardDetail_SO data)
     {
-        CardOnClick?.Invoke(sprite);
+        CardOnClick?.Invoke(data);
     }
 
     // End Drag
@@ -57,7 +57,7 @@ public static class EventHanlder
     public static void CallPlayTheCard(CardDetail_SO cardDetail)
     {
         //GameStepChange?.Invoke();
-        GameManager.instance.ChangeGameStep(GameStep.PayCardStep);
+        GameManager.Instance.ChangeGameStep(GameStep.PayCardStep);
         PlayTheCard?.Invoke(cardDetail);
     }
 
@@ -76,14 +76,14 @@ public static class EventHanlder
     public static event Action CancelPlayTheCard;
     public static void CallCancelPlayTheCard()
     {
-        GameManager.instance.ChangeGameStep(GameStep.CommonStep);
+        GameManager.Instance.ChangeGameStep(GameStep.CommonStep);
         CancelPlayTheCard?.Invoke();
     }
 
     public static event Action PayCardComplete;
     public static void CallPayCardComplete()
     {
-        GameManager.instance.ChangeGameStep(GameStep.CommonStep);
+        GameManager.Instance.ChangeGameStep(GameStep.CommonStep);
         PayCardComplete?.Invoke();
         EventHanlder.CallCardUpdeatePosition();
     }

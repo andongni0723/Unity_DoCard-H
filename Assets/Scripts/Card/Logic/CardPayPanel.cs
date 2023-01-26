@@ -67,7 +67,7 @@ public class CardPayPanel : MonoBehaviour
     /// <param name="cardObj"></param>
     private void PayCardCheck(CardDetail_SO data, GameObject cardObj)
     {
-        if (GameManager.instance.gameStep == GameStep.PayCardStep)
+        if (GameManager.Instance.gameStep == GameStep.PayCardStep)
         {
             if (payCards.transform.childCount != data.payCardNum) // not complete
             {
@@ -84,7 +84,7 @@ public class CardPayPanel : MonoBehaviour
     /// <param name="cardObj"></param>
     private void PayCardIsDoneCheck(CardDetail_SO data, GameObject cardObj)
     {
-        if (GameManager.instance.gameStep == GameStep.PayCardStep)
+        if (GameManager.Instance.gameStep == GameStep.PayCardStep)
         {
             if (payCards.transform.childCount == data.payCardNum) //pay cards enough
             {

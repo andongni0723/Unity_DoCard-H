@@ -12,10 +12,7 @@ public class CardManager : MonoBehaviour
     public GameObject cardPrefabs;
     public GameObject cardInstPoint;
 
-    [Header("Card Prefab Assets")]
-    public Sprite cardAttackSprite;
-    public Sprite cardTankSprite;
-    public Sprite cardMoveSprite;
+    
 
     private float cardMoveX;
 
@@ -29,7 +26,7 @@ public class CardManager : MonoBehaviour
     #region Event
     private void OnEnable()
     {
-        EventHanlder.PayCardComplete += OnPayCardComplete;
+        EventHanlder.PayCardComplete += OnPayCardComplete; // Init the card position
     }
     private void OnDisable()
     {
@@ -43,7 +40,8 @@ public class CardManager : MonoBehaviour
     }
     #endregion
 
-    public void ChangeCardPosition(int _childNum)
+
+    private void ChangeCardPosition(int _childNum)
     {
         // Init
         CardPositionList.Clear();
@@ -79,25 +77,11 @@ public class CardManager : MonoBehaviour
     {
         // Random the cardDetail
         CardDetail_SO cardDetail = CardDetailPrefabList[Random.Range(0, CardDetailPrefabList.Count)];
-        Sprite cardSprite = null;
+        Debug.Log(cardDetail.cardType); //FIXME
+        // Check the cardType of detail to change the card baclgroud image
+        Sprite cardSprite =  GameManager.Instance.CardTypeToCardBackgroud(cardDetail.cardType);
 
-        // Check the cardType of detail to change the card image
-        switch (cardDetail.cardType)
-        {
-            case CardType.Attack:
-                cardSprite = cardAttackSprite;
-                break;
-
-            case CardType.Move:
-                cardSprite = cardMoveSprite;
-                break;
-
-            case CardType.Tank:
-                cardSprite = cardTankSprite;
-                break;
-        }
-
-        // Inst. the card prefabs
+        // Instantiate the card prefabs
         var cardObj = Instantiate(cardPrefabs, cardInstPoint.transform.position, Quaternion.identity, this.transform) as GameObject;
 
         // Set new object var

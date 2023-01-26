@@ -50,7 +50,7 @@ public class GridMousePointer : MonoBehaviour
 
     private void OnCardOnDrag(CardDetail_SO cardDetail)
     {
-        if (GameManager.instance.gameStep == GameStep.PayCardStep) return;
+        if (GameManager.Instance.gameStep == GameStep.PayCardStep) return;
 
         // setting mouse pointer offset
         switch (cardDetail.cardType)

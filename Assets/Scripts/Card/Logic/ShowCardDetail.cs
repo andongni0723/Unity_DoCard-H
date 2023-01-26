@@ -3,19 +3,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ShowCardDetail : MonoBehaviour
 {
     Image image;
 
+    public GameObject cardNameObj;
+    public GameObject cardPayNumTextObj;
+    public GameObject cardImgObj;
+    public GameObject cardDescriptionObj;
+
 
     void Start()
     {
         image = GetComponent<Image>();
-        image.enabled = false;
-        image.sprite = null;
+        
+        INIT();
     }
 
+    private void INIT()
+    {
+        image.enabled = false;
+        image.sprite = null;
+
+        cardNameObj.SetActive(false);
+        cardPayNumTextObj.SetActive(false);
+        cardImgObj.SetActive(false);
+        cardDescriptionObj.SetActive(false);
+
+    }
+    
+    /// <summary>
+    /// Set gameObject and children active visible, and input CardDetail_SO to children to show
+    /// </summary>
+    /// <param name="data">CardDetail_SO</param>
+    private void ShowDetail(CardDetail_SO data)
+    {
+        image.enabled = true;
+        cardNameObj.SetActive(true);
+        cardPayNumTextObj.SetActive(true);
+        cardImgObj.SetActive(true);
+        cardDescriptionObj.SetActive(true);
+
+        cardNameObj.GetComponent<TextMeshProUGUI>().text = data.cardName;
+        cardPayNumTextObj.GetComponent<TextMeshProUGUI>().text = data.payCardNum.ToString();
+        image.sprite = GameManager.Instance.CardTypeToCardBackgroud(data.cardType);
+        cardDescriptionObj.GetComponent<TextMeshProUGUI>().text = data.cardDestription;
+    }
+
+    #region Event
     private void OnEnable()
     {
         EventHanlder.CardOnClick += OnCardOnClick;
@@ -26,18 +63,17 @@ public class ShowCardDetail : MonoBehaviour
         EventHanlder.CardOnClick -= OnCardOnClick;
     }
 
-    private void OnCardOnClick(Sprite cardSprite)
+    private void OnCardOnClick(CardDetail_SO data)
     {
         // Show big card Details
-        if(cardSprite != null)
+        if(data != null)
         {
-            image.sprite = cardSprite;
-            image.enabled = true;
+            ShowDetail(data);
         }
         else
         {
-            image.sprite = null;
-            image.enabled = false;
+            INIT();
         }
     }
+    #endregion
 }

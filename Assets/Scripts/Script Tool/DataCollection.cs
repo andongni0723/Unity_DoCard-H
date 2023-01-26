@@ -38,7 +38,7 @@ public enum GameStep
 
 public enum CardType
 {
-    Move, Tank, Attack 
+    Move, Tank, Attack, FinalSkill
 }
 public enum EffectType
 {

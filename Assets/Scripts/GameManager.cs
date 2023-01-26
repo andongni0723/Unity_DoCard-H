@@ -5,10 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager instance;
-
     public GameStep gameStep;
 
     [Header("Game Data")]
@@ -20,21 +18,19 @@ public class GameManager : MonoBehaviour
     // If pay card confirm, the data will put to skill arealist
     ConfirmAreaGridData temporaryData;
 
+    [Header("Card Prefab Assets")]
+    public Sprite cardAttackSprite;
+    public Sprite cardTankSprite;
+    public Sprite cardMoveSprite;
+    public Sprite cardFinalSkillSprite;
+
     [Header("Test")]
     public TextMeshProUGUI gameStepText;
 
-
-    private void Awake()
+    protected override void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-
+        base.Awake();
+        
         //FIXME: 未來
         gameStep = GameStep.CommonStep;
         gameStepText.text = "CommonStep";
@@ -150,5 +146,23 @@ public class GameManager : MonoBehaviour
                 AllConfirmGridList.Add(grid);
             }
         }
+    }
+
+    public Sprite CardTypeToCardBackgroud(CardType cardType)
+    {
+        switch (cardType)
+        {
+            case CardType.Attack:
+                return cardAttackSprite;
+
+            case CardType.Move:
+                return cardMoveSprite;
+
+            case CardType.Tank:
+                return cardTankSprite;
+
+        }
+
+        return null;
     }
 }
