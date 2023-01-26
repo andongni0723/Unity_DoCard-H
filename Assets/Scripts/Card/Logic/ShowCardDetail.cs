@@ -8,7 +8,8 @@ using TMPro;
 public class ShowCardDetail : MonoBehaviour
 {
     Image image;
-
+    
+    [Header("Children")]
     public GameObject cardNameObj;
     public GameObject cardPayNumTextObj;
     public GameObject cardImgObj;

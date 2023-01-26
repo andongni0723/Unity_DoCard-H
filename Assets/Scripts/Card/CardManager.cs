@@ -8,12 +8,9 @@ public class CardManager : MonoBehaviour
 {
     public List<Vector2> CardPositionList = new List<Vector2>();
     public List<CardDetail_SO> CardDetailPrefabList = new List<CardDetail_SO>();
-    public List<GameObject> CardPrefabList = new List<GameObject>();
     public GameObject cardPrefabs;
     public GameObject cardInstPoint;
-
     
-
     private float cardMoveX;
 
     [Header("Card Move Setting")]
@@ -77,7 +74,7 @@ public class CardManager : MonoBehaviour
     {
         // Random the cardDetail
         CardDetail_SO cardDetail = CardDetailPrefabList[Random.Range(0, CardDetailPrefabList.Count)];
-        Debug.Log(cardDetail.cardType); //FIXME
+
         // Check the cardType of detail to change the card baclgroud image
         Sprite cardSprite =  GameManager.Instance.CardTypeToCardBackgroud(cardDetail.cardType);
 
@@ -87,6 +84,9 @@ public class CardManager : MonoBehaviour
         // Set new object var
         cardObj.GetComponent<BasicCard>().cardDetail = cardDetail;
         cardObj.GetComponent<Image>().sprite = cardSprite;
+
+        // Call the method let card update data
+        cardObj.GetComponent<BasicCard>().AfterInit();
     }
 
     private void OnTransformChildrenChanged()

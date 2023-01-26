@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using TMPro;
 using System;
 
 public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
+    [Header("Compoment")]
     public CardDetail_SO cardDetail;
     public Vector4 halfPadding = new Vector4(0, 0, 90, 0); // half padding can let pointer easy Choose card
     public Vector4 zeroPadding = new Vector4(0, 0, 0, 0);  // zero padding can let pointer easy Drag card
@@ -15,6 +17,14 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public Transform originParent; // CardManager
     [SerializeField] public Transform playCardParent; // After play the card, will set parent to it
+
+    [Header("Children")]
+    public TextMeshProUGUI cardNameText;
+    public TextMeshProUGUI cardPayNumText;
+    public Image cardImg;
+    public TextMeshProUGUI cardDescriptionText;
+
+    [Header("Card Data")]
     public int id;
     public float yPos;
     float targetCardYPos = 540;
@@ -30,6 +40,13 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         image = GetComponent<Image>();
         scale = transform.localScale.x;
 
+        // Get children gameObject
+        cardNameText = transform.Find("card_name").GetComponent<TextMeshProUGUI>();
+        cardPayNumText = transform.Find("card_pay").GetComponent<TextMeshProUGUI>();
+        cardImg = transform.Find("card_img").GetComponent<Image>();
+        cardDescriptionText = transform.Find("card_description").GetComponent<TextMeshProUGUI>();
+
+
         image.raycastPadding = halfPadding;
         //transform.DOMove(new Vector2(transform.position.x + 200, transform.position.y), 1);
     }
@@ -40,6 +57,25 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             transform.position = Input.mousePosition;
         }
+    }
+
+    /// <summary>
+    /// This method be call when cardManager set var done
+    /// </summary>
+    public void AfterInit()
+    {
+        UpdateDetail();
+    }
+
+    /// <summary>
+    /// Update the detail about card (name, descripts...)
+    /// </summary>
+    private void UpdateDetail()
+    {
+        cardNameText.text = cardDetail.cardName;
+        cardPayNumText.text = cardDetail.payCardNum.ToString();
+        cardImg.sprite = cardDetail.cardSkillSprite;
+        cardDescriptionText.text = cardDetail.cardDestription;
     }
 
     #region Event

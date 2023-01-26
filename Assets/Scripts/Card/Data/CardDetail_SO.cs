@@ -9,6 +9,7 @@ public class CardDetail_SO : ScriptableObject
 
     [Header("Game View")]
     public string cardName;
+    public Sprite cardSkillSprite;
     public int payCardNum = 0;
     public string cardDestription;
 

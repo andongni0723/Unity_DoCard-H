@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5101354601781487420}
   - component: {fileID: 4186233943314514753}
   m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
+  m_Name: card_img
+  m_TagString: card_img
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 7.9413, y: 21.300213}
-  m_SizeDelta: {x: 198.4081, y: 117}
+  m_SizeDelta: {x: 209, y: 117}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5101354601781487420
 CanvasRenderer:
@@ -175,6 +175,10 @@ MonoBehaviour:
   image: {fileID: 0}
   originParent: {fileID: 0}
   playCardParent: {fileID: 0}
+  cardNameText: {fileID: 0}
+  cardPayNumText: {fileID: 0}
+  cardImg: {fileID: 0}
+  cardDescriptionText: {fileID: 0}
   id: 0
   yPos: 0
 --- !u!1 &1755290914982902649
@@ -189,8 +193,8 @@ GameObject:
   - component: {fileID: 3832291796018176442}
   - component: {fileID: 8751760389622973766}
   m_Layer: 5
-  m_Name: Pay Card Num Text
-  m_TagString: Untagged
+  m_Name: card_pay
+  m_TagString: card_pay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,8 +328,8 @@ GameObject:
   - component: {fileID: 6853449913171394406}
   - component: {fileID: 6246743366424841904}
   m_Layer: 5
-  m_Name: Card Name
-  m_TagString: Untagged
+  m_Name: card_name
+  m_TagString: card_name
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -459,8 +463,8 @@ GameObject:
   - component: {fileID: 868604341173657354}
   - component: {fileID: 2837638689047453129}
   m_Layer: 5
-  m_Name: Description
-  m_TagString: Untagged
+  m_Name: card_description
+  m_TagString: card_description
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
