@@ -41,15 +41,18 @@ public class ShowCardDetail : MonoBehaviour
     /// <param name="data">CardDetail_SO</param>
     private void ShowDetail(CardDetail_SO data)
     {
+        // Set Active
         image.enabled = true;
         cardNameObj.SetActive(true);
         cardPayNumTextObj.SetActive(true);
         cardImgObj.SetActive(true);
         cardDescriptionObj.SetActive(true);
 
+        // Updata card details
+        image.sprite = GameManager.Instance.CardTypeToCardBackgroud(data.cardType);
         cardNameObj.GetComponent<TextMeshProUGUI>().text = data.cardName;
         cardPayNumTextObj.GetComponent<TextMeshProUGUI>().text = data.payCardNum.ToString();
-        image.sprite = GameManager.Instance.CardTypeToCardBackgroud(data.cardType);
+        cardImgObj.GetComponent<Image>().sprite = data.cardSkillSprite;
         cardDescriptionObj.GetComponent<TextMeshProUGUI>().text = data.cardDestription;
     }
 

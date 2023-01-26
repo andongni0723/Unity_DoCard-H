@@ -9,24 +9,26 @@ using System;
 
 public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
-    [Header("Compoment")]
-    public CardDetail_SO cardDetail;
-    public Vector4 halfPadding = new Vector4(0, 0, 90, 0); // half padding can let pointer easy Choose card
-    public Vector4 zeroPadding = new Vector4(0, 0, 0, 0);  // zero padding can let pointer easy Drag card
-    public Image image;
-
-    public Transform originParent; // CardManager
-    [SerializeField] public Transform playCardParent; // After play the card, will set parent to it
-
-    [Header("Children")]
+    [Header("Children Component")]
     public TextMeshProUGUI cardNameText;
     public TextMeshProUGUI cardPayNumText;
     public Image cardImg;
     public TextMeshProUGUI cardDescriptionText;
 
+    [Header("Card Setting")]
+    public Vector4 halfPadding = new Vector4(0, 0, 90, 0); // half padding can let pointer easy Choose card
+    public Vector4 zeroPadding = new Vector4(0, 0, 0, 0);  // zero padding can let pointer easy Drag card
+
+    [Header("Test Data Show")]
+    [SerializeField] Image image;
+    [SerializeField] Transform originParent; // CardManager
+    [SerializeField] Transform playCardParent; // After play the card, will set parent to it
+
     [Header("Card Data")]
+    public CardDetail_SO cardDetail;
     public int id;
     public float yPos;
+
     float CardLinePosY = 540;
     float scale;
 
@@ -34,6 +36,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private void Awake()
     {
+        // Get and Set self var
         id = transform.GetSiblingIndex();
         originParent = GameObject.FindWithTag("CardManager").transform; // CardManager
         playCardParent = GameObject.FindWithTag("PlayCardParent").transform;
@@ -48,13 +51,13 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
 
         image.raycastPadding = halfPadding;
-        //transform.DOMove(new Vector2(transform.position.x + 200, transform.position.y), 1);
     }
 
     private void Update()
     {
         if (transform.parent == originParent && isDrag)
         {
+            // Fix card move anim problem
             transform.position = Input.mousePosition;
         }
     }
@@ -121,7 +124,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             // }
         }
     }
-    
+
     private void OnCancelPlayTheCard()
     {
         transform.DOScale(scale * 1f, 0.3f);
@@ -150,7 +153,6 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     }
 
     #endregion 
-
 
     #region Pointer Event
     public void OnPointerEnter(PointerEventData eventData)
@@ -190,13 +192,12 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (transform.parent != originParent && isDrag) return; // Card was Paid
 
         isDrag = true;
-        //transform.DOScale(scale * 0.3f, 0.3f);
         image.raycastPadding = zeroPadding;  //FIXME: padding
     }
     public void OnDrag(PointerEventData eventData)
     {
         if (transform.parent != originParent) return; // Card was Paid
-        //transform.position = eventData.position; //FIXME: move
+
         ScaleAtCardOnDrag(eventData);
         EventHanlder.CallCardOnDrag(cardDetail);
     }
@@ -214,7 +215,6 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     /// <param name="eventData"></param>
     public void ScaleAtCardOnDrag(PointerEventData eventData)
     {
-
         // Change Scale
         if (eventData.position.y > CardLinePosY) // Play the card
         {
@@ -231,14 +231,14 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         // Check the card PosY
         if (eventData.position.y < CardLinePosY) // Canel play the card
         {
-            
             transform.DOScale(scale * 1f, 0.3f);
             OnCardUpdatePosition();
             image.raycastPadding = halfPadding; //FIXME: padding
         }
         else // Play the card
         {
-            var lastPos = transform.position; // Let card Position not be different after change parent
+            // Let card Position not be different after change parent
+            var lastPos = transform.position; 
             transform.parent = null;
             transform.position = lastPos;
 
