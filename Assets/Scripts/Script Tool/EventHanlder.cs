@@ -29,23 +29,20 @@ public static class EventHanlder
 
     // End Drag
     public static event Action CardEndDrag;
-    public static Func<CardDetail_SO> EndDragCardUpdateData;
-
-    public static Func<List<ConfirmGrid>> EndDragGridUpdateData;
+    public static Func<List<ConfirmGrid>> EndDragGridUpdateData; // "GridManager" confirm the grid of mouse choose 
     public static event Action<ConfirmAreaGridData> EndDragCofirmData; //GameManager: EndDragCofirmData
 
     public static void CallCardEndDrag()
     {
-        CardEndDrag?.Invoke();
-
         // cardDetail: "BasicCard" will sent CardDetail_SO
         // ConfirmGridsList: "GridManager" confirm the grid of mouse choose 
         // Then sent data to "GameManager" to check data
         ConfirmAreaGridData data = new ConfirmAreaGridData();
 
-        data.cardDetail = EndDragCardUpdateData?.Invoke();
+        data.cardDetail = GameManager.Instance.playingCard;
         data.ConfirmGridsList = EndDragGridUpdateData?.Invoke();
-
+        
+        CardEndDrag?.Invoke();
 
         EndDragCofirmData?.Invoke(data);
     }
@@ -101,5 +98,11 @@ public static class EventHanlder
     public static void CallReloadGridColor(List<ConfirmGrid> grids)
     {
         ReloadGridColor?.Invoke(grids);
+    }
+
+    public static event Action<string> SendGameMessage;
+    public static void CallSendGameMessage(string message)
+    {
+        SendGameMessage?.Invoke(message);
     }
 }

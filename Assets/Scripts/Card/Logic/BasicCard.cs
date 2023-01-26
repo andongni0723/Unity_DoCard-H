@@ -27,7 +27,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [Header("Card Data")]
     public int id;
     public float yPos;
-    float targetCardYPos = 540;
+    float CardLinePosY = 540;
     float scale;
 
     bool isDrag = false;
@@ -83,7 +83,6 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         EventHanlder.CardUpdatePosition += OnCardIDChange;
         EventHanlder.CardUpdatePosition += OnCardUpdatePosition; // Update Position
-        EventHanlder.EndDragCardUpdateData += OnEndDragCardUpdateData; // Get CardDetail_SO
         EventHanlder.CancelPlayTheCard += OnCancelPlayTheCard; // Back to CardManager, and INIT
         EventHanlder.PayTheCardError += OnPayTheCardError; // Cancel pay card, back to CardManager
         EventHanlder.PayCardComplete += OnPayCardComplete; // Destroy card which paid OR played
@@ -92,7 +91,6 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         EventHanlder.CardUpdatePosition -= OnCardIDChange;
         EventHanlder.CardUpdatePosition -= OnCardUpdatePosition;
-        EventHanlder.EndDragCardUpdateData -= OnEndDragCardUpdateData;
         EventHanlder.CancelPlayTheCard -= OnCancelPlayTheCard;
         EventHanlder.PayTheCardError -= OnPayTheCardError;
         EventHanlder.PayCardComplete -= OnPayCardComplete;
@@ -123,11 +121,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             // }
         }
     }
-    private CardDetail_SO OnEndDragCardUpdateData()
-    {
-        return cardDetail;
-    }
-
+    
     private void OnCancelPlayTheCard()
     {
         transform.DOScale(scale * 1f, 0.3f);
@@ -222,7 +216,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
 
         // Change Scale
-        if (eventData.position.y > targetCardYPos) // Play the card
+        if (eventData.position.y > CardLinePosY) // Play the card
         {
             transform.DOScale(scale * 0.3f, 0.2f);
         }
@@ -234,14 +228,15 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void EventAtCardEndDrag(PointerEventData eventData)
     {
-        // Canel play the card
-        if (eventData.position.y < targetCardYPos)
+        // Check the card PosY
+        if (eventData.position.y < CardLinePosY) // Canel play the card
         {
+            
             transform.DOScale(scale * 1f, 0.3f);
             OnCardUpdatePosition();
             image.raycastPadding = halfPadding; //FIXME: padding
         }
-        else
+        else // Play the card
         {
             var lastPos = transform.position; // Let card Position not be different after change parent
             transform.parent = null;

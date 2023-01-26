@@ -30,7 +30,7 @@ public class GameManager : Singleton<GameManager>
     protected override void Awake()
     {
         base.Awake();
-        
+
         //FIXME: 未來
         gameStep = GameStep.CommonStep;
         gameStepText.text = "CommonStep";
@@ -80,7 +80,7 @@ public class GameManager : Singleton<GameManager>
         int gridCount = data.ConfirmGridsList.Count;
         int checkGridCount = 0;
 
-        switch(data.cardDetail.cardType)
+        switch (data.cardDetail.cardType)
         {
             case CardType.Attack:
                 checkGridCount = (int)(data.cardDetail.attackTypeDetails.cardAttackOffset.x * data.cardDetail.attackTypeDetails.cardAttackOffset.y);
@@ -92,7 +92,7 @@ public class GameManager : Singleton<GameManager>
 
             case CardType.Tank:
                 checkGridCount = 0;
-                break;        
+                break;
         }
 
         if (gridCount == checkGridCount) // the confirm area count is right
@@ -104,6 +104,7 @@ public class GameManager : Singleton<GameManager>
         }
         else // the confirm area count isn't right
         {
+            EventHanlder.CallSendGameMessage("請確認技能釋放範圍完整");
             EventHanlder.CallCancelPlayTheCard();
         }
     }
@@ -138,7 +139,7 @@ public class GameManager : Singleton<GameManager>
         //      |- ConfirmGridList
         //          |- ConfirmGrid <= Need
         //          |- ...
-        
+
         foreach (ConfirmAreaGridData data in SkillHurtGridList)
         {
             foreach (ConfirmGrid grid in data.ConfirmGridsList)
