@@ -10,13 +10,20 @@ public class GameManager : Singleton<GameManager>
     public GameStep gameStep;
 
     [Header("Game Data")]
-    public List<ConfirmAreaGridData> SkillHurtGridList = new List<ConfirmAreaGridData>();
+    public List<ConfirmAreaGridData> PlayerSettlementCardActionList = new List<ConfirmAreaGridData>();
+    public List<ConfirmAreaGridData> CommonCardActionList = new List<ConfirmAreaGridData>();
     public List<ConfirmGrid> AllConfirmGridList = new List<ConfirmGrid>();
     public CardDetail_SO playingCard;
 
     // If area grid of card is corrent, the data will put in 'temporaryData'.
     // If pay card confirm, the data will put to skill arealist
     ConfirmAreaGridData temporaryData;
+
+    public int playerHealth = 10;
+    public int playerArmor = 0;
+
+    public int enemyHealth = 10;
+    public int enemyArmor = 0;
 
     [Header("Card Prefab Assets")]
     public Sprite cardAttackSprite;
@@ -36,6 +43,20 @@ public class GameManager : Singleton<GameManager>
         gameStepText.text = "CommonStep";
     }
 
+    private void Update()
+    {
+        switch (gameStep)
+        {
+            case GameStep.CommonStep:
+                ExecuteCardActionList(CommonCardActionList);
+                break;
+
+            case GameStep.PlayerSettlement:
+                ExecuteCardActionList(PlayerSettlementCardActionList);
+                break;
+        }
+    }
+
     /// <summary>
     /// Change GameStep to args
     /// </summary>
@@ -50,7 +71,6 @@ public class GameManager : Singleton<GameManager>
         EventHanlder.CardOnDrag += OnCardOnDrag; // Set gameData var
         EventHanlder.CardEndDrag += OnCardEndDrag; // Set gameData var
         EventHanlder.EndDragCofirmData += OnEndDragCofirmData; // Check skill confirm area is corrent
-        //EventHanlder.GameStepChange += OnPlayTheCardChangeGameStep; // change gameStep to PayCardStep
         EventHanlder.CancelPlayTheCard += OnCancelPlayTheCard; // change gameStep to CommonStep
         EventHanlder.PayCardComplete += OnPayCardComplete; // change gameStep, and call event to change grid color
 
@@ -60,11 +80,9 @@ public class GameManager : Singleton<GameManager>
         EventHanlder.CardOnDrag -= OnCardOnDrag;
         EventHanlder.CardEndDrag -= OnCardEndDrag;
         EventHanlder.EndDragCofirmData -= OnEndDragCofirmData;
-        //EventHanlder.GameStepChange -= OnPlayTheCardChangeGameStep;
         EventHanlder.CancelPlayTheCard -= OnCancelPlayTheCard;
         EventHanlder.PayCardComplete -= OnPayCardComplete;
     }
-
     private void OnCardOnDrag(CardDetail_SO data)
     {
         playingCard = data;
@@ -73,8 +91,6 @@ public class GameManager : Singleton<GameManager>
     {
         playingCard = null;
     }
-
-
     private void OnEndDragCofirmData(ConfirmAreaGridData data)
     {
         int gridCount = data.ConfirmGridsList.Count;
@@ -126,21 +142,31 @@ public class GameManager : Singleton<GameManager>
         gameStep = GameStep.CommonStep;
         gameStepText.text = "CommonStep";
 
-        SkillHurtGridList.Add(temporaryData); //TODO: enemy
+        switch (temporaryData.cardDetail.cardUseGameStep)
+        {
+            case GameStep.CommonStep:
+                CommonCardActionList.Add(temporaryData);
+                break;
+
+            case GameStep.EnemySettlement:
+                PlayerSettlementCardActionList.Add(temporaryData);//TODO: enemy
+                break;
+        }
         AddAllConfirmGrid();
         EventHanlder.CallReloadGridColor(AllConfirmGridList); // To GridManager reload grid color
+        EventHanlder.CallSendGameMessage("卡牌使用成功");
     }
     #endregion
 
     private void AddAllConfirmGrid()
     {
-        //SkillHurtGridList
+        //SkillHurtGridListPlayerSettlementCardAction
         // |- ConfirmAreaGridData
         //      |- ConfirmGridList
         //          |- ConfirmGrid <= Need
         //          |- ...
 
-        foreach (ConfirmAreaGridData data in SkillHurtGridList)
+        foreach (ConfirmAreaGridData data in PlayerSettlementCardActionList)
         {
             foreach (ConfirmGrid grid in data.ConfirmGridsList)
             {
@@ -165,5 +191,32 @@ public class GameManager : Singleton<GameManager>
         }
 
         return null;
+    }
+
+    private void ExecuteCardActionList(List<ConfirmAreaGridData> actionList)
+    {
+        foreach (ConfirmAreaGridData skill in actionList)
+        {
+            //TODO:
+            switch (skill.cardDetail.cardType)
+            {
+                case CardType.Attack:
+
+                    break;
+
+                case CardType.Move:
+
+                    break;
+
+                case CardType.Tank:
+                    playerArmor += skill.cardDetail.tankTypeDetails.addArmor;
+                    playerHealth += skill.cardDetail.tankTypeDetails.addHealth;
+                    EventHanlder.CallHealthChange();
+                    EventHanlder.CallArmorChange();
+                    break;
+            }
+        }
+
+        actionList.Clear();
     }
 }

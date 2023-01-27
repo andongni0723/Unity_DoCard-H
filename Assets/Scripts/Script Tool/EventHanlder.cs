@@ -28,28 +28,39 @@ public static class EventHanlder
     }
 
     // End Drag
+    public static Func<List<ConfirmGrid>> EndDragPlayerGridUpdateData; // Player's Grid "GridManager" confirm the grid of mouse choose 
+
+    public static Func<List<ConfirmGrid>> EndDragEnemyGridUpdateData; // Enemy's Grid "GridManager" confirm the grid of mouse choose 
     public static event Action CardEndDrag;
-    public static Func<List<ConfirmGrid>> EndDragGridUpdateData; // "GridManager" confirm the grid of mouse choose 
     public static event Action<ConfirmAreaGridData> EndDragCofirmData; //GameManager: EndDragCofirmData
 
     public static void CallCardEndDrag()
-    {
-        // cardDetail: "BasicCard" will sent CardDetail_SO
-        // ConfirmGridsList: "GridManager" confirm the grid of mouse choose 
-        // Then sent data to "GameManager" to check data
+    {     
         ConfirmAreaGridData data = new ConfirmAreaGridData();
 
+        // cardDetail: "GameManager" will sent CardDetail_SO
         data.cardDetail = GameManager.Instance.playingCard;
-        data.ConfirmGridsList = EndDragGridUpdateData?.Invoke();
-        
+
+        // ConfirmGridsList: "GridManager" confirm the grid of mouse choose 
+        switch(data.cardDetail.cardType)
+        {
+            case CardType.Attack: // Attack card will aim the Enemy's grid
+                data.ConfirmGridsList = EndDragEnemyGridUpdateData?.Invoke();
+                break;
+
+            case CardType.Move: // Move card will aim the Player's grid
+                data.ConfirmGridsList = EndDragPlayerGridUpdateData?.Invoke();
+                break;
+        }
+
         CardEndDrag?.Invoke();
 
+        // Then sent data to "GameManager" to check data
         EndDragCofirmData?.Invoke(data);
     }
 
 
     // After End Drag
-    //public static event Action GameStepChange; // GameManager //FIXME: if not use , del.
     public static event Action<CardDetail_SO> PlayTheCard;
     public static void CallPlayTheCard(CardDetail_SO cardDetail)
     {
@@ -93,16 +104,31 @@ public static class EventHanlder
     //     ReloadGridData?.Invoke(grids);
     // }
 
-    // GridManager -> Grid
+    // GridManager => Grid
     public static event Action<List<ConfirmGrid>> ReloadGridColor;
     public static void CallReloadGridColor(List<ConfirmGrid> grids)
     {
         ReloadGridColor?.Invoke(grids);
     }
 
+    // Message System
+    // GameManager => MessageManager
     public static event Action<string> SendGameMessage;
     public static void CallSendGameMessage(string message)
     {
         SendGameMessage?.Invoke(message);
+    }
+
+    // Game Data Change
+    // GameManager -> HealthManager
+    public static event Action HealthChange;
+    public static void CallHealthChange()
+    {
+        HealthChange?.Invoke();
+    }
+    public static event Action ArmorChange;
+    public static void CallArmorChange()
+    {
+        ArmorChange?.Invoke();
     }
 }

@@ -3,11 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridManager : MonoBehaviour
+public class BaseGridManager : MonoBehaviour
 {
     public List<GameObject> GridsList;
-
-    
     public List<ConfirmAreaGridData> isConfirmGridsList;
 
     private void Awake() 
@@ -17,20 +15,18 @@ public class GridManager : MonoBehaviour
             GridsList.Add(transform.GetChild(i).gameObject);
         }
     }
-    private void OnEnable()
-    {
-        EventHanlder.EndDragGridUpdateData += UpdateData;
+
+    protected virtual void OnEnable()
+    { 
         //EventHanlder.ReloadGridData += OnReloadGridData;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
-        EventHanlder.EndDragGridUpdateData -= UpdateData;
         //EventHanlder.ReloadGridData -= OnReloadGridData;
     }
 
-
-    private List<ConfirmGrid> UpdateData()
+    protected virtual List<ConfirmGrid> UpdateData()
     {
         List<ConfirmGrid> dataList = new List<ConfirmGrid>();
 

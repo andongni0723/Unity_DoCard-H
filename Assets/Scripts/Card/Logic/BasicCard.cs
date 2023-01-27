@@ -32,7 +32,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     float CardLinePosY = 540;
     float scale;
 
-    bool isDrag = false;
+    [SerializeField]bool isDrag = false;
 
     private void Awake()
     {
@@ -55,7 +55,8 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private void Update()
     {
-        if (transform.parent == originParent && isDrag)
+        //&& GameManager.Instance.gameStep == GameStep.CommonStep
+        if (transform.parent == originParent && isDrag )
         {
             // Fix card move anim problem
             transform.position = Input.mousePosition;
@@ -189,7 +190,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     #region Drag Event
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (transform.parent != originParent && isDrag) return; // Card was Paid
+        if (transform.parent != originParent || isDrag) return; // Card was Paid
 
         isDrag = true;
         image.raycastPadding = zeroPadding;  //FIXME: padding

@@ -17,6 +17,7 @@ MonoBehaviour:
   cardSkillSprite: {fileID: 21300000, guid: 202064f070884fd4da34edef35119b74, type: 3}
   payCardNum: 1
   cardDestription: "\u81EA\u7531\u79FB\u52D5\u4E00\u683C"
+  cardUseGameStep: 2
   attackTypeDetails:
     cardHurtHP: 0
     cardAttackOffset: {x: 0, y: 0}

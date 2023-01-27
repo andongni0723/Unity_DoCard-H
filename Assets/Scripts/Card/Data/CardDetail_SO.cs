@@ -12,6 +12,7 @@ public class CardDetail_SO : ScriptableObject
     public Sprite cardSkillSprite;
     public int payCardNum = 0;
     public string cardDestription;
+    public GameStep cardUseGameStep;
 
     [Header("Card Data")]
     public AttackTypeDetails attackTypeDetails;
