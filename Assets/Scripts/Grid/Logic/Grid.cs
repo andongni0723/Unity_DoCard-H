@@ -64,6 +64,7 @@ public class Grid : MonoBehaviour
     private void OnTransformChildrenChanged()
     {
         FindPlayer();
+        CheckGridColor();
     }
 
     /// <summary>

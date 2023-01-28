@@ -127,19 +127,19 @@ public class GameManager : Singleton<GameManager>
 
     private void OnPlayTheCardChangeGameStep()
     {
-        gameStep = GameStep.PayCardStep;
+        ChangeGameStep(GameStep.PayCardStep);
         gameStepText.text = "PayCardStep";
     }
     private void OnCancelPlayTheCard()
     {
         temporaryData = null; // Init 
-        gameStep = GameStep.CommonStep;
+        ChangeGameStep(GameStep.CommonStep);
         gameStepText.text = "CommonStep";
     }
 
     private void OnPayCardComplete()
     {
-        gameStep = GameStep.CommonStep;
+        ChangeGameStep(GameStep.CommonStep);
         gameStepText.text = "CommonStep";
 
         switch (temporaryData.cardDetail.cardUseGameStep)
@@ -148,7 +148,7 @@ public class GameManager : Singleton<GameManager>
                 CommonCardActionList.Add(temporaryData);
                 break;
 
-            case GameStep.EnemySettlement:
+            case GameStep.PlayerSettlement:               
                 PlayerSettlementCardActionList.Add(temporaryData);//TODO: enemy
                 break;
         }
@@ -205,7 +205,7 @@ public class GameManager : Singleton<GameManager>
                     break;
 
                 case CardType.Move:
-
+                    EventHanlder.CallMoveAction(skill);
                     break;
 
                 case CardType.Tank:

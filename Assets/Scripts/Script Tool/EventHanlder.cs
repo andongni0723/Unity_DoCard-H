@@ -131,4 +131,12 @@ public static class EventHanlder
     {
         ArmorChange?.Invoke();
     }
+
+    // GameManager execute the card action
+    // GameManager => Grid && => Player
+    public static event Action<ConfirmAreaGridData> MoveAction;
+    public static void CallMoveAction(ConfirmAreaGridData data)
+    {
+        MoveAction?.Invoke(data);
+    }
 }

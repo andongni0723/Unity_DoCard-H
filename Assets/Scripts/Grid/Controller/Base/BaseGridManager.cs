@@ -8,11 +8,11 @@ public class BaseGridManager : MonoBehaviour
     public List<GameObject> GridsList;
     public List<ConfirmAreaGridData> isConfirmGridsList;
 
-    private void Awake() 
+    protected virtual void Awake() 
     {
-        for (int i = 0; i < transform.childCount; i++)
+        foreach (var item in GetComponentsInChildren<Grid>())
         {
-            GridsList.Add(transform.GetChild(i).gameObject);
+            GridsList.Add(item.gameObject);
         }
     }
 
@@ -50,6 +50,22 @@ public class BaseGridManager : MonoBehaviour
 
         return dataList;
     }
+    
+    /// <summary>
+    /// Use ConfirmGrid position to Get Grid GameObject
+    /// </summary>
+    /// <param name="toGrid">input grid position</param>
+    /// <returns></returns>
+    public virtual GameObject GridPosToFindGrid(ConfirmGrid toGrid)
+    {
+        foreach (Grid grid in GetComponentsInChildren<Grid>())
+        {
+            if(grid.gridID == toGrid)
+                return grid.gameObject;
+        }
+
+        return null;
+    } 
 
     // private void OnReloadGridData(ConfirmAreaGridData data)
     // {

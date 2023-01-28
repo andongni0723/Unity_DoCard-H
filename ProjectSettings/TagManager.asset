@@ -8,6 +8,8 @@ TagManager:
   - PlayCardParent
   - CardManager
   - messageDonePoint
+  - messageStartPoint
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -44,4 +46,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2422210573
+    locked: 0
+  - name: Grid
+    uniqueID: 1262982873
+    locked: 0
+  - name: Role
+    uniqueID: 388352097
     locked: 0
