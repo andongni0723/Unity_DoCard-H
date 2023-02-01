@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : BaseCharacter
 {
     private Animator anim;
 
@@ -30,18 +30,6 @@ public class PlayerController : MonoBehaviour
     {
         EventHanlder.MoveAction -= OnMoveAction;
 
-    }
-
-    private void OnMoveAction(ConfirmAreaGridData data)
-    {
-        // The data list first element is the to move grid
-        GameObject toMoveGrid = PlayerGridManager.instance.GridPosToFindGrid(data.ConfirmGridsList[0]); 
-        Debug.Log(toMoveGrid.name);
-        Vector3 toParentPosition = new Vector3(0, 0.8f, -1);
-
-        transform.parent = toMoveGrid.transform;
-        transform.DOMove(transform.parent.transform.position + toParentPosition, 1);
-        
     }
     #endregion
 }

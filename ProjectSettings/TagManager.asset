@@ -10,6 +10,10 @@ TagManager:
   - messageDonePoint
   - messageStartPoint
   - Enemy
+  - card_img
+  - card_pay
+  - card_name
+  - card_description
   layers:
   - Default
   - TransparentFX
@@ -55,4 +59,7 @@ TagManager:
     locked: 0
   - name: Role
     uniqueID: 388352097
+    locked: 0
+  - name: vfx
+    uniqueID: 2729013651
     locked: 0

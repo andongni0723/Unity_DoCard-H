@@ -35,14 +35,14 @@ public static class EventHanlder
     public static event Action<ConfirmAreaGridData> EndDragCofirmData; //GameManager: EndDragCofirmData
 
     public static void CallCardEndDrag()
-    {     
+    {
         ConfirmAreaGridData data = new ConfirmAreaGridData();
 
         // cardDetail: "GameManager" will sent CardDetail_SO
         data.cardDetail = GameManager.Instance.playingCard;
 
         // ConfirmGridsList: "GridManager" confirm the grid of mouse choose 
-        switch(data.cardDetail.cardType)
+        switch (data.cardDetail.cardType)
         {
             case CardType.Attack: // Attack card will aim the Enemy's grid
                 data.ConfirmGridsList = EndDragEnemyGridUpdateData?.Invoke();
@@ -120,7 +120,7 @@ public static class EventHanlder
     }
 
     // Game Data Change
-    // GameManager -> HealthManager
+    // GameManager => HealthManager
     public static event Action HealthChange;
     public static void CallHealthChange()
     {
@@ -138,5 +138,36 @@ public static class EventHanlder
     public static void CallMoveAction(ConfirmAreaGridData data)
     {
         MoveAction?.Invoke(data);
+    }
+
+    //GameManager execute the attack action, call the grid of skill area
+    public static event Action<ConfirmGrid> PlayerAttackGrid;
+    public static event Action<ConfirmGrid> EnemyAttackGrid;
+    public static void CallAttackGrid(GameStep gameStep, ConfirmGrid grid)
+    {
+        switch (gameStep)
+        {
+            // Player Attack
+            case GameStep.CommonStep:
+                PlayerAttackGrid(grid);
+                break;
+            case GameStep.PlayerSettlement:
+                PlayerAttackGrid(grid);
+                break;
+
+            // Enemy Attack
+            case GameStep.AIStep:
+                EnemyAttackGrid(grid);
+                break;
+            case GameStep.EnemySettlement:
+                EnemyAttackGrid(grid);
+                break;
+        }
+    }
+
+    public static event Action<float> HurtAction;
+    public static void CallHurtAction(float num)
+    {
+        HurtAction?.Invoke(num);
     }
 }

@@ -8,6 +8,8 @@ public class BaseGridManager : MonoBehaviour
     public List<GameObject> GridsList;
     public List<ConfirmAreaGridData> isConfirmGridsList;
 
+    public GameObject attackVFXPrefabs;
+
     protected virtual void Awake() 
     {
         foreach (var item in GetComponentsInChildren<Grid>())
@@ -40,7 +42,7 @@ public class BaseGridManager : MonoBehaviour
             if(gridCS.isMouseOnArea)
             {
                 //ConfirmAreaGridData
-                // |-
+                // |- ...
                 // |- ConfirmGrid
                 //          |- gridX, gridY  => can get form script
 
@@ -49,6 +51,18 @@ public class BaseGridManager : MonoBehaviour
         }
 
         return dataList;
+    }
+
+    protected virtual void OnAttackGridToCall(ConfirmGrid grid)
+    {
+        foreach (GameObject gridObj in GridsList)
+        {
+            Grid gridCS = gridObj.GetComponent<Grid>();
+            if(gridCS.gridID == grid)
+            {
+                gridCS.CallAttackGrid(attackVFXPrefabs);
+            }
+        }
     }
     
     /// <summary>
@@ -65,7 +79,7 @@ public class BaseGridManager : MonoBehaviour
         }
 
         return null;
-    } 
+    }
 
     // private void OnReloadGridData(ConfirmAreaGridData data)
     // {

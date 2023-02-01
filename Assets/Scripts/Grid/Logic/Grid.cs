@@ -12,7 +12,7 @@ public class Grid : MonoBehaviour
     public ConfirmGrid gridID;
 
     [Header("Grid Setting")]
-    public bool isPlayerOn = false;
+    public bool isCharactorerOn = false;
     public bool isMouseOnArea = false;
     public bool isSkilArea = false;
 
@@ -33,6 +33,30 @@ public class Grid : MonoBehaviour
         FindPlayer();
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (CheckPlayingCardType())
+        {
+            // When Mouse Cofirm the area, the grid color will change
+            if (other.CompareTag("mousePointer"))
+            {
+                isMouseOnArea = true;
+                CheckGridColor();
+            }
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("mousePointer"))
+        {
+            // Init the color
+            isMouseOnArea = false;
+            CheckGridColor();
+        }
+    }
+
 
     #region Event
     private void OnEnable()
@@ -42,7 +66,6 @@ public class Grid : MonoBehaviour
     private void OnDisable()
     {
         EventHanlder.ReloadGridColor -= OnReloadGridColor;
-
     }
 
     private void OnReloadGridColor(List<ConfirmGrid> grids)
@@ -72,7 +95,7 @@ public class Grid : MonoBehaviour
     /// </summary>
     private void FindPlayer()
     {
-        isPlayerOn = false;
+        isCharactorerOn = false;
         Transform[] childList = GetComponentsInChildren<Transform>();
 
         // Find Player in children witn tag
@@ -80,7 +103,7 @@ public class Grid : MonoBehaviour
         {
             if (item.CompareTag("Player"))
             {
-                isPlayerOn = true;
+                isCharactorerOn = true;
             }
         }
 
@@ -88,41 +111,18 @@ public class Grid : MonoBehaviour
         CheckGridColor();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (CheckPlayingCardType())
-        {
-            // When Mouse Cofirm the area, the grid color will change
-            if (other.CompareTag("mousePointer"))
-            {
-                isMouseOnArea = true;
-                CheckGridColor();
-            }
-        }
-
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("mousePointer"))
-            {
-                // Init the color
-                isMouseOnArea = false;
-                CheckGridColor();
-            }
-    }
 
     /// <summary>
-    /// Check Playing Card Type to decid open the confirm area
+    /// Check Playing Card Type to decide open the confirm area
     /// </summary>
     /// <returns></returns>
     public bool CheckPlayingCardType()
     {
         CardDetail_SO playingCard = GameManager.Instance.playingCard;
 
-        if(playingCard.cardType == CardType.Attack && isEnemyGrid) return true; //Playing a attack card
-        if(playingCard.cardType == CardType.Move && !isEnemyGrid) return true;  //Playing a move card
-        
+        if (playingCard.cardType == CardType.Attack && isEnemyGrid) return true; //Playing a attack card
+        if (playingCard.cardType == CardType.Move && !isEnemyGrid) return true;  //Playing a move card
+
         return false; //Playing a tank card
     }
 
@@ -132,7 +132,7 @@ public class Grid : MonoBehaviour
         {
             spriteRenderer.color = mouseAreaColor;
         }
-        else if (isSkilArea && isPlayerOn) // Player on skill attack area
+        else if (isSkilArea && isCharactorerOn) // Player on skill attack area
         {
             spriteRenderer.color = dangerousColor;
         }
@@ -140,7 +140,7 @@ public class Grid : MonoBehaviour
         {
             spriteRenderer.color = skillAreaColor;
         }
-        else if (isPlayerOn)
+        else if (isCharactorerOn)
         {
             spriteRenderer.color = playerOnColor;
         }
@@ -148,5 +148,16 @@ public class Grid : MonoBehaviour
         {
             spriteRenderer.color = basicColor;
         }
+    }
+
+    /// <summary>
+    /// This method will call when GridManager call
+    /// </summary>
+    /// <param name="animPrefabs"></param>
+    public void CallAttackGrid(GameObject animPrefabs)
+    {
+        var obj = Instantiate(animPrefabs, transform.position, Quaternion.identity, transform) as GameObject;
+        
+        obj.transform.localPosition = Vector3.up;
     }
 }
