@@ -203,7 +203,7 @@ public class GameManager : Singleton<GameManager>
         {
             foreach (ConfirmGrid grid in data.ConfirmGridsList)
             {
-                Debug.Log("AAAAA");//FIXME
+                //Debug.Log("AAAAA");//FIXM
 
                 AllConfirmGridList.Add(grid);
             }
@@ -242,17 +242,27 @@ public class GameManager : Singleton<GameManager>
     /// <param name="actionList">CardActionList</param>
     IEnumerator ExecuteCardActionList(List<ConfirmAreaGridData> actionList)
     {
-        WaitForSeconds wait = new WaitForSeconds(2f);
+        WaitForSeconds wait;
 
+        // If don't setting wait time, this method will error 
+        // (can't add item in list when coroutine not done )
+        if(actionList == CommonCardActionList)
+            wait = new WaitForSeconds(0);
+        else
+            wait = new WaitForSeconds(2);
+
+
+        // MAIN
         foreach (ConfirmAreaGridData skill in actionList)
         {
+            // Different cardType to do different thing
             switch (skill.cardDetail.cardType)
             {
                 case CardType.Attack:
                     // Call Grid of in skill area
                     foreach (ConfirmGrid grid in skill.ConfirmGridsList)
                     {
-                        Debug.Log("BBBBB");// FIXME
+                        //Debug.Log("BBBBB");// FIXM
 
                         // Call grid to play animation and check character health
                         EventHanlder.CallAttackGrid(gameStep, grid);
@@ -273,7 +283,6 @@ public class GameManager : Singleton<GameManager>
                     }
 
                     yield return wait;
-
                     break;
 
                 case CardType.Move:
