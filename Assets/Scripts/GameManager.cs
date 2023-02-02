@@ -43,31 +43,49 @@ public class GameManager : Singleton<GameManager>
         gameStepText.text = "CommonStep";
 
         //StartCoroutine(ExecuteCardActionList2(CommonCardActionList));
+        StartCoroutine(LoopActionList());
 
+    }
+    IEnumerator LoopActionList()
+    {
+        while (true)
+        {
+            switch (gameStep)
+            {
+                case GameStep.CommonStep:
+                    if (CommonCardActionList.Count != 0)
+                        //ExecuteCardActionList(CommonCardActionList);
+
+                        //FIXME: the action will be infinally loop
+                        yield return StartCoroutine(ExecuteCardActionList(CommonCardActionList));
+                    break;
+
+                case GameStep.PlayerSettlement:
+                    if (PlayerSettlementCardActionList.Count != 0)
+                    {
+                        yield return StartCoroutine(ExecuteCardActionList(PlayerSettlementCardActionList));
+                    }
+                    else
+                    {
+                        ChangeGameStep(GameStep.CommonStep); //TODO: future
+                    }
+                    break;
+
+                case GameStep.EnemySettlement:
+                    //TODO: future to enemy 
+                    ChangeGameStep(GameStep.PlayerSettlement);
+                    break;
+            }
+            yield return null;
+        }
     }
 
     private void Update()
     {
-        //StartCoroutine(ExecuteCardActionList2(CommonCardActionList));
-        //ExecuteCardActionList(CommonCardActionList);
 
-        switch (gameStep)
-        {
-            case GameStep.CommonStep:
-                if (CommonCardActionList.Count != 0)
-                    //ExecuteCardActionList(CommonCardActionList);
-
-                    //FIXME: the action will be infinally loop
-                    StartCoroutine(ExecuteCardActionList2(CommonCardActionList));
-                break;
-
-            case GameStep.PlayerSettlement:
-                if (PlayerSettlementCardActionList.Count != 0)
-                    //ExecuteCardActionList(PlayerSettlementCardActionList);
-                    StartCoroutine(ExecuteCardActionList2(PlayerSettlementCardActionList));
-                break;
-        }
     }
+
+
 
     /// <summary>
     /// Change GameStep to args
@@ -75,6 +93,7 @@ public class GameManager : Singleton<GameManager>
     public void ChangeGameStep(GameStep _toChange)
     {
         gameStep = _toChange;
+        gameStepText.text = _toChange.ToString();
     }
 
     #region Event
@@ -166,7 +185,7 @@ public class GameManager : Singleton<GameManager>
         }
         //Debug.Log("Before");
         AddAllConfirmGrid();
-        EventHanlder.CallReloadGridColor(AllConfirmGridList); // To GridManager reload grid color
+
         EventHanlder.CallSendGameMessage("卡牌使用成功");
     }
     #endregion
@@ -179,6 +198,7 @@ public class GameManager : Singleton<GameManager>
         //          |- ConfirmGrid <- Need
         //          |- ...
 
+        AllConfirmGridList.Clear();
         foreach (ConfirmAreaGridData data in PlayerSettlementCardActionList)
         {
             foreach (ConfirmGrid grid in data.ConfirmGridsList)
@@ -188,6 +208,9 @@ public class GameManager : Singleton<GameManager>
                 AllConfirmGridList.Add(grid);
             }
         }
+
+        // Reload when function done
+        EventHanlder.CallReloadGridColor(AllConfirmGridList); // To GridManager reload grid color
     }
 
     public Sprite CardTypeToCardBackgroud(CardType cardType)
@@ -208,76 +231,49 @@ public class GameManager : Singleton<GameManager>
         return null;
     }
 
-    /// <summary>
-    /// Execute CardActionList by step
-    /// </summary>
-    /// <param name="actionList">CardActionList</param>
-    private void ExecuteCardActionList(List<ConfirmAreaGridData> actionList)
+    public void PlayerDonePlayButton()
     {
-        foreach (ConfirmAreaGridData skill in actionList)
-        {
-            //TODO:
-            switch (skill.cardDetail.cardType)
-            {
-                case CardType.Attack:
-                    // Call Grid of in skill area
-                    foreach (ConfirmGrid grid in skill.ConfirmGridsList)
-                    {
-                        //Debug.Log("BBBBB");
-                        EventHanlder.CallAttackGrid(gameStep, grid);
-
-                        //AllConfirmGridList.RemoveAt(0); // Remove the grid of now executing
-                    }
-                    break;
-
-                case CardType.Move:
-                    EventHanlder.CallMoveAction(skill);
-                    break;
-
-                case CardType.Tank:
-                    playerArmor += skill.cardDetail.tankTypeDetails.addArmor;
-                    playerHealth += skill.cardDetail.tankTypeDetails.addHealth;
-                    EventHanlder.CallArmorChange();
-                    EventHanlder.CallHealthChange();
-                    break;
-            }
-
-            
-        }
-
-        actionList.Clear();
+        ChangeGameStep(GameStep.EnemySettlement);
     }
-
-    IEnumerator Wait(int time)
-    {
-        yield return new WaitForSeconds(time);
-    }
-
 
     /// <summary>
     /// Execute CardActionList by step
     /// </summary>
     /// <param name="actionList">CardActionList</param>
-    IEnumerator ExecuteCardActionList2(List<ConfirmAreaGridData> actionList)
+    IEnumerator ExecuteCardActionList(List<ConfirmAreaGridData> actionList)
     {
         WaitForSeconds wait = new WaitForSeconds(2f);
-        yield return wait; //FIXME: test
 
         foreach (ConfirmAreaGridData skill in actionList)
         {
-            //TODO:
             switch (skill.cardDetail.cardType)
             {
                 case CardType.Attack:
                     // Call Grid of in skill area
                     foreach (ConfirmGrid grid in skill.ConfirmGridsList)
                     {
-                        Debug.Log("BBBBB");
+                        Debug.Log("BBBBB");// FIXME
+
+                        // Call grid to play animation and check character health
                         EventHanlder.CallAttackGrid(gameStep, grid);
 
 
-                        //AllConfirmGridList.RemoveAt(0); // Remove the grid of now executing
+                        // Remove the grid of now executing
+                        foreach (ConfirmGrid confirmGrid in AllConfirmGridList)
+                        {
+                            if (confirmGrid == grid)
+                            {
+                                AllConfirmGridList.Remove(confirmGrid);
+                                break;
+                            }
+                        }
+
+                        // To GridManager reload grid color
+                        EventHanlder.CallReloadGridColor(AllConfirmGridList);
                     }
+
+                    yield return wait;
+
                     break;
 
                 case CardType.Move:
@@ -292,7 +288,6 @@ public class GameManager : Singleton<GameManager>
                     break;
             }
 
-            yield return wait;
         }
 
         actionList.Clear();
