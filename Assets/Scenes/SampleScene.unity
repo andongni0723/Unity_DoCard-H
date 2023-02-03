@@ -779,6 +779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b8fca3311d7ee469e87cdde874d418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   hpBarBasicColor: {r: 1, g: 0.1764706, b: 0.1764706, a: 255}
   hpBarHaveArmorColor: {r: 1, g: 0.5411765, b: 0, a: 255}
   slider: {fileID: 58173251}
@@ -3685,6 +3686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b8fca3311d7ee469e87cdde874d418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   hpBarBasicColor: {r: 1, g: 0.1764706, b: 0.1764706, a: 255}
   hpBarHaveArmorColor: {r: 1, g: 0.5411765, b: 0, a: 255}
   slider: {fileID: 1082964160}
@@ -5303,6 +5305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStep: 0
+  currentCharacter: 0
   PlayerSettlementCardActionList: []
   CommonCardActionList: []
   AllConfirmGridList: []
@@ -5310,7 +5313,7 @@ MonoBehaviour:
   playerHealth: 10
   playerArmor: 0
   enemyHealth: 10
-  enemyArmor: 0
+  enemyArmor: 2
   cardAttackSprite: {fileID: 21300000, guid: 30f806b6b053646499124886a706a201, type: 3}
   cardTankSprite: {fileID: 21300000, guid: e6d983d257b14b14e880dde3eab67a54, type: 3}
   cardMoveSprite: {fileID: 21300000, guid: 003b7493c11fe0a4197d73b4bb94aac1, type: 3}
@@ -7535,6 +7538,7 @@ GameObject:
   - component: {fileID: 1868911474}
   - component: {fileID: 1868911473}
   - component: {fileID: 1868911472}
+  - component: {fileID: 1868911475}
   m_Layer: 5
   m_Name: Player Play Done Button
   m_TagString: Untagged
@@ -7607,8 +7611,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1532374490}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1868911475}
+        m_TargetAssemblyTypeName: CommonDoneButton, Assembly-CSharp
         m_MethodName: PlayerDonePlayButton
         m_Mode: 1
         m_Arguments:
@@ -7657,6 +7661,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868911470}
   m_CullTransparentMesh: 1
+--- !u!114 &1868911475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868911470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 424c2a0bee270734385a6825bb34c499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1878271938 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3433954534537949736, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
@@ -7970,6 +7986,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1a4bf7c6449b412478143fd227a19f50, type: 2}
   - {fileID: 11400000, guid: 1a4bf7c6449b412478143fd227a19f50, type: 2}
   - {fileID: 11400000, guid: 1a4bf7c6449b412478143fd227a19f50, type: 2}
+  - {fileID: 11400000, guid: eca1eedb560fd6a4d992ddc6a103d571, type: 2}
+  - {fileID: 11400000, guid: eca1eedb560fd6a4d992ddc6a103d571, type: 2}
   cardPrefabs: {fileID: 1567381325940116902, guid: d4acbdc9735e7f849b33b194044be59c, type: 3}
   cardInstPoint: {fileID: 1023761313}
   cardWidth: 286
