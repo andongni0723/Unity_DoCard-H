@@ -36,6 +36,11 @@ public enum GameStep
     StepStart, PlayerStep, CommonStep, PayCardStep, EnemySettlement, EnemyStep, AIStep, PlayerSettlement, StepEnd
 }
 
+public enum Character
+{
+    Player, Enemy
+}
+
 public enum CardType
 {
     Move, Tank, Attack, FinalSkill

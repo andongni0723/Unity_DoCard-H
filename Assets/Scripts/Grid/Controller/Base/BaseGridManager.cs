@@ -53,14 +53,20 @@ public class BaseGridManager : MonoBehaviour
         return dataList;
     }
 
-    protected virtual void OnAttackGridToCall(ConfirmGrid grid)
+
+    /// <summary>
+    /// Find the target grid and call the event 
+    /// </summary>
+    /// <param name="grid"></param>
+    /// <param name="data"></param>
+    protected virtual void OnAttackGridToCall(ConfirmGrid grid, CardDetail_SO data)
     {
         foreach (GameObject gridObj in GridsList)
         {
             Grid gridCS = gridObj.GetComponent<Grid>();
             if(gridCS.gridID == grid)
             {
-                gridCS.CallAttackGrid(attackVFXPrefabs);
+                gridCS.CallAttackGrid(attackVFXPrefabs, data);
             }
         }
     }

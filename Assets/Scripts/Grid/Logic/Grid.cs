@@ -12,7 +12,7 @@ public class Grid : MonoBehaviour
     public ConfirmGrid gridID;
 
     [Header("Grid Setting")]
-    public bool isCharactorerOn = false;
+    public bool isCharacterOn = false;
     public bool isMouseOnArea = false;
     public bool isSkilArea = false;
 
@@ -30,7 +30,7 @@ public class Grid : MonoBehaviour
     }
     private void Start()
     {
-        FindPlayer();
+        FindCharacter();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -86,24 +86,24 @@ public class Grid : MonoBehaviour
 
     private void OnTransformChildrenChanged()
     {
-        FindPlayer();
+        FindCharacter();
         CheckGridColor();
     }
 
     /// <summary>
-    /// Find Player in children
+    /// Find Character in children
     /// </summary>
-    private void FindPlayer()
+    private void FindCharacter()
     {
-        isCharactorerOn = false;
+        isCharacterOn = false;
         Transform[] childList = GetComponentsInChildren<Transform>();
 
         // Find Player in children witn tag
         foreach (Transform item in childList)
         {
-            if (item.CompareTag("Player"))
+            if (item.CompareTag("Player") || item.CompareTag("Enemy"))
             {
-                isCharactorerOn = true;
+                isCharacterOn = true;
             }
         }
 
@@ -132,7 +132,7 @@ public class Grid : MonoBehaviour
         {
             spriteRenderer.color = mouseAreaColor;
         }
-        else if (isSkilArea && isCharactorerOn) // Player on skill attack area
+        else if (isSkilArea && isCharacterOn) // Player on skill attack area
         {
             spriteRenderer.color = dangerousColor;
         }
@@ -140,7 +140,7 @@ public class Grid : MonoBehaviour
         {
             spriteRenderer.color = skillAreaColor;
         }
-        else if (isCharactorerOn)
+        else if (isCharacterOn)
         {
             spriteRenderer.color = playerOnColor;
         }
@@ -151,13 +151,21 @@ public class Grid : MonoBehaviour
     }
 
     /// <summary>
-    /// This method will call when GridManager call
+    /// This method will call when GridManager call, Inst the attack vfx and check player hurt
     /// </summary>
     /// <param name="animPrefabs"></param>
-    public void CallAttackGrid(GameObject animPrefabs)
+    public void CallAttackGrid(GameObject animPrefabs, CardDetail_SO data)
     {
-        var obj = Instantiate(animPrefabs, transform.position, Quaternion.identity, transform) as GameObject;
-        
-        obj.transform.localPosition = Vector3.up;
+        // Play the animation object
+        var obj = Instantiate(animPrefabs, transform.position, Quaternion.identity, transform) as GameObject;       
+        obj.transform.localPosition = Vector3.up; // Set animation object position
+
+        // Check character health
+        if(isCharacterOn)
+        {
+            // Character hurt, need play animation and check hurt
+            Debug.Log("hurtttttttttttt");//FIXME
+            EventHanlder.CallCaracterHurt(data);
+        }
     }
 }

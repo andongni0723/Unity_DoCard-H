@@ -10,12 +10,13 @@ public class GameManager : Singleton<GameManager>
     public GameStep gameStep;
 
     [Header("Game Data")]
+    public Character currentCharacter;
     public List<ConfirmAreaGridData> PlayerSettlementCardActionList = new List<ConfirmAreaGridData>();
     public List<ConfirmAreaGridData> CommonCardActionList = new List<ConfirmAreaGridData>();
     public List<ConfirmGrid> AllConfirmGridList = new List<ConfirmGrid>();
     public CardDetail_SO playingCard;
 
-    // If area grid of card is corrent, the data will put in 'temporaryData'.
+    // If area grid count of playing card is corrent, the data will put in 'temporaryData'.
     // If pay card confirm, the data will put to skill arealist
     ConfirmAreaGridData temporaryData;
 
@@ -39,8 +40,7 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
 
         //FIXME: 未來
-        gameStep = GameStep.CommonStep;
-        gameStepText.text = "CommonStep";
+        ChangeGameStep(GameStep.StepStart);
 
         //StartCoroutine(ExecuteCardActionList2(CommonCardActionList));
         StartCoroutine(LoopActionList());
@@ -52,12 +52,33 @@ public class GameManager : Singleton<GameManager>
         {
             switch (gameStep)
             {
+                case GameStep.StepStart:
+                    ChangeGameStep(GameStep.PlayerStep);
+                    break;
+
+                case GameStep.PlayerStep:
+                    currentCharacter = Character.Player;
+                    ChangeGameStep(GameStep.CommonStep);
+                    break;
+
                 case GameStep.CommonStep:
                     if (CommonCardActionList.Count != 0)
-                        //ExecuteCardActionList(CommonCardActionList);
-
-                        //FIXME: the action will be infinally loop
                         yield return StartCoroutine(ExecuteCardActionList(CommonCardActionList));
+                    break;
+
+                case GameStep.EnemySettlement:
+                    //TODO: future to enemy 
+                    ChangeGameStep(GameStep.PlayerSettlement);
+                    break;
+
+                case GameStep.EnemyStep:
+                    currentCharacter = Character.Enemy;
+                    ChangeGameStep(GameStep.CommonStep);
+                    break;
+
+                case GameStep.AIStep:
+                    //TODO: furture to enemy AI
+                    ChangeGameStep(GameStep.PlayerSettlement);
                     break;
 
                 case GameStep.PlayerSettlement:
@@ -67,26 +88,19 @@ public class GameManager : Singleton<GameManager>
                     }
                     else
                     {
-                        ChangeGameStep(GameStep.CommonStep); //TODO: future
+                        ChangeGameStep(GameStep.StepEnd); //TODO: future
                     }
                     break;
 
-                case GameStep.EnemySettlement:
-                    //TODO: future to enemy 
-                    ChangeGameStep(GameStep.PlayerSettlement);
+                case GameStep.StepEnd:
+                    ChangeGameStep(GameStep.StepStart); //TODO: future
                     break;
             }
             yield return null;
         }
     }
 
-    private void Update()
-    {
-
-    }
-
-
-
+    #region Tool Function
     /// <summary>
     /// Change GameStep to args
     /// </summary>
@@ -95,6 +109,7 @@ public class GameManager : Singleton<GameManager>
         gameStep = _toChange;
         gameStepText.text = _toChange.ToString();
     }
+    #endregion
 
     #region Event
     private void OnEnable()
@@ -104,7 +119,9 @@ public class GameManager : Singleton<GameManager>
         EventHanlder.EndDragCofirmData += OnEndDragCofirmData; // Check skill confirm area is corrent
         EventHanlder.CancelPlayTheCard += OnCancelPlayTheCard; // change gameStep to CommonStep
         EventHanlder.PayCardComplete += OnPayCardComplete; // change gameStep, and call event to change grid color
-
+        EventHanlder.PlayerHurt += OnPlayerHurt; // change player health
+        EventHanlder.EnemyHurt += OnEnemyHurt;   // change enemy health
+        EventHanlder.CommandStepEnd += OnCommandStepEnd; // change gameStep
     }
     private void OnDisable()
     {
@@ -113,7 +130,11 @@ public class GameManager : Singleton<GameManager>
         EventHanlder.EndDragCofirmData -= OnEndDragCofirmData;
         EventHanlder.CancelPlayTheCard -= OnCancelPlayTheCard;
         EventHanlder.PayCardComplete -= OnPayCardComplete;
+        EventHanlder.PlayerHurt -= OnPlayerHurt;
+        EventHanlder.EnemyHurt -= OnEnemyHurt;
+        EventHanlder.CommandStepEnd += OnCommandStepEnd;
     }
+
     private void OnCardOnDrag(CardDetail_SO data)
     {
         playingCard = data;
@@ -127,6 +148,7 @@ public class GameManager : Singleton<GameManager>
         int gridCount = data.ConfirmGridsList.Count;
         int checkGridCount = 0;
 
+        // Get checkGridCount
         switch (data.cardDetail.cardType)
         {
             case CardType.Attack:
@@ -142,14 +164,17 @@ public class GameManager : Singleton<GameManager>
                 break;
         }
 
-        if (gridCount == checkGridCount) // the confirm area count is right
+        // Check the confirm area count
+        if (gridCount == checkGridCount)
         {
+            //Is right
+
             //card pay UI
-            Debug.Log("The confirm area count is right");
+            Debug.Log("GameManager: The confirm area count is right");
             temporaryData = data;
             EventHanlder.CallPlayTheCard(data.cardDetail);
         }
-        else // the confirm area count isn't right
+        else
         {
             EventHanlder.CallSendGameMessage("請確認技能釋放範圍完整");
             EventHanlder.CallCancelPlayTheCard();
@@ -171,7 +196,6 @@ public class GameManager : Singleton<GameManager>
     private void OnPayCardComplete()
     {
         ChangeGameStep(GameStep.CommonStep);
-        gameStepText.text = "CommonStep";
 
         switch (temporaryData.cardDetail.cardUseGameStep)
         {
@@ -183,10 +207,25 @@ public class GameManager : Singleton<GameManager>
                 PlayerSettlementCardActionList.Add(temporaryData);//TODO: enemy
                 break;
         }
+
         //Debug.Log("Before");
         AddAllConfirmGrid();
 
         EventHanlder.CallSendGameMessage("卡牌使用成功");
+    }
+
+    private void OnPlayerHurt(CardDetail_SO data)
+    {
+        AttackCardHurtCharacter(data, playerHealth, playerArmor);
+    }
+    private void OnEnemyHurt(CardDetail_SO data)
+    {
+        AttackCardHurtCharacter(data, enemyHealth, enemyArmor);
+    }
+
+    private void OnCommandStepEnd()
+    {
+        ChangeGameStep(GameStep.EnemySettlement);
     }
     #endregion
 
@@ -231,11 +270,6 @@ public class GameManager : Singleton<GameManager>
         return null;
     }
 
-    public void PlayerDonePlayButton()
-    {
-        ChangeGameStep(GameStep.EnemySettlement);
-    }
-
     /// <summary>
     /// Execute CardActionList by step
     /// </summary>
@@ -246,7 +280,7 @@ public class GameManager : Singleton<GameManager>
 
         // If don't setting wait time, this method will error 
         // (can't add item in list when coroutine not done )
-        if(actionList == CommonCardActionList)
+        if (actionList == CommonCardActionList)
             wait = new WaitForSeconds(0);
         else
             wait = new WaitForSeconds(2);
@@ -264,11 +298,14 @@ public class GameManager : Singleton<GameManager>
                     {
                         //Debug.Log("BBBBB");// FIXM
 
-                        // Call grid to play animation and check character health
-                        EventHanlder.CallAttackGrid(gameStep, grid);
+                        //  According to cardDetail to change character health
+                        //AttackCardHurtCharacter(skill.cardDetail);
+
+                        // 1. Call grid to play animation and check character health
+                        EventHanlder.CallAttackGrid(grid, skill.cardDetail);
 
 
-                        // Remove the grid of now executing
+                        // 2. Remove the grid in AllConfirmGridList of now executing
                         foreach (ConfirmGrid confirmGrid in AllConfirmGridList)
                         {
                             if (confirmGrid == grid)
@@ -278,7 +315,7 @@ public class GameManager : Singleton<GameManager>
                             }
                         }
 
-                        // To GridManager reload grid color
+                        // 3. To GridManager reload grid color
                         EventHanlder.CallReloadGridColor(AllConfirmGridList);
                     }
 
@@ -301,5 +338,48 @@ public class GameManager : Singleton<GameManager>
 
         actionList.Clear();
         //yield return null;
+    }
+
+    private void AttackCardHurtCharacter(CardDetail_SO cardDetail, int health, int armor)
+    {
+        int hurtNum = cardDetail.attackTypeDetails.cardHurtHP;
+        //Debug.Log("Chageeeeeeeeeeeeeeeeeeeee"); //FIXM
+        //  Change Health
+        if (armor != 0)
+        {
+            // Change Armor
+            if (hurtNum > armor)
+            {
+                // Armor broke
+                health -= hurtNum - armor;
+                armor = 0;
+            }
+            else
+            {
+                armor -= hurtNum;
+            }
+
+        }
+        else
+        {
+            health -= hurtNum;
+        }
+
+        // Set Health with new value
+        if (currentCharacter == Character.Player)
+        {
+            // Enemy Hurt
+            enemyHealth = health;
+            enemyArmor = armor;
+        }
+        else
+        {
+            playerHealth = health;
+            playerArmor = armor;
+        }
+
+        // Update UI
+        EventHanlder.CallHealthChange();
+        EventHanlder.CallArmorChange();
     }
 }

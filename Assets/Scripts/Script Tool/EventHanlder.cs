@@ -6,6 +6,20 @@ using UnityEngine.UI;
 
 public static class EventHanlder
 {
+    /* Message System */
+    #region Message System
+    // GameManager => MessageManager
+    public static event Action<string> SendGameMessage;
+    public static void CallSendGameMessage(string message)
+    {
+        SendGameMessage?.Invoke(message);
+    }
+    #endregion
+    
+    
+    /* Card System */
+    #region Card System
+
     // Softed Card Position
     public static event Action CardUpdatePosition;
     public static void CallCardUpdeatePosition()
@@ -111,13 +125,16 @@ public static class EventHanlder
         ReloadGridColor?.Invoke(grids);
     }
 
-    // Message System
-    // GameManager => MessageManager
-    public static event Action<string> SendGameMessage;
-    public static void CallSendGameMessage(string message)
+    public static event Action CommandStepEnd;
+    public static void CallCommandStepEnd()
     {
-        SendGameMessage?.Invoke(message);
+        CommandStepEnd?.Invoke();
     }
+    #endregion
+
+    
+    /* Health System */
+    #region Health System
 
     // Game Data Change
     // GameManager => HealthManager
@@ -141,33 +158,34 @@ public static class EventHanlder
     }
 
     //GameManager execute the attack action, call the grid of skill area
-    public static event Action<ConfirmGrid> PlayerAttackGrid;
-    public static event Action<ConfirmGrid> EnemyAttackGrid;
-    public static void CallAttackGrid(GameStep gameStep, ConfirmGrid grid)
+    public static event Action<ConfirmGrid, CardDetail_SO> PlayerAttackGrid;
+    public static event Action<ConfirmGrid, CardDetail_SO> EnemyAttackGrid;
+    public static void CallAttackGrid(ConfirmGrid grid, CardDetail_SO data)
     {
-        switch (gameStep)
+        if (GameManager.Instance.currentCharacter == Character.Player)
         {
             // Player Attack
-            case GameStep.CommonStep:
-                PlayerAttackGrid(grid);
-                break;
-            case GameStep.PlayerSettlement:
-                PlayerAttackGrid(grid);
-                break;
-
-            // Enemy Attack
-            case GameStep.AIStep:
-                EnemyAttackGrid(grid);
-                break;
-            case GameStep.EnemySettlement:
-                EnemyAttackGrid(grid);
-                break;
+            PlayerAttackGrid(grid, data);
+        }
+        else
+        {
+            EnemyAttackGrid(grid, data);
         }
     }
 
-    public static event Action<float> HurtAction;
-    public static void CallHurtAction(float num)
+    public static event Action<CardDetail_SO> PlayerHurt;
+    public static event Action<CardDetail_SO> EnemyHurt;
+    public static void CallCaracterHurt(CardDetail_SO data)
     {
-        HurtAction?.Invoke(num);
+        if (GameManager.Instance.currentCharacter == Character.Player)
+        {
+            // Player Attack
+            EnemyHurt(data);
+        }
+        else
+        {
+            PlayerHurt(data);
+        }
     }
+    #endregion
 }

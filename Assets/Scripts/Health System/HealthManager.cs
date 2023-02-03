@@ -8,6 +8,7 @@ using System;
 public class HealthManager : MonoBehaviour
 {
     [Header("Script Setting")]
+    public bool isPlayer;
     public Color hpBarBasicColor = Color.red;
     public Color hpBarHaveArmorColor = new Color(255, 139, 0, 255);
 
@@ -18,6 +19,9 @@ public class HealthManager : MonoBehaviour
 
     private void Start()
     {
+        // Check parent is player or enemy
+        isPlayer = transform.parent.parent.CompareTag("Player") ? true : false;
+
         UpdataUIStatue();
     }
 
@@ -30,22 +34,27 @@ public class HealthManager : MonoBehaviour
     private void OnDisable()
     {
         EventHanlder.ArmorChange -= UpdataUIStatue;
-        EventHanlder.HealthChange -= UpdataUIStatue; 
+        EventHanlder.HealthChange -= UpdataUIStatue;
     }
     #endregion
 
     private void UpdataUIStatue()
     {
         // HP
-        slider.value = GameManager.Instance.playerHealth / 10;
-        hpText.text = $"{GameManager.Instance.playerHealth}/10";
+        float characterHealth = isPlayer ? GameManager.Instance.playerHealth : GameManager.Instance.enemyHealth;
+
+        slider.value = characterHealth / 10;   //UI
+        hpText.text = $"{characterHealth}/10"; //UI
 
         // Armor
-        armorText.text = GameManager.Instance.playerArmor.ToString();
+        float characterArmor = isPlayer ? GameManager.Instance.playerArmor : GameManager.Instance.enemyArmor;
+
+        armorText.text = characterArmor.ToString(); //UI
 
         // According to armor value to change hpBar fill color
-        if (GameManager.Instance.playerArmor != 0) // Have armor
+        if (characterArmor != 0) 
         {
+            // Have armor
             slider.fillRect.GetComponent<Image>().color = hpBarHaveArmorColor;
         }
         else
