@@ -49,7 +49,7 @@ public class ShowCardDetail : MonoBehaviour
         cardDescriptionObj.SetActive(true);
 
         // Updata card details
-        image.sprite = GameManager.Instance.CardTypeToCardBackgroud(data.cardType);
+        image.sprite = GameManager.Instance.CardTypeToCardBackgroud(data);
         cardNameObj.GetComponent<TextMeshProUGUI>().text = data.cardName;
         cardPayNumTextObj.GetComponent<TextMeshProUGUI>().text = data.payCardNum.ToString();
         cardImgObj.GetComponent<Image>().sprite = data.cardSkillSprite;

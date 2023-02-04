@@ -6,6 +6,7 @@ using UnityEngine;
 public class CardDetail_SO : ScriptableObject
 {
     public CardType cardType;
+    public bool isFinalSkill;
 
     [Header("Game View")]
     public string cardName;

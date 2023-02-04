@@ -30,7 +30,7 @@ public class HurtText : MonoBehaviour
     }
 
     /// <summary>
-    /// The method will call when 'HealthManager' Init this gameObject , to setting hurt text
+    /// The method will call when 'BaseCharacter' Init this gameObject , to setting hurt text
     /// </summary>
     /// <param name="hurtNum">text</param>
     public void SetText(int hurtNum)

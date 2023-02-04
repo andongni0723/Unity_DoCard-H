@@ -10,6 +10,7 @@ public class CardManager : MonoBehaviour
     public List<CardDetail_SO> CardDetailPrefabList = new List<CardDetail_SO>();
     public GameObject cardPrefabs;
     public GameObject cardInstPoint;
+    public GameObject discardPilePoint;
     
     private float cardMoveX;
 
@@ -76,7 +77,7 @@ public class CardManager : MonoBehaviour
         CardDetail_SO cardDetail = CardDetailPrefabList[Random.Range(0, CardDetailPrefabList.Count)];
 
         // Check the cardType of detail to change the card baclgroud image
-        Sprite cardSprite =  GameManager.Instance.CardTypeToCardBackgroud(cardDetail.cardType);
+        Sprite cardSprite =  GameManager.Instance.CardTypeToCardBackgroud(cardDetail);
 
         // Instantiate the card prefabs
         var cardObj = Instantiate(cardPrefabs, cardInstPoint.transform.position, Quaternion.identity, this.transform) as GameObject;

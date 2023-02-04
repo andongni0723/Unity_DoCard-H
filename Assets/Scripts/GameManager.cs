@@ -12,13 +12,10 @@ public class GameManager : Singleton<GameManager>
     [Header("Game Data")]
     public Character currentCharacter;
     public List<ConfirmAreaGridData> PlayerSettlementCardActionList = new List<ConfirmAreaGridData>();
+    public List<ConfirmAreaGridData> EnemySettlementCardActionList = new List<ConfirmAreaGridData>();
     public List<ConfirmAreaGridData> CommonCardActionList = new List<ConfirmAreaGridData>();
     public List<ConfirmGrid> AllConfirmGridList = new List<ConfirmGrid>();
     public CardDetail_SO playingCard;
-
-    // If area grid count of playing card is corrent, the data will put in 'temporaryData'.
-    // If pay card confirm, the data will put to skill arealist
-    ConfirmAreaGridData temporaryData;
 
     public int playerHealth = 10;
     public int playerArmor = 0;
@@ -26,11 +23,17 @@ public class GameManager : Singleton<GameManager>
     public int enemyHealth = 10;
     public int enemyArmor = 0;
 
-    [Header("Card Prefab Assets")]
+    // If area grid count of playing card is corrent, the data will put in 'temporaryData'.
+    // If pay card confirm, the data will put to skill arealist
+    ConfirmAreaGridData temporaryData;
+
+    [Header("Game Prefab Assets")]
     public Sprite cardAttackSprite;
     public Sprite cardTankSprite;
     public Sprite cardMoveSprite;
     public Sprite cardFinalSkillSprite;
+
+    public GameObject attackTextPrefab;
 
     [Header("Test")]
     public TextMeshProUGUI gameStepText;
@@ -109,6 +112,27 @@ public class GameManager : Singleton<GameManager>
         gameStep = _toChange;
         gameStepText.text = _toChange.ToString();
     }
+
+    public Sprite CardTypeToCardBackgroud(CardDetail_SO data)
+    {
+        switch (data.cardType)
+        {
+            case CardType.Attack:
+                if(data.isFinalSkill) 
+                    return cardFinalSkillSprite;
+                else
+                    return cardAttackSprite;
+
+            case CardType.Move:
+                return cardMoveSprite;
+
+            case CardType.Tank:
+                return cardTankSprite;
+
+        }
+
+        return null;
+    }
     #endregion
 
     #region Event
@@ -184,13 +208,12 @@ public class GameManager : Singleton<GameManager>
     private void OnPlayTheCardChangeGameStep()
     {
         ChangeGameStep(GameStep.PayCardStep);
-        gameStepText.text = "PayCardStep";
     }
     private void OnCancelPlayTheCard()
     {
         temporaryData = null; // Init 
+        playingCard = null;
         ChangeGameStep(GameStep.CommonStep);
-        gameStepText.text = "CommonStep";
     }
 
     private void OnPayCardComplete()
@@ -209,6 +232,8 @@ public class GameManager : Singleton<GameManager>
         }
 
         //Debug.Log("Before");
+        playingCard = null;
+
         AddAllConfirmGrid();
 
         EventHanlder.CallSendGameMessage("卡牌使用成功");
@@ -252,23 +277,6 @@ public class GameManager : Singleton<GameManager>
         EventHanlder.CallReloadGridColor(AllConfirmGridList); // To GridManager reload grid color
     }
 
-    public Sprite CardTypeToCardBackgroud(CardType cardType)
-    {
-        switch (cardType)
-        {
-            case CardType.Attack:
-                return cardAttackSprite;
-
-            case CardType.Move:
-                return cardMoveSprite;
-
-            case CardType.Tank:
-                return cardTankSprite;
-
-        }
-
-        return null;
-    }
 
     /// <summary>
     /// Execute CardActionList by step

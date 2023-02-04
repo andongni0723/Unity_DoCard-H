@@ -164,7 +164,7 @@ public class Grid : MonoBehaviour
         if(isCharacterOn)
         {
             // Character hurt, need play animation and check hurt
-            Debug.Log("hurtttttttttttt");//FIXME
+            //Debug.Log("hurtttttttttttt");//FIXM
             EventHanlder.CallCaracterHurt(data);
         }
     }
