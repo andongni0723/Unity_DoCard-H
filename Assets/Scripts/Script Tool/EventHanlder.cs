@@ -29,6 +29,12 @@ public static class EventHanlder
 
 
     // Card Event
+    public static event Action PlayerStepAddCard;
+    public static void CallPlayerStepAddCard()
+    {
+        PlayerStepAddCard?.Invoke();
+    }
+
     public static event Action<CardDetail_SO> CardOnDrag;
     public static void CallCardOnDrag(CardDetail_SO cardDetail)
     {
@@ -169,7 +175,7 @@ public static class EventHanlder
         }
         else
         {
-            EnemyAttackGrid(grid, data);
+            //EnemyAttackGrid(grid, data); //TODO: Future AI
         }
     }
 

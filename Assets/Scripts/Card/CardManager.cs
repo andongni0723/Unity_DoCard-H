@@ -11,8 +11,9 @@ public class CardManager : MonoBehaviour
     public GameObject cardPrefabs;
     public GameObject cardInstPoint;
     public GameObject discardPilePoint;
-    
+
     private float cardMoveX;
+    private int instCardNameNum;
 
     [Header("Card Move Setting")]
     public float cardWidth;
@@ -24,12 +25,21 @@ public class CardManager : MonoBehaviour
     #region Event
     private void OnEnable()
     {
+        EventHanlder.PlayerStepAddCard += OnPlayerStepAddCard; // Init the some card
         EventHanlder.PayCardComplete += OnPayCardComplete; // Init the card position
     }
     private void OnDisable()
     {
+        EventHanlder.PlayerStepAddCard -= OnPlayerStepAddCard;
         EventHanlder.PayCardComplete -= OnPayCardComplete;
+    }
 
+    private void OnPlayerStepAddCard()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            AddCardButton();
+        }
     }
 
     private void OnPayCardComplete()
@@ -38,7 +48,17 @@ public class CardManager : MonoBehaviour
     }
     #endregion
 
+    private void OnTransformChildrenChanged()
+    {
+        // If Children Change (add or remove)
+        if (CardPositionList.Count != transform.childCount)
+            ChangeCardPosition(transform.childCount);
+    }
 
+    /// <summary>
+    /// Change card position 
+    /// </summary>
+    /// <param name="_childNum"></param>
     private void ChangeCardPosition(int _childNum)
     {
         // Init
@@ -68,33 +88,36 @@ public class CardManager : MonoBehaviour
 
         EventHanlder.CallCardUpdeatePosition();
     }
+    
 
-
-
-    public void AddCard()
+    /// <summary>
+    /// Give the CardDetail to inst the card
+    /// </summary>
+    /// <param name="data">CardDetail_SO</param>
+    public void AddCard(CardDetail_SO data)
     {
-        // Random the cardDetail
-        CardDetail_SO cardDetail = CardDetailPrefabList[Random.Range(0, CardDetailPrefabList.Count)];
-
         // Check the cardType of detail to change the card baclgroud image
-        Sprite cardSprite =  GameManager.Instance.CardTypeToCardBackgroud(cardDetail);
+        Sprite cardSprite = GameManager.Instance.CardTypeToCardBackgroud(data);
 
         // Instantiate the card prefabs
         var cardObj = Instantiate(cardPrefabs, cardInstPoint.transform.position, Quaternion.identity, this.transform) as GameObject;
 
         // Set new object var
-        cardObj.GetComponent<BasicCard>().cardDetail = cardDetail;
+        cardObj.name = $"Card{instCardNameNum}";
+        cardObj.GetComponent<BasicCard>().cardDetail = data;
         cardObj.GetComponent<Image>().sprite = cardSprite;
+        instCardNameNum++;
 
         // Call the method let card update data
         cardObj.GetComponent<BasicCard>().AfterInit();
     }
 
-    private void OnTransformChildrenChanged()
-    {
-        // If Children Change (add or remove)
-        if (CardPositionList.Count != transform.childCount)
-            ChangeCardPosition(transform.childCount);
-    }
 
+    public void AddCardButton()
+    {
+        // Random the cardDetail
+        CardDetail_SO cardDetail = CardDetailPrefabList[Random.Range(0, CardDetailPrefabList.Count)];
+
+        AddCard(cardDetail);
+    }
 }

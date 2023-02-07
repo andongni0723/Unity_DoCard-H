@@ -46,10 +46,10 @@ public class GameManager : Singleton<GameManager>
         ChangeGameStep(GameStep.StepStart);
 
         //StartCoroutine(ExecuteCardActionList2(CommonCardActionList));
-        StartCoroutine(LoopActionList());
+        StartCoroutine(LoopGameStepAction());
 
     }
-    IEnumerator LoopActionList()
+    IEnumerator LoopGameStepAction()
     {
         while (true)
         {
@@ -60,8 +60,9 @@ public class GameManager : Singleton<GameManager>
                     break;
 
                 case GameStep.PlayerStep:
-                    currentCharacter = Character.Player;
+
                     ChangeGameStep(GameStep.CommonStep);
+                    EventHanlder.CallPlayerStepAddCard();
                     break;
 
                 case GameStep.CommonStep:
@@ -71,28 +72,24 @@ public class GameManager : Singleton<GameManager>
 
                 case GameStep.EnemySettlement:
                     //TODO: future to enemy 
-                    ChangeGameStep(GameStep.PlayerSettlement);
+                    currentCharacter = Character.Enemy;
+                    ChangeGameStep(GameStep.EnemyStep);
                     break;
 
                 case GameStep.EnemyStep:
-                    currentCharacter = Character.Enemy;
-                    ChangeGameStep(GameStep.CommonStep);
+                    ChangeGameStep(GameStep.AIStep);
                     break;
 
                 case GameStep.AIStep:
                     //TODO: furture to enemy AI
+                    yield return new WaitForSeconds(1); // FIXME: furure to do AI
                     ChangeGameStep(GameStep.PlayerSettlement);
                     break;
 
                 case GameStep.PlayerSettlement:
-                    if (PlayerSettlementCardActionList.Count != 0)
-                    {
-                        yield return StartCoroutine(ExecuteCardActionList(PlayerSettlementCardActionList));
-                    }
-                    else
-                    {
-                        ChangeGameStep(GameStep.StepEnd); //TODO: future
-                    }
+                    currentCharacter = Character.Player;
+                    yield return StartCoroutine(ExecuteCardActionList(PlayerSettlementCardActionList));
+                    ChangeGameStep(GameStep.StepEnd); //TODO: future
                     break;
 
                 case GameStep.StepEnd:
@@ -118,7 +115,7 @@ public class GameManager : Singleton<GameManager>
         switch (data.cardType)
         {
             case CardType.Attack:
-                if(data.isFinalSkill) 
+                if (data.isFinalSkill)
                     return cardFinalSkillSprite;
                 else
                     return cardAttackSprite;

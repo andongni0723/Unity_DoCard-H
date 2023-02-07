@@ -57,10 +57,12 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private void Update()
     {
         //&& GameManager.Instance.gameStep == GameStep.CommonStep
-        if (transform.parent == originParent && isDrag)
+        if (transform.parent == originParent && isDrag && !cantUse)
         {
             // Fix card move anim problem
             transform.position = Input.mousePosition;
+
+            ScaleAtCardOnDrag(transform.position); //FIXME
         }
     }
 
@@ -126,14 +128,18 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             //  
             // }
         }
+        else
+        {
+            //Debug.Log($"{gameObject.name}: No Parent"); //FIXM
+        }
     }
 
     private void OnCancelPlayTheCard()
     {
         transform.DOScale(scale * 1f, 0.3f);
-        transform.parent = GameObject.FindGameObjectWithTag("CardManager").transform;
+        transform.parent = originParent;
         //EventHanlder.CallCardUpdeatePosition();
-        
+
         OnCardUpdatePosition();
         image.raycastPadding = halfPadding; //FIXME: padding
     }
@@ -141,14 +147,22 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private void OnPayTheCardError(GameObject targetCard)
     {
         // This card haven't pay because the pay cards is enough
-        if (transform.parent == null)
+        if(gameObject == targetCard)
         {
             transform.parent = originParent;
+            Debug.Log("OnPayTheCardError");
+            //OnCancelPlayTheCard();
         }
-        else
-        {
-            OnCardUpdatePosition();
-        }
+
+        // if (transform.parent == null)
+        // {
+        //     transform.parent = originParent;
+        // }
+        // else
+        // {
+        //     //OnCancelPlayTheCard();
+        //     //OnCardUpdatePosition(); FIXME
+        // }
     }
 
     private void OnPayCardComplete()
@@ -165,9 +179,14 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         // animation move to discard pile
         cantUse = true;
+        Vector3 beforePos = transform.position;
+        Vector3 discardPoint = transform.parent.GetComponent<CardManager>().discardPilePoint.transform.position;
+        //transform.parent = null; // FIXM
+
+        transform.position = beforePos; // Let position set same after change parent
 
         Sequence mainSequence = DOTween.Sequence();
-        mainSequence.Append(transform.DOMove(transform.parent.GetComponent<CardManager>().discardPilePoint.transform.position, 0.5f));
+        mainSequence.Append(transform.DOMove(discardPoint, 0.5f));
         mainSequence.OnComplete(() => Destroy(gameObject));
     }
 
@@ -178,7 +197,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         //if (!eventData.fullyExited) return; // Unity bug "IPointerEnter/Exit"
 
-        if(cantUse) return;
+        if (cantUse) return;
 
         // Let card can't move when paing
         if (GameManager.Instance.gameStep != GameStep.PayCardStep)
@@ -220,7 +239,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (transform.parent != originParent || cantUse) return; // Card was Paid
 
-        ScaleAtCardOnDrag(eventData);
+        //ScaleAtCardOnDrag(eventData.position); FIXME
         EventHanlder.CallCardOnDrag(cardDetail);
     }
     public void OnEndDrag(PointerEventData eventData)
@@ -235,10 +254,10 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     /// Card on drag, if card yPos out a distance, scale will become small (play), or big (canel play)
     /// </summary>
     /// <param name="eventData"></param>
-    public void ScaleAtCardOnDrag(PointerEventData eventData)
+    public void ScaleAtCardOnDrag(Vector3 pos)
     {
         // Change Scale
-        if (eventData.position.y > CardLinePosY) // Play the card
+        if (pos.y > CardLinePosY) // Play the card
         {
             transform.DOScale(scale * 0.3f, 0.2f);
         }
@@ -250,12 +269,17 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void EventAtCardEndDrag(PointerEventData eventData)
     {
+        cantUse = true;
+
         // Check the card PosY
-        if (eventData.position.y < CardLinePosY) 
+        if (eventData.position.y < CardLinePosY)
         {
             // Canel play the card
-            if(GameManager.Instance.gameStep == GameStep.PayCardStep)
+            if (GameManager.Instance.gameStep == GameStep.PayCardStep)
+            {
+                Debug.Log("noYYYYYYy");
                 EventHanlder.CallPayTheCardError(gameObject);
+            }
             else
                 EventHanlder.CallCancelPlayTheCard();
         }
@@ -273,11 +297,14 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             }
             else
             {
+                // Play card
                 transform.parent = playCardParent;
                 EventHanlder.CallCardEndDrag();
             }
         }
+
         isDrag = false;
+        cantUse = false;
     }
 
 }

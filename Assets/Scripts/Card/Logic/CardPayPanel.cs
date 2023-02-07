@@ -35,10 +35,19 @@ public class CardPayPanel : MonoBehaviour
     }
 
 
+    private void Update()
+    {
+        // Reload 'payCards' horizontal layout group children position
+        if(payCards.transform.childCount != 0)
+        {
+            payCards.transform.GetChild(0).gameObject.SetActive(false);
+            payCards.transform.GetChild(0).gameObject.SetActive(true);
+        }
+    }
     private void OnPlayTheCard(CardDetail_SO data)
     {
         // If The card don't pay any card to play
-        if (data.payCardNum == 0) 
+        if (data.payCardNum == 0)
         {
             PayCardComplete();
         }
@@ -53,7 +62,7 @@ public class CardPayPanel : MonoBehaviour
 
     private void OnPayTheCard(GameObject card)
     {
-        PayCardCheck(cardData, card);
+        PayCardAddParentCheck(cardData, card);
         PayCardIsDoneCheck(cardData, card);
         PayCardTextCheck();
     }
@@ -61,18 +70,19 @@ public class CardPayPanel : MonoBehaviour
 
 
     /// <summary>
-    /// If pay cards num NOT enough, to let card parent add in 'payCardsTable'
+    /// If pay cards num enough, to execute this function
     /// </summary>
     /// <param name="data"></param>
     /// <param name="cardObj"></param>
-    private void PayCardCheck(CardDetail_SO data, GameObject cardObj)
+    private void PayCardIsDoneCheck(CardDetail_SO data, GameObject cardObj)
     {
         if (GameManager.Instance.gameStep == GameStep.PayCardStep)
         {
-            if (payCards.transform.childCount != data.payCardNum) // not complete
+            if (payCards.transform.childCount == data.payCardNum)
             {
-                cardObj.transform.position = payCards.transform.position;
-                cardObj.transform.parent = payCards.transform;
+                // PayCards is Enough
+                confirmButton.SetActive(true);
+                Debug.Log($"PayCardIsDoneCheck , {payCards.transform.childCount} == {data.payCardNum}"); //FIXME
             }
         }
     }
@@ -82,15 +92,24 @@ public class CardPayPanel : MonoBehaviour
     /// </summary>
     /// <param name="data"></param>
     /// <param name="cardObj"></param>
-    private void PayCardIsDoneCheck(CardDetail_SO data, GameObject cardObj)
+    private void PayCardAddParentCheck(CardDetail_SO data, GameObject cardObj)
     {
+        // Timeline
+        /// Check ----->| = |---> PayTheCardError
+        ///       |---->| < |---> Add Parent
+
         if (GameManager.Instance.gameStep == GameStep.PayCardStep)
         {
             if (payCards.transform.childCount == data.payCardNum) //pay cards enough
             {
-                //Pay card complete
-                confirmButton.SetActive(true);
+                //payCards is more than data payCardNum
                 EventHanlder.CallPayTheCardError(cardObj);
+            }
+            else
+            {
+                // no complete
+                cardObj.transform.parent = payCards.transform;
+                cardObj.transform.position = payCards.transform.position;
             }
         }
     }
