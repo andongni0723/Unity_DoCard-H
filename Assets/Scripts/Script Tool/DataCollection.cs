@@ -47,7 +47,7 @@ public enum CardType
 }
 public enum EffectType
 {
-    Poisoned, Bleed, Imprison
+    Poisoned, Bleed, Imprison, Invincibility, Cure
 }
 
 public enum MoveType

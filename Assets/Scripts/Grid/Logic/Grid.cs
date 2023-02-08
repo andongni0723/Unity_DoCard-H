@@ -165,7 +165,7 @@ public class Grid : MonoBehaviour
         {
             // Character hurt, need play animation and check hurt
             //Debug.Log("hurtttttttttttt");//FIXM
-            EventHanlder.CallCaracterHurt(data);
+            EventHanlder.CallCaracterHurt(GameManager.Instance.currentCharacter, data.attackTypeDetails.cardHurtHP);
         }
     }
 }

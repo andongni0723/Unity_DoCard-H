@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class CardManager : MonoBehaviour
+public class CardManager : Singleton<CardManager>
 {
     public List<Vector2> CardPositionList = new List<Vector2>();
     public List<CardDetail_SO> CardDetailPrefabList = new List<CardDetail_SO>();

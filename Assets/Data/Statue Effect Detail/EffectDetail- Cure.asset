@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba3b2095fe16ff7418ca48551cf9a446, type: 3}
+  m_Name: EffectDetail- Cure
+  m_EditorClassIdentifier: 
+  effectName: "\u6CBB\u7642"
+  effectType: 4
+  effectIcon: {fileID: 0}
+  isAccumulate: 1
+  description: 
+  isBehaviorProhibit: 0
+  behaviorProhibit:
+    behavior: 0
+  isAttributeChange: 0
+  attributeChange:
+    attributeType: 0
+    changeMagnification: 0
+  isLogicTrigger: 1
+  logicTrigger:
+    isHurtLogic: 0
+    hurtLogic:
+      triggerTimeType: 0
+      hurt: 0
+    isCureLogic: 1
+    cureLogic:
+      triggerTimeType: 0
+      cureNum: 2

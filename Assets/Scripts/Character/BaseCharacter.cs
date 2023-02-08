@@ -25,13 +25,13 @@ public class BaseCharacter : MonoBehaviour
 
     }
 
-    protected virtual void Hurt(CardDetail_SO data)
+    protected virtual void Hurt(int hurtNum)
     {
         // The Hurt text animation
 
         Debug.Log("Hurt text animation");//FIXME
         GameObject obj = Instantiate(GameManager.Instance.attackTextPrefab, canvus.transform) as GameObject;
-        obj.GetComponent<HurtText>().SetText(data.attackTypeDetails.cardHurtHP);
+        obj.GetComponent<HurtText>().SetText(hurtNum);
         // Character shake animation
         transform.DOPunchPosition(Vector3.right, 0.5f);
         // Camera shake animation

@@ -216,6 +216,7 @@ public class GameManager : Singleton<GameManager>
     private void OnPayCardComplete()
     {
         ChangeGameStep(GameStep.CommonStep);
+        CardUseToGiveCard(temporaryData.cardDetail); // Give Card about data list
 
         switch (temporaryData.cardDetail.cardUseGameStep)
         {
@@ -236,13 +237,14 @@ public class GameManager : Singleton<GameManager>
         EventHanlder.CallSendGameMessage("卡牌使用成功");
     }
 
-    private void OnPlayerHurt(CardDetail_SO data)
+    private void OnPlayerHurt(int hurtNum)
     {
-        AttackCardHurtCharacter(data, playerHealth, playerArmor);
+        AttackCardHurtCharacter(hurtNum, playerHealth, playerArmor);
     }
-    private void OnEnemyHurt(CardDetail_SO data)
+    private void OnEnemyHurt(int hurtNum)
     {
-        AttackCardHurtCharacter(data, enemyHealth, enemyArmor);
+        AttackCardHurtCharacter(hurtNum, enemyHealth, enemyArmor);
+        //TODO: Give Effect
     }
 
     private void OnCommandStepEnd()
@@ -303,9 +305,6 @@ public class GameManager : Singleton<GameManager>
                     {
                         //Debug.Log("BBBBB");// FIXM
 
-                        //  According to cardDetail to change character health
-                        //AttackCardHurtCharacter(skill.cardDetail);
-
                         // 1. Call grid to play animation and check character health
                         EventHanlder.CallAttackGrid(grid, skill.cardDetail);
 
@@ -345,9 +344,10 @@ public class GameManager : Singleton<GameManager>
         //yield return null;
     }
 
-    private void AttackCardHurtCharacter(CardDetail_SO cardDetail, int health, int armor)
+    private void AttackCardHurtCharacter(int hurtNum, int health, int armor)
     {
-        int hurtNum = cardDetail.attackTypeDetails.cardHurtHP;
+        //int hurtNum = data.attackTypeDetails.cardHurtHP;
+
         //Debug.Log("Chageeeeeeeeeeeeeeeeeeeee"); //FIXM
         //  Change Health
         if (armor != 0)
@@ -363,7 +363,6 @@ public class GameManager : Singleton<GameManager>
             {
                 armor -= hurtNum;
             }
-
         }
         else
         {
@@ -386,5 +385,17 @@ public class GameManager : Singleton<GameManager>
         // Update UI
         EventHanlder.CallHealthChange();
         EventHanlder.CallArmorChange();
+    }
+
+    /// <summary>
+    /// Give CardInstantiateCardList of cardDetail_SO to Instantiate the cardObj
+    /// </summary>
+    /// <param name="data"></param>
+    private void CardUseToGiveCard(CardDetail_SO data)
+    {
+        foreach (CardDetail_SO newCardData in data.attackTypeDetails.CardInstantiateCardList)
+        {
+            CardManager.Instance.AddCard(newCardData);
+        }
     }
 }
