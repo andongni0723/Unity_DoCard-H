@@ -13,5 +13,56 @@ MonoBehaviour:
   m_Name: CardDetail-Test
   m_EditorClassIdentifier: 
   cardType: 2
+  isFinalSkill: 0
+  cardName: 
+  cardSkillSprite: {fileID: 0}
   payCardNum: 2
-  cardOffset: {x: 2, y: 1}
+  cardDestription: 
+  cardUseGameStep: 0
+  attackTypeDetails:
+    cardHurtHP: 0
+    cardHurtHPCalc:
+    - isGameData: 1
+      gameDataVar: 0
+      isGetStatusNum: 0
+      getEffect:
+        target: 0
+        effectData: {fileID: 0}
+        effectCount: 0
+      isCalcSymbol: 0
+      calcSymbol: 0
+      isInt: 0
+      interger: 0
+    - isGameData: 0
+      gameDataVar: 0
+      isGetStatusNum: 0
+      getEffect:
+        target: 0
+        effectData: {fileID: 0}
+        effectCount: 0
+      isCalcSymbol: 1
+      calcSymbol: 2
+      isInt: 0
+      interger: 0
+    - isGameData: 0
+      gameDataVar: 0
+      isGetStatusNum: 0
+      getEffect:
+        target: 0
+        effectData: {fileID: 0}
+        effectCount: 0
+      isCalcSymbol: 0
+      calcSymbol: 2
+      isInt: 1
+      interger: 2
+    cardAttackOffset: {x: 0, y: 0}
+    CardEffectList: []
+    CardInstantiateCardList: []
+  tankTypeDetails:
+    addArmor: 0
+    addHealth: 0
+    CardEffectList: []
+    CardInstantiateCardList: []
+  moveTypeDetails:
+    moveType: 0
+    cardMoveOffset: {x: 0, y: 0}

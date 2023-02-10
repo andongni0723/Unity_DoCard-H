@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectName: "\u6D41\u8840"
   effectType: 1
-  effectIcon: {fileID: 0}
+  effectIcon: {fileID: 21300000, guid: a00c9f8dd7ddbc34595fa42d68d16555, type: 3}
   isAccumulate: 1
   description: 
   isBehaviorProhibit: 0

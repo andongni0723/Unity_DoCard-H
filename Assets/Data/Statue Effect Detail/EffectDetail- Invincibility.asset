@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3b2095fe16ff7418ca48551cf9a446, type: 3}
   m_Name: EffectDetail- Invincibility
   m_EditorClassIdentifier: 
-  effectName: 
+  effectName: "\u7121\u6575"
   effectType: 3
-  effectIcon: {fileID: 0}
+  effectIcon: {fileID: 21300000, guid: 858cce01cc5ab88489d9d9e9c4c6c3a1, type: 3}
   isAccumulate: 0
   description: 
   isBehaviorProhibit: 0
@@ -30,3 +30,7 @@ MonoBehaviour:
     hurtLogic:
       triggerTimeType: 0
       hurt: 0
+    isCureLogic: 0
+    cureLogic:
+      triggerTimeType: 0
+      cureNum: 0

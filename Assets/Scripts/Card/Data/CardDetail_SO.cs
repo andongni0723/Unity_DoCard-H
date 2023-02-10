@@ -19,7 +19,7 @@ public class CardDetail_SO : ScriptableObject
     public AttackTypeDetails attackTypeDetails;
     public TankTypeDetails tankTypeDetails;
     public MoveTypeDetails moveTypeDetails;
-    
+
 }
 
 
@@ -27,9 +27,36 @@ public class CardDetail_SO : ScriptableObject
 public class AttackTypeDetails
 {
     public int cardHurtHP;
+    public List<Value> cardHurtHPCalc;
     public Vector2 cardAttackOffset = new Vector2();
     public List<Effect> CardEffectList = new List<Effect>();
     public List<CardDetail_SO> CardInstantiateCardList = new List<CardDetail_SO>();
+}
+[System.Serializable]
+public class Value
+{
+    public bool isGameData;
+    public GameData gameDataVar;
+
+    [Space(15)]
+    public bool isGetStatusNum;
+    public Effect getEffect;
+
+    [Space(15)]
+    public bool isCalcSymbol;
+    public CalcSymbol calcSymbol;
+
+    [Space(15)]
+    public bool isInt;
+    public int interger;
+}
+public enum GameData
+{
+    selfHealth, selfArmor, LastStepHurt, enemyHealth, enemyArmor
+}
+public enum CalcSymbol
+{
+    plus, minus, times, dividedBy
 }
 
 [System.Serializable]
@@ -37,7 +64,9 @@ public class TankTypeDetails
 {
     public int addArmor;
     public int addHealth;
-    public List<CardDetail_SO> CardInstantiateCardList = new List<CardDetail_SO>(); 
+    public List<Effect> CardEffectList = new List<Effect>();
+
+    public List<CardDetail_SO> CardInstantiateCardList = new List<CardDetail_SO>();
 }
 
 [System.Serializable]

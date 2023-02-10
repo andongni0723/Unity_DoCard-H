@@ -11,6 +11,8 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Game Data")]
     public Character currentCharacter;
+    [HideInInspector]public GameObject PlayerGameObject;
+    [HideInInspector]public GameObject EnemyGameObject;
     public List<ConfirmAreaGridData> PlayerSettlementCardActionList = new List<ConfirmAreaGridData>();
     public List<ConfirmAreaGridData> EnemySettlementCardActionList = new List<ConfirmAreaGridData>();
     public List<ConfirmAreaGridData> CommonCardActionList = new List<ConfirmAreaGridData>();
@@ -42,10 +44,14 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
 
+        // Setting
+        PlayerGameObject = GameObject.FindWithTag("Player");
+        EnemyGameObject = GameObject.FindWithTag("Enemy");
+
         //FIXME: 未來
         ChangeGameStep(GameStep.StepStart);
 
-        //StartCoroutine(ExecuteCardActionList2(CommonCardActionList));
+        // Game Step Action 
         StartCoroutine(LoopGameStepAction());
 
     }
@@ -237,13 +243,15 @@ public class GameManager : Singleton<GameManager>
         EventHanlder.CallSendGameMessage("卡牌使用成功");
     }
 
-    private void OnPlayerHurt(int hurtNum)
+    private void OnPlayerHurt(CardDetail_SO data)
     {
-        AttackCardHurtCharacter(hurtNum, playerHealth, playerArmor);
+        AttackCardHurtCharacter(data.attackTypeDetails.cardHurtHP, playerHealth, playerArmor);
+        CardUseToGiveStatusEffect(data.attackTypeDetails.CardEffectList);
     }
-    private void OnEnemyHurt(int hurtNum)
+    private void OnEnemyHurt(CardDetail_SO data)
     {
-        AttackCardHurtCharacter(hurtNum, enemyHealth, enemyArmor);
+        AttackCardHurtCharacter(data.attackTypeDetails.cardHurtHP, enemyHealth, enemyArmor);
+        CardUseToGiveStatusEffect(data.attackTypeDetails.CardEffectList);
         //TODO: Give Effect
     }
 
@@ -396,6 +404,29 @@ public class GameManager : Singleton<GameManager>
         foreach (CardDetail_SO newCardData in data.attackTypeDetails.CardInstantiateCardList)
         {
             CardManager.Instance.AddCard(newCardData);
+        }
+    }
+
+    private void CardUseToGiveStatusEffect(List<Effect> effectList)
+    {
+        GameObject target = null;
+
+        foreach (Effect effect in effectList)
+        {
+            // Check target of status effect to give
+            if ((effect.target == Character.Self && currentCharacter == Character.Player) ||
+                effect.target == Character.Enemy && currentCharacter == Character.Enemy)
+            {
+                target = PlayerGameObject;
+            }
+            else if ((effect.target == Character.Self && currentCharacter == Character.Enemy) ||
+                     effect.target == Character.Enemy && currentCharacter == Character.Player)
+            {
+                target = EnemyGameObject;
+            }
+
+            // Add status effect to target
+            target.GetComponentInChildren<StatusManager>().AddStatusEffect(effect.effectData, effect.effectCount);
         }
     }
 }

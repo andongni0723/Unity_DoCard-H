@@ -26,8 +26,16 @@ public class ConfirmAreaGridData
 [System.Serializable]
 public class Effect
 {
-    public EffectType effectType;
-    public int effectLayerNum;
+    public Character target;
+    public EffectDetail_SO effectData;
+    public int effectCount;
+
+    public Effect(Character target, EffectDetail_SO effectData, int effectLayerNum)
+    {
+        this.target = target;
+        this.effectData = effectData;
+        this.effectCount = effectLayerNum;
+    }
 }
 
 // Enum
@@ -38,12 +46,12 @@ public enum GameStep
 
 public enum Character
 {
-    Player, Enemy
+    Player, Enemy, Self
 }
 
 public enum CardType
 {
-    Move, Tank, Attack, FinalSkill
+    Move, Tank, Attack
 }
 public enum EffectType
 {

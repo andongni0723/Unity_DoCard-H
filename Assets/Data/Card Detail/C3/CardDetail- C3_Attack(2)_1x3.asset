@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3087ffe51a4ef4f9c9184acb695cb0, type: 3}
+  m_Name: CardDetail- C3_Attack(2)_1x3
+  m_EditorClassIdentifier: 
+  cardType: 2
+  isFinalSkill: 0
+  cardName: "\u6CD5\u8853"
+  cardSkillSprite: {fileID: 21300000, guid: 19370790a791d4fc99ee3830251366f8, type: 3}
+  payCardNum: 1
+  cardDestription: "\u5728\u7D50\u7B97\u56DE\u5408\uFF0C\u5C0D\u6575\u65B93x1\u7BC4\u570D\u9020\u62102\u9EDE\u50B7\u5BB3\uFF0C\u4E26\u5C0D\u6575\u65B9\u9644\u52A0\u4E2D\u6BD2\u72C0\u614B2\u56DE"
+  cardUseGameStep: 7
+  attackTypeDetails:
+    cardHurtHP: 1
+    cardHurtHPCalc: []
+    cardAttackOffset: {x: 3, y: 1}
+    CardEffectList:
+    - target: 1
+      effectData: {fileID: 11400000, guid: e0c12c9cefa90e04393d6212266b4067, type: 2}
+      effectCount: 2
+    CardInstantiateCardList: []
+  tankTypeDetails:
+    addArmor: 0
+    addHealth: 0
+    CardEffectList: []
+    CardInstantiateCardList: []
+  moveTypeDetails:
+    moveType: 0
+    cardMoveOffset: {x: 0, y: 0}

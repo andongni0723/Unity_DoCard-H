@@ -576,6 +576,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3433954534537949736, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
   m_PrefabInstance: {fileID: 1825542672}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &151699705 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1618332290766612289, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+  m_PrefabInstance: {fileID: 1639066115}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f0a603fa2a57841a9e2ca7c0d0550e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &196846246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3433954534537949736, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
@@ -2699,7 +2710,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1072422718
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2764,7 +2775,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1072422720}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 151699705}
+        m_TargetAssemblyTypeName: StatusManager, Assembly-CSharp
+        m_MethodName: AddStatusEffect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: ec2a0ea39430153468a6b88589689ec4, type: 2}
+          m_ObjectArgumentAssemblyTypeName: EffectDetail_SO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1072422720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3978,6 +4001,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameStep: 0
   currentCharacter: 0
+  PlayerGameObject: {fileID: 0}
+  EnemyGameObject: {fileID: 0}
   PlayerSettlementCardActionList: []
   EnemySettlementCardActionList: []
   CommonCardActionList: []
@@ -4779,6 +4804,22 @@ PrefabInstance:
       propertyPath: m_Bounds.m_Extent.z
       value: 0.000000005135531
       objectReference: {fileID: 0}
+    - target: {fileID: 396905961511045339, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 396905961511045339, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 396905961511045339, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 396905961511045339, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 484583778471443356, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_Bounds.m_Center.x
       value: 0.10806143
@@ -4822,6 +4863,22 @@ PrefabInstance:
     - target: {fileID: 750636045148907357, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_Bounds.m_Extent.y
       value: 0.65632117
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618332290766612289, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+      propertyPath: statusIconPrefabs
+      value: 
+      objectReference: {fileID: 8369047133163369082, guid: 7d1ba710d856df8479fdfbdf4b878749, type: 3}
+    - target: {fileID: 1618332290766612289, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+      propertyPath: effectDetailList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618332290766612289, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+      propertyPath: effectDetailList.Array.data[0].effectData
+      value: 
+      objectReference: {fileID: 11400000, guid: 8c5c39276c056f744908717895702efc, type: 2}
+    - target: {fileID: 1618332290766612289, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+      propertyPath: effectDetailList.Array.data[0].effectLayerNum
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2061638200573219669, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6543,19 +6600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CardPositionList: []
-  CardDetailPrefabList:
-  - {fileID: 11400000, guid: 02686d30a3e38354d91e3bdeda72ee7b, type: 2}
-  - {fileID: 11400000, guid: 02686d30a3e38354d91e3bdeda72ee7b, type: 2}
-  - {fileID: 11400000, guid: a576e624f1225014e8b393b0d6e9a052, type: 2}
-  - {fileID: 11400000, guid: a576e624f1225014e8b393b0d6e9a052, type: 2}
-  - {fileID: 11400000, guid: a576e624f1225014e8b393b0d6e9a052, type: 2}
-  - {fileID: 11400000, guid: 1a4bf7c6449b412478143fd227a19f50, type: 2}
-  - {fileID: 11400000, guid: 1a4bf7c6449b412478143fd227a19f50, type: 2}
-  - {fileID: 11400000, guid: 1a4bf7c6449b412478143fd227a19f50, type: 2}
-  - {fileID: 11400000, guid: 1a4bf7c6449b412478143fd227a19f50, type: 2}
-  - {fileID: 11400000, guid: 1a4bf7c6449b412478143fd227a19f50, type: 2}
-  - {fileID: 11400000, guid: eca1eedb560fd6a4d992ddc6a103d571, type: 2}
-  - {fileID: 11400000, guid: eca1eedb560fd6a4d992ddc6a103d571, type: 2}
+  Cards: {fileID: 11400000, guid: 7685a34fa3b458b4a86c744ef9adf746, type: 2}
   cardPrefabs: {fileID: 1567381325940116902, guid: d4acbdc9735e7f849b33b194044be59c, type: 3}
   cardInstPoint: {fileID: 1023761313}
   discardPilePoint: {fileID: 230354610}
@@ -7222,6 +7267,22 @@ PrefabInstance:
       propertyPath: m_Bounds.m_Extent.z
       value: 0.000000046219782
       objectReference: {fileID: 0}
+    - target: {fileID: 396905961511045339, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 396905961511045339, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 396905961511045339, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 396905961511045339, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 484583778471443356, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_Bounds.m_Center.x
       value: 0.10806143
@@ -7266,6 +7327,10 @@ PrefabInstance:
       propertyPath: m_Bounds.m_Extent.y
       value: 0.65632117
       objectReference: {fileID: 0}
+    - target: {fileID: 1618332290766612289, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+      propertyPath: statusIconPrefabs
+      value: 
+      objectReference: {fileID: 8369047133163369082, guid: 7d1ba710d856df8479fdfbdf4b878749, type: 3}
     - target: {fileID: 2061638200573219669, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.9053341

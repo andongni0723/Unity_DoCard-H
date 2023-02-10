@@ -7,7 +7,8 @@ using DG.Tweening;
 public class CardManager : Singleton<CardManager>
 {
     public List<Vector2> CardPositionList = new List<Vector2>();
-    public List<CardDetail_SO> CardDetailPrefabList = new List<CardDetail_SO>();
+    //public List<CardDetail_SO> CardDetailPrefabList = new List<CardDetail_SO>();
+    public CharacterCards_SO Cards;
     public GameObject cardPrefabs;
     public GameObject cardInstPoint;
     public GameObject discardPilePoint;
@@ -116,7 +117,7 @@ public class CardManager : Singleton<CardManager>
     public void AddCardButton()
     {
         // Random the cardDetail
-        CardDetail_SO cardDetail = CardDetailPrefabList[Random.Range(0, CardDetailPrefabList.Count)];
+        CardDetail_SO cardDetail = Cards.Cards[Random.Range(0, Cards.Cards.Count)];
 
         AddCard(cardDetail);
     }

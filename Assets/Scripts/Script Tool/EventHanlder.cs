@@ -179,18 +179,18 @@ public static class EventHanlder
         }
     }
 
-    public static event Action<int> PlayerHurt;
-    public static event Action<int> EnemyHurt;
-    public static void CallCaracterHurt(Character hurtCharacter, int hurtNum)
+    public static event Action<CardDetail_SO> PlayerHurt;
+    public static event Action<CardDetail_SO> EnemyHurt;
+    public static void CallCaracterHurt(Character hurtCharacter, CardDetail_SO data)
     {
         if (hurtCharacter == Character.Player)
         {
             // Player Attack
-            EnemyHurt(hurtNum);
+            EnemyHurt(data);
         }
         else
         {
-            PlayerHurt(hurtNum);
+            PlayerHurt(data);
         }
     }
     #endregion

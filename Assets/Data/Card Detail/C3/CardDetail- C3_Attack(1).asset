@@ -10,22 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee3087ffe51a4ef4f9c9184acb695cb0, type: 3}
-  m_Name: CardDetail- Armor(1)
+  m_Name: CardDetail- C3_Attack(1)
   m_EditorClassIdentifier: 
-  cardType: 1
+  cardType: 2
   isFinalSkill: 0
-  cardName: "\u683C\u64CB"
-  cardSkillSprite: {fileID: 21300000, guid: a449b75e88369c54187821f7a255a9da, type: 3}
+  cardName: "\u6CD5\u8853"
+  cardSkillSprite: {fileID: 21300000, guid: f0d7bccf7e2859b4999d61e0bcadfe2f, type: 3}
   payCardNum: 0
-  cardDestription: "\u589E\u52A0\u8B77\u75321\u9EDE"
+  cardDestription: "\u5728\u4E00\u822C\u56DE\u5408\uFF0C\u5C0D\u6575\u65B91x1\u7BC4\u570D\u9020\u62101\u9EDE\u50B7\u5BB3\uFF0C\u4E26\u5C0D\u6575\u65B9\u9644\u52A0\u4E2D\u6BD2\u72C0\u614B1\u56DE"
   cardUseGameStep: 2
   attackTypeDetails:
-    cardHurtHP: 0
-    cardAttackOffset: {x: 0, y: 0}
-    CardEffectList: []
+    cardHurtHP: 1
+    cardHurtHPCalc: []
+    cardAttackOffset: {x: 1, y: 1}
+    CardEffectList:
+    - target: 1
+      effectData: {fileID: 11400000, guid: e0c12c9cefa90e04393d6212266b4067, type: 2}
+      effectCount: 1
     CardInstantiateCardList: []
   tankTypeDetails:
-    addArmor: 1
+    addArmor: 0
     addHealth: 0
     CardEffectList: []
     CardInstantiateCardList: []
