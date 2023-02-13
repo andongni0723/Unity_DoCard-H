@@ -20,7 +20,7 @@ MonoBehaviour:
   cardDestription: "\u5728\u7D50\u7B97\u56DE\u5408\uFF0C\u5C0D\u6575\u65B93x1\u7BC4\u570D\u9020\u62102\u9EDE\u50B7\u5BB3\uFF0C\u4E26\u5C0D\u6575\u65B9\u9644\u52A0\u4E2D\u6BD2\u72C0\u614B2\u56DE"
   cardUseGameStep: 7
   attackTypeDetails:
-    cardHurtHP: 1
+    cardHurtHP: 2
     cardHurtHPCalc: []
     cardAttackOffset: {x: 3, y: 1}
     CardEffectList:

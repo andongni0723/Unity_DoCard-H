@@ -17,6 +17,25 @@ public static class EventHanlder
     #endregion
     
     
+    /*Game Mangager*/
+    #region GameManger
+    // GameManager => Other Scripts
+    public static event Action OnPlayerSettlement;
+    public static event Action OnEnemySettlement;
+    public static void CallChangeGameStep(GameStep targetGameStep)
+    {
+        switch(targetGameStep)
+        {
+            case GameStep.PlayerSettlement:
+                OnPlayerSettlement?.Invoke();
+                break;
+            case GameStep.EnemySettlement:
+                OnEnemySettlement?.Invoke();
+                break;
+        }
+    }
+    #endregion
+
     /* Card System */
     #region Card System
 

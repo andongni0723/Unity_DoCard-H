@@ -11,12 +11,13 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Game Data")]
     public Character currentCharacter;
-    [HideInInspector]public GameObject PlayerGameObject;
-    [HideInInspector]public GameObject EnemyGameObject;
+    [HideInInspector] public GameObject PlayerGameObject;
+    [HideInInspector] public GameObject EnemyGameObject;
     public List<ConfirmAreaGridData> PlayerSettlementCardActionList = new List<ConfirmAreaGridData>();
     public List<ConfirmAreaGridData> EnemySettlementCardActionList = new List<ConfirmAreaGridData>();
     public List<ConfirmAreaGridData> CommonCardActionList = new List<ConfirmAreaGridData>();
-    public List<ConfirmGrid> AllConfirmGridList = new List<ConfirmGrid>();
+    public List<Effect> SettlementHurtStatusEffectActionList = new List<Effect>();
+    [SerializeField] List<ConfirmGrid> AllConfirmGridList = new List<ConfirmGrid>();
     public CardDetail_SO playingCard;
 
     public int playerHealth = 10;
@@ -95,6 +96,7 @@ public class GameManager : Singleton<GameManager>
                 case GameStep.PlayerSettlement:
                     currentCharacter = Character.Player;
                     yield return StartCoroutine(ExecuteCardActionList(PlayerSettlementCardActionList));
+                    yield return StartCoroutine(ExecuteStatusEffectActionList(SettlementHurtStatusEffectActionList));
                     ChangeGameStep(GameStep.StepEnd); //TODO: future
                     break;
 
@@ -114,6 +116,7 @@ public class GameManager : Singleton<GameManager>
     {
         gameStep = _toChange;
         gameStepText.text = _toChange.ToString();
+        EventHanlder.CallChangeGameStep(_toChange);
     }
 
     public Sprite CardTypeToCardBackgroud(CardDetail_SO data)
@@ -132,6 +135,20 @@ public class GameManager : Singleton<GameManager>
             case CardType.Tank:
                 return cardTankSprite;
 
+        }
+
+        return null;
+    }
+
+    public GameObject GameStepToGetCurrentAttackCharacter()
+    {
+        switch (currentCharacter)
+        {
+            case Character.Player:
+                return PlayerGameObject;
+
+            case Character.Enemy:
+                return EnemyGameObject;
         }
 
         return null;
@@ -191,8 +208,20 @@ public class GameManager : Singleton<GameManager>
                 break;
         }
 
-        // Check the confirm area count
-        if (gridCount == checkGridCount)
+        // Check the confirm area count and other status effect
+        if(data.cardDetail.cardType == CardType.Move && GameStepToGetCurrentAttackCharacter().GetComponentInChildren<BaseStatusManager>()              
+                .HaveStatus(EffectType.Imprison))
+        {
+            // Character have imprison status effect
+            EventHanlder.CallSendGameMessage("身上有禁錮效果，禁止移動");
+            EventHanlder.CallCancelPlayTheCard();
+        }
+        else if (gridCount != checkGridCount)
+        {
+            EventHanlder.CallSendGameMessage("請確認技能釋放範圍完整");
+            EventHanlder.CallCancelPlayTheCard();
+        }
+        else if (gridCount == checkGridCount)
         {
             //Is right
 
@@ -200,11 +229,6 @@ public class GameManager : Singleton<GameManager>
             Debug.Log("GameManager: The confirm area count is right");
             temporaryData = data;
             EventHanlder.CallPlayTheCard(data.cardDetail);
-        }
-        else
-        {
-            EventHanlder.CallSendGameMessage("請確認技能釋放範圍完整");
-            EventHanlder.CallCancelPlayTheCard();
         }
     }
 
@@ -323,6 +347,7 @@ public class GameManager : Singleton<GameManager>
                             if (confirmGrid == grid)
                             {
                                 AllConfirmGridList.Remove(confirmGrid);
+                                Debug.Log("grid find to destroy"); //FIXME
                                 break;
                             }
                         }
@@ -350,6 +375,33 @@ public class GameManager : Singleton<GameManager>
 
         actionList.Clear();
         //yield return null;
+    }
+
+    IEnumerator ExecuteStatusEffectActionList(List<Effect> effectList)
+    {
+        WaitForSeconds wait = new WaitForSeconds(2);
+
+        // Hurt Status effect
+        foreach (Effect status in effectList)
+        {
+
+            if (currentCharacter == Character.Enemy) // Player Hurt
+            {
+                AttackCardHurtCharacter(status.effectData.logicTrigger.hurtLogic.hurt, playerHealth, playerArmor);
+                PlayerGameObject.GetComponent<BaseCharacter>().StatusHurtText(status.effectData.logicTrigger.hurtLogic.hurt); // Play hurt Text animation
+                PlayerGameObject.GetComponentInChildren<BaseStatusManager>().RemoveStatusEffect(status.effectData, 1);
+            }
+            else if (currentCharacter == Character.Player) // Enemy Hurt
+            {
+                AttackCardHurtCharacter(status.effectData.logicTrigger.hurtLogic.hurt, enemyHealth, enemyArmor);
+                EnemyGameObject.GetComponent<BaseCharacter>().StatusHurtText(status.effectData.logicTrigger.hurtLogic.hurt); // Play hurt Text animation
+                EnemyGameObject.GetComponentInChildren<BaseStatusManager>().RemoveStatusEffect(status.effectData, 1);
+            }
+
+            yield return wait;
+        }
+
+        effectList.Clear();
     }
 
     private void AttackCardHurtCharacter(int hurtNum, int health, int armor)
@@ -426,7 +478,7 @@ public class GameManager : Singleton<GameManager>
             }
 
             // Add status effect to target
-            target.GetComponentInChildren<StatusManager>().AddStatusEffect(effect.effectData, effect.effectCount);
+            target.GetComponentInChildren<BaseStatusManager>().AddStatusEffect(effect.effectData, effect.effectCount);
         }
     }
 }

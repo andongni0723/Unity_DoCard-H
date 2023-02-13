@@ -576,17 +576,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3433954534537949736, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
   m_PrefabInstance: {fileID: 1825542672}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &151699705 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1618332290766612289, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
-  m_PrefabInstance: {fileID: 1639066115}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04f0a603fa2a57841a9e2ca7c0d0550e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &196846246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3433954534537949736, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
@@ -1372,6 +1361,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3433954534537949736, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
   m_PrefabInstance: {fileID: 1588377119}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &482309339 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3909525164774486646, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+  m_PrefabInstance: {fileID: 8531527269208813776}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &482309341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482309339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 206226f0407180c4184871f54010dbdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusIconPrefabs: {fileID: 8369047133163369082, guid: 7d1ba710d856df8479fdfbdf4b878749, type: 3}
+  currentEffectList:
+  - target: 0
+    effectData: {fileID: 11400000, guid: 82570a4c357c8f24a8df8e5b625d8a45, type: 2}
+    effectCount: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2776,7 +2787,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 151699705}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StatusManager, Assembly-CSharp
         m_MethodName: AddStatusEffect
         m_Mode: 2
@@ -4006,6 +4017,7 @@ MonoBehaviour:
   PlayerSettlementCardActionList: []
   EnemySettlementCardActionList: []
   CommonCardActionList: []
+  SettlementHurtStatusEffectActionList: []
   AllConfirmGridList: []
   playingCard: {fileID: 0}
   playerHealth: 10
@@ -5370,6 +5382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8358538203066619782, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+    - {fileID: 1618332290766612289, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3584534737503976410, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       insertIndex: 4
@@ -6150,6 +6163,25 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+--- !u!1 &1866279565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3909525164774486646, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+  m_PrefabInstance: {fileID: 1639066115}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1866279567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866279565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 767243ffe016d664bb556b75341d45ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusIconPrefabs: {fileID: 8369047133163369082, guid: 7d1ba710d856df8479fdfbdf4b878749, type: 3}
+  currentEffectList: []
 --- !u!1 &1868911470
 GameObject:
   m_ObjectHideFlags: 0
@@ -7809,6 +7841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8358538203066619782, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
+    - {fileID: 1618332290766612289, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3584534737503976410, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       insertIndex: -1

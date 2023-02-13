@@ -169,10 +169,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u8ACB\u78BA\u8A8D\u662F\u5426\u7D93\u904E\u78BA\u8A8D\u8ACB\u78BA\u8A8D\u662F\u5426\u7D93\u904E\u78BA\u8A8D"
+  m_text: "\u8ACB\u78BA\u8A8D\u662F\u5426\u7D93\u904E\u78BA\u8A8D\u8ACB\u78BA\u8A8D\u662F\u5426\u7D93\u904E\u78BA\u8A8D\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f68d6bebc4c20b44c9c69a65d6939d38, type: 2}
-  m_sharedMaterial: {fileID: -7739135056377280525, guid: f68d6bebc4c20b44c9c69a65d6939d38, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 238e8eca12f783f4a83b37e689ecb193, type: 2}
+  m_sharedMaterial: {fileID: -8190376197805483357, guid: 238e8eca12f783f4a83b37e689ecb193, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

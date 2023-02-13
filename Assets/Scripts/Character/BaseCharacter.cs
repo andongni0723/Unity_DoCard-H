@@ -36,4 +36,14 @@ public class BaseCharacter : MonoBehaviour
         transform.DOPunchPosition(Vector3.right, 0.5f);
         // Camera shake animation
     }
+
+    // GameManger Call
+    public void StatusHurtText(int hurtNum)
+    {
+        GameObject obj = Instantiate(GameManager.Instance.attackTextPrefab, canvus.transform) as GameObject;
+        obj.GetComponent<HurtText>().SetText(hurtNum);
+        // Character shake animation
+        transform.DOPunchPosition(Vector3.right, 0.2f);
+        // Camera shake animation
+    }
 }

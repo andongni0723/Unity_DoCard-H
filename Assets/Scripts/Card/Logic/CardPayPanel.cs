@@ -82,7 +82,7 @@ public class CardPayPanel : MonoBehaviour
             {
                 // PayCards is Enough
                 confirmButton.SetActive(true);
-                Debug.Log($"PayCardIsDoneCheck , {payCards.transform.childCount} == {data.payCardNum}"); //FIXME
+                //Debug.Log($"PayCardIsDoneCheck , {payCards.transform.childCount} == {data.payCardNum}"); //FIXM
             }
         }
     }
