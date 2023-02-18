@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class BaseCharacter : MonoBehaviour
 {
+    public CharacterCards_SO CardsDetails;
     GameObject canvus;
 
     private void Awake()
@@ -15,7 +16,7 @@ public class BaseCharacter : MonoBehaviour
     protected virtual void OnMoveAction(ConfirmAreaGridData data)
     {
         // The ConfirmAreaGridData list first element is the move target grid
-        GameObject toMoveGrid = PlayerGridManager.instance.GridPosToFindGrid(data.ConfirmGridsList[0]);
+        GameObject toMoveGrid = transform.parent.parent.GetComponent<BaseGridManager>().GridPosToFindGrid(data.ConfirmGridsList[0]);
         Debug.Log(toMoveGrid.name); //FIXME
         Vector3 toParentPosition = new Vector3(0, 0.8f, -1);
 
@@ -31,7 +32,7 @@ public class BaseCharacter : MonoBehaviour
 
         Debug.Log("Hurt text animation");//FIXME
         GameObject obj = Instantiate(GameManager.Instance.attackTextPrefab, canvus.transform) as GameObject;
-        obj.GetComponent<HurtText>().SetText(data.attackTypeDetails.cardHurtHP);
+        obj.GetComponent<HurtText>().SetText(GameManager.Instance.ValueListToInt(data.attackTypeDetails.cardHurtHPCalc));
         // Character shake animation
         transform.DOPunchPosition(Vector3.right, 0.5f);
         // Camera shake animation

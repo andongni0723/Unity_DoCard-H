@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3087ffe51a4ef4f9c9184acb695cb0, type: 3}
+  m_Name: CardDetail- C2_ HelpBag
+  m_EditorClassIdentifier: 
+  cardType: 1
+  isFinalSkill: 0
+  cardName: "\u5F13\u7BAD\u5305"
+  cardSkillSprite: {fileID: 21300000, guid: 46e8f61d13f8b49c7b2ac6beb5788f2c, type: 3}
+  payCardNum: 1
+  cardDestription: "\u7372\u5F973\u5F35\u5C04\u64CA\u548C1\u5F35\u5229\u7BAD"
+  cardUseGameStep: 0
+  attackTypeDetails:
+    cardHurtHP: 0
+    cardHurtHPCalc: []
+    cardAttackOffset: {x: 0, y: 0}
+    CardEffectList: []
+    RemoveEffectList: []
+    CardInstantiateCardList: []
+  tankTypeDetails:
+    addArmor: 0
+    addHealth: 0
+    CardEffectList: []
+    CardInstantiateCardList:
+    - {fileID: 11400000, guid: ea152c7ecc64b394d83b2b9c5844ad0d, type: 2}
+    - {fileID: 11400000, guid: ea152c7ecc64b394d83b2b9c5844ad0d, type: 2}
+    - {fileID: 11400000, guid: bed21d77293b8de4cb8269bdda07c709, type: 2}
+  moveTypeDetails:
+    moveType: 0
+    cardMoveOffset: {x: 0, y: 0}

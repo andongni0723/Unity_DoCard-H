@@ -13,15 +13,4 @@ MonoBehaviour:
   m_Name: Cards- Test
   m_EditorClassIdentifier: 
   Cards:
-  - {fileID: 11400000, guid: 02686d30a3e38354d91e3bdeda72ee7b, type: 2}
-  - {fileID: 11400000, guid: 02686d30a3e38354d91e3bdeda72ee7b, type: 2}
   - {fileID: 11400000, guid: a576e624f1225014e8b393b0d6e9a052, type: 2}
-  - {fileID: 11400000, guid: a576e624f1225014e8b393b0d6e9a052, type: 2}
-  - {fileID: 11400000, guid: a576e624f1225014e8b393b0d6e9a052, type: 2}
-  - {fileID: 11400000, guid: 1a4bf7c6449b412478143fd227a19f50, type: 2}
-  - {fileID: 11400000, guid: 1a4bf7c6449b412478143fd227a19f50, type: 2}
-  - {fileID: 11400000, guid: 1a4bf7c6449b412478143fd227a19f50, type: 2}
-  - {fileID: 11400000, guid: 1a4bf7c6449b412478143fd227a19f50, type: 2}
-  - {fileID: 11400000, guid: 1a4bf7c6449b412478143fd227a19f50, type: 2}
-  - {fileID: 11400000, guid: eca1eedb560fd6a4d992ddc6a103d571, type: 2}
-  - {fileID: 11400000, guid: eca1eedb560fd6a4d992ddc6a103d571, type: 2}

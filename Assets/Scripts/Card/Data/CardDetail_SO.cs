@@ -13,7 +13,7 @@ public class CardDetail_SO : ScriptableObject
     public Sprite cardSkillSprite;
     public int payCardNum = 0;
     public string cardDestription;
-    public GameStep cardUseGameStep;
+    public CardUseStep cardUseGameStep;
 
     [Header("Card Data")]
     public AttackTypeDetails attackTypeDetails;
@@ -30,6 +30,7 @@ public class AttackTypeDetails
     public List<Value> cardHurtHPCalc;
     public Vector2 cardAttackOffset = new Vector2();
     public List<Effect> CardEffectList = new List<Effect>();
+    public List<Effect> RemoveEffectList = new List<Effect>();
     public List<CardDetail_SO> CardInstantiateCardList = new List<CardDetail_SO>();
 }
 [System.Serializable]
@@ -56,7 +57,7 @@ public enum GameData
 }
 public enum CalcSymbol
 {
-    plus, minus, times, dividedBy
+    plus, minus, times, dividedBy, Null
 }
 
 [System.Serializable]

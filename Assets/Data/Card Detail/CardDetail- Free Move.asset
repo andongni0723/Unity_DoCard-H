@@ -13,19 +13,23 @@ MonoBehaviour:
   m_Name: CardDetail- Free Move
   m_EditorClassIdentifier: 
   cardType: 0
+  isFinalSkill: 0
   cardName: "\u6230\u8853"
   cardSkillSprite: {fileID: 21300000, guid: 202064f070884fd4da34edef35119b74, type: 3}
   payCardNum: 1
   cardDestription: "\u81EA\u7531\u79FB\u52D5\u4E00\u683C"
-  cardUseGameStep: 2
+  cardUseGameStep: 0
   attackTypeDetails:
     cardHurtHP: 0
+    cardHurtHPCalc: []
     cardAttackOffset: {x: 0, y: 0}
     CardEffectList: []
+    RemoveEffectList: []
     CardInstantiateCardList: []
   tankTypeDetails:
     addArmor: 0
     addHealth: 0
+    CardEffectList: []
     CardInstantiateCardList: []
   moveTypeDetails:
     moveType: 3

@@ -18,15 +18,27 @@ MonoBehaviour:
   cardSkillSprite: {fileID: 21300000, guid: 19370790a791d4fc99ee3830251366f8, type: 3}
   payCardNum: 1
   cardDestription: "\u5728\u7D50\u7B97\u56DE\u5408\uFF0C\u5C0D\u6575\u65B92x2\u7BC4\u570D\u9020\u62102\u9EDE\u50B7\u5BB3\uFF0C\u4E26\u5C0D\u6575\u65B9\u9644\u52A0\u4E2D\u6BD2\u72C0\u614B\u56DE1"
-  cardUseGameStep: 7
+  cardUseGameStep: 1
   attackTypeDetails:
     cardHurtHP: 2
-    cardHurtHPCalc: []
+    cardHurtHPCalc:
+    - isGameData: 0
+      gameDataVar: 0
+      isGetStatusNum: 0
+      getEffect:
+        target: 0
+        effectData: {fileID: 0}
+        effectCount: 0
+      isCalcSymbol: 0
+      calcSymbol: 0
+      isInt: 1
+      interger: 2
     cardAttackOffset: {x: 2, y: 2}
     CardEffectList:
     - target: 1
       effectData: {fileID: 11400000, guid: e0c12c9cefa90e04393d6212266b4067, type: 2}
       effectCount: 2
+    RemoveEffectList: []
     CardInstantiateCardList: []
   tankTypeDetails:
     addArmor: 0

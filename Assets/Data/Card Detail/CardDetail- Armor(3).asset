@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3087ffe51a4ef4f9c9184acb695cb0, type: 3}
+  m_Name: CardDetail- Armor(3)
+  m_EditorClassIdentifier: 
+  cardType: 1
+  isFinalSkill: 0
+  cardName: "\u683C\u64CB"
+  cardSkillSprite: {fileID: 21300000, guid: a449b75e88369c54187821f7a255a9da, type: 3}
+  payCardNum: 0
+  cardDestription: "\u589E\u52A0\u8B77\u75323\u9EDE"
+  cardUseGameStep: 0
+  attackTypeDetails:
+    cardHurtHP: 0
+    cardHurtHPCalc: []
+    cardAttackOffset: {x: 0, y: 0}
+    CardEffectList: []
+    RemoveEffectList: []
+    CardInstantiateCardList: []
+  tankTypeDetails:
+    addArmor: 3
+    addHealth: 0
+    CardEffectList: []
+    CardInstantiateCardList: []
+  moveTypeDetails:
+    moveType: 0
+    cardMoveOffset: {x: 0, y: 0}

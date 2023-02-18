@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22561fc96dcde65439a9b73e65356fc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CardsDetails: {fileID: 11400000, guid: 40f8c90443ab21e4185569e88bbc8006, type: 2}
 --- !u!1001 &24008644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -241,6 +242,10 @@ PrefabInstance:
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
       value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridForCharacter
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
@@ -698,6 +703,10 @@ PrefabInstance:
       value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridForCharacter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
       value: 0.39215687
       objectReference: {fileID: 0}
@@ -835,6 +844,10 @@ PrefabInstance:
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
       value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridForCharacter
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
@@ -1379,10 +1392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusIconPrefabs: {fileID: 8369047133163369082, guid: 7d1ba710d856df8479fdfbdf4b878749, type: 3}
-  currentEffectList:
-  - target: 0
-    effectData: {fileID: 11400000, guid: 82570a4c357c8f24a8df8e5b625d8a45, type: 2}
-    effectCount: 1
+  currentEffectList: []
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2292,6 +2302,10 @@ PrefabInstance:
       value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridForCharacter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
       value: 0.39215687
       objectReference: {fileID: 0}
@@ -2715,6 +2729,7 @@ GameObject:
   - component: {fileID: 1072422721}
   - component: {fileID: 1072422720}
   - component: {fileID: 1072422719}
+  - component: {fileID: 1072422722}
   m_Layer: 5
   m_Name: (Test) function Button
   m_TagString: Untagged
@@ -2787,13 +2802,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StatusManager, Assembly-CSharp
-        m_MethodName: AddStatusEffect
+      - m_Target: {fileID: 1072422722}
+        m_TargetAssemblyTypeName: TestChild, Assembly-CSharp
+        m_MethodName: ButtonTest
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: ec2a0ea39430153468a6b88589689ec4, type: 2}
-          m_ObjectArgumentAssemblyTypeName: EffectDetail_SO, Assembly-CSharp
+          m_ObjectArgument: {fileID: 11400000, guid: 51e2aa09d40d091478fc6f94c62ea36b, type: 2}
+          m_ObjectArgumentAssemblyTypeName: CardDetail_SO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2837,6 +2852,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072422717}
   m_CullTransparentMesh: 1
+--- !u!114 &1072422722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072422717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ac42363d9dde54ba3392982968422a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1129081672
 GameObject:
   m_ObjectHideFlags: 0
@@ -2952,6 +2979,10 @@ PrefabInstance:
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
       value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridForCharacter
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
@@ -4022,6 +4053,7 @@ MonoBehaviour:
   playingCard: {fileID: 0}
   playerHealth: 10
   playerArmor: 0
+  lastHurtNum: 0
   enemyHealth: 10
   enemyArmor: 2
   cardAttackSprite: {fileID: 21300000, guid: 30f806b6b053646499124886a706a201, type: 3}
@@ -4589,6 +4621,10 @@ PrefabInstance:
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
       value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridForCharacter
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
@@ -5557,6 +5593,10 @@ PrefabInstance:
       value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridForCharacter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
       value: 0.39215687
       objectReference: {fileID: 0}
@@ -5963,6 +6003,10 @@ PrefabInstance:
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
       value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridForCharacter
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
@@ -6632,10 +6676,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CardPositionList: []
-  Cards: {fileID: 11400000, guid: 7685a34fa3b458b4a86c744ef9adf746, type: 2}
+  Cards: {fileID: 11400000, guid: d9260690fcaf0d845bc92e33154b9dc0, type: 2}
   cardPrefabs: {fileID: 1567381325940116902, guid: d4acbdc9735e7f849b33b194044be59c, type: 3}
   cardInstPoint: {fileID: 1023761313}
   discardPilePoint: {fileID: 230354610}
+  stepStartPlayCardNum: 8
   cardWidth: 286
   moveX: 20
   maxCardNum: 5
@@ -7071,6 +7116,10 @@ PrefabInstance:
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
       value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridForCharacter
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
@@ -7864,3 +7913,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da85c448150b6e64c84aa0f7a0456621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CardsDetails: {fileID: 11400000, guid: 40f8c90443ab21e4185569e88bbc8006, type: 2}

@@ -15,19 +15,28 @@ public static class EventHanlder
         SendGameMessage?.Invoke(message);
     }
     #endregion
-    
-    
+
+
     /*Game Mangager*/
     #region GameManger
     // GameManager => Other Scripts
     public static event Action OnPlayerSettlement;
     public static event Action OnEnemySettlement;
+    public static event Action OnPlayerStep;
+    public static event Action OnEnemyStep;
+
     public static void CallChangeGameStep(GameStep targetGameStep)
     {
-        switch(targetGameStep)
+        switch (targetGameStep)
         {
+            case GameStep.PlayerStep:
+                OnPlayerStep?.Invoke();
+                break;
             case GameStep.PlayerSettlement:
                 OnPlayerSettlement?.Invoke();
+                break;
+            case GameStep.EnemyStep:
+                OnEnemyStep?.Invoke();
                 break;
             case GameStep.EnemySettlement:
                 OnEnemySettlement?.Invoke();
@@ -48,6 +57,11 @@ public static class EventHanlder
 
 
     // Card Event
+    public static event Action<CharacterCards_SO> ChangeCardsOnStepStart;
+    public static void CallChangeCardsOnStepStart(CharacterCards_SO cards)
+    {
+        ChangeCardsOnStepStart?.Invoke(cards);
+    }
     public static event Action PlayerStepAddCard;
     public static void CallPlayerStepAddCard()
     {
@@ -80,16 +94,21 @@ public static class EventHanlder
         // cardDetail: "GameManager" will sent CardDetail_SO
         data.cardDetail = GameManager.Instance.playingCard;
 
-        // ConfirmGridsList: "GridManager" confirm the grid of mouse choose 
-        switch (data.cardDetail.cardType)
-        {
-            case CardType.Attack: // Attack card will aim the Enemy's grid
-                data.ConfirmGridsList = EndDragEnemyGridUpdateData?.Invoke();
-                break;
+        // Setting data target for grid
+        data.targetGridForCharacter =data.cardDetail.cardType == CardType.Move?  Character.Self : Character.Enemy;
 
-            case CardType.Move: // Move card will aim the Player's grid
-                data.ConfirmGridsList = EndDragPlayerGridUpdateData?.Invoke();
-                break;
+        // ConfirmGridsList: "GridManager" confirm the grid of mouse choose 
+        if (GameManager.Instance.currentCharacter == Character.Player && data.cardDetail.cardType == CardType.Move ||
+            GameManager.Instance.currentCharacter == Character.Enemy && data.cardDetail.cardType == CardType.Attack)
+        {
+            // Move card will aim the Player's grid
+            data.ConfirmGridsList = EndDragPlayerGridUpdateData?.Invoke();
+        }
+        else if (GameManager.Instance.currentCharacter == Character.Player && data.cardDetail.cardType == CardType.Attack ||
+                 GameManager.Instance.currentCharacter == Character.Enemy && data.cardDetail.cardType == CardType.Move)
+        {
+            // Attack card will aim the Enemy's grid
+            data.ConfirmGridsList = EndDragEnemyGridUpdateData?.Invoke();
         }
 
         CardEndDrag?.Invoke();
@@ -157,7 +176,7 @@ public static class EventHanlder
     }
     #endregion
 
-    
+
     /* Health System */
     #region Health System
 
@@ -176,10 +195,14 @@ public static class EventHanlder
 
     // GameManager execute the card action
     // GameManager => Grid && => Player
-    public static event Action<ConfirmAreaGridData> MoveAction;
+    public static event Action<ConfirmAreaGridData> PlayerMoveAction;
+    public static event Action<ConfirmAreaGridData> EnemyMoveAction;
     public static void CallMoveAction(ConfirmAreaGridData data)
     {
-        MoveAction?.Invoke(data);
+        if(GameManager.Instance.currentCharacter == Character.Player)
+            PlayerMoveAction?.Invoke(data);
+        else
+            EnemyMoveAction.Invoke(data);
     }
 
     //GameManager execute the attack action, call the grid of skill area
@@ -190,11 +213,11 @@ public static class EventHanlder
         if (GameManager.Instance.currentCharacter == Character.Player)
         {
             // Player Attack
-            PlayerAttackGrid(grid, data);
+            PlayerAttackGrid?.Invoke(grid, data);
         }
         else
         {
-            //EnemyAttackGrid(grid, data); //TODO: Future AI
+            EnemyAttackGrid?.Invoke(grid, data); //TODO: Future AI
         }
     }
 

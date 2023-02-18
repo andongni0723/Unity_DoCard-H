@@ -19,10 +19,15 @@ public class GameManager : Singleton<GameManager>
     public List<Effect> SettlementHurtStatusEffectActionList = new List<Effect>();
     [SerializeField] List<ConfirmGrid> AllConfirmGridList = new List<ConfirmGrid>();
     public CardDetail_SO playingCard;
+    public int playerHurtSumCurrent;
+    public int enemyHurtSumCurrent;
+
+    public int playerLastHurtNum;
+    public int enemyLastHurtNum;
 
     public int playerHealth = 10;
     public int playerArmor = 0;
-
+    public int lastHurtNum = 0;
     public int enemyHealth = 10;
     public int enemyArmor = 0;
 
@@ -56,7 +61,7 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(LoopGameStepAction());
 
     }
-    IEnumerator LoopGameStepAction()
+    protected virtual IEnumerator LoopGameStepAction()
     {
         while (true)
         {
@@ -69,6 +74,7 @@ public class GameManager : Singleton<GameManager>
                 case GameStep.PlayerStep:
 
                     ChangeGameStep(GameStep.CommonStep);
+                    ChangeCardsOnStepStart(currentCharacter);
                     EventHanlder.CallPlayerStepAddCard();
                     break;
 
@@ -80,11 +86,16 @@ public class GameManager : Singleton<GameManager>
                 case GameStep.EnemySettlement:
                     //TODO: future to enemy 
                     currentCharacter = Character.Enemy;
+                    yield return StartCoroutine(ExecuteCardActionList(EnemySettlementCardActionList));
+                    yield return StartCoroutine(ExecuteStatusEffectActionList(SettlementHurtStatusEffectActionList));
+                    enemyLastHurtNum = enemyHurtSumCurrent;
+                    enemyHurtSumCurrent = 0;
                     ChangeGameStep(GameStep.EnemyStep);
                     break;
 
                 case GameStep.EnemyStep:
                     ChangeGameStep(GameStep.AIStep);
+                    ChangeCardsOnStepStart(currentCharacter);
                     break;
 
                 case GameStep.AIStep:
@@ -97,6 +108,8 @@ public class GameManager : Singleton<GameManager>
                     currentCharacter = Character.Player;
                     yield return StartCoroutine(ExecuteCardActionList(PlayerSettlementCardActionList));
                     yield return StartCoroutine(ExecuteStatusEffectActionList(SettlementHurtStatusEffectActionList));
+                    playerLastHurtNum = playerHurtSumCurrent;
+                    playerHurtSumCurrent = 0;
                     ChangeGameStep(GameStep.StepEnd); //TODO: future
                     break;
 
@@ -112,7 +125,7 @@ public class GameManager : Singleton<GameManager>
     /// <summary>
     /// Change GameStep to args
     /// </summary>
-    public void ChangeGameStep(GameStep _toChange)
+    public virtual void ChangeGameStep(GameStep _toChange)
     {
         gameStep = _toChange;
         gameStepText.text = _toChange.ToString();
@@ -152,6 +165,126 @@ public class GameManager : Singleton<GameManager>
         }
 
         return null;
+    }
+
+    public float GameDataEnumToValue(GameData targetGamedata)
+    {
+        switch (targetGamedata)
+        {
+            case GameData.selfHealth:
+                return currentCharacter == Character.Player ? playerHealth : enemyHealth;
+
+            case GameData.selfArmor:
+                return currentCharacter == Character.Player ? playerArmor : enemyArmor;
+
+            case GameData.enemyHealth:
+                return currentCharacter == Character.Enemy ? playerHealth : enemyHealth;
+
+            case GameData.enemyArmor:
+                return currentCharacter == Character.Enemy ? playerArmor : enemyArmor;
+
+            case GameData.LastStepHurt:
+                if(currentCharacter == Character.Player)
+                    return playerLastHurtNum;
+                else
+                    return enemyLastHurtNum;
+
+            default:
+                return 0;
+
+        }
+    }
+
+    public float FloatAndCalcSymbolToCalc(float a, CalcSymbol calcSymbol, float b)
+    {
+        switch (calcSymbol)
+        {
+            case CalcSymbol.plus:
+                return a + b;
+            case CalcSymbol.minus:
+                return a - b;
+            case CalcSymbol.times:
+                return a * b;
+            case CalcSymbol.dividedBy:
+                return a / b;
+            default:
+                return 0;
+        }
+    }
+
+    public float ValueToFloat(Value value)
+    {
+        // Need calcNum
+        if (value.isGameData)
+        {
+            // GameData
+            return GameDataEnumToValue(value.gameDataVar);
+        }
+        else if (value.isGetStatusNum)
+        {
+            // Effect 
+            if (value.getEffect.target == Character.Self && currentCharacter == Character.Player ||
+               value.getEffect.target == Character.Enemy && currentCharacter == Character.Enemy)
+            {
+                return PlayerGameObject.GetComponentInChildren<BaseStatusManager>().GetStatusLevel(value.getEffect.effectData.effectType);
+            }
+            else if (value.getEffect.target == Character.Self && currentCharacter == Character.Enemy ||
+                     value.getEffect.target == Character.Enemy && currentCharacter == Character.Player)
+            {
+                return EnemyGameObject.GetComponentInChildren<BaseStatusManager>().GetStatusLevel(value.getEffect.effectData.effectType);
+            }
+        }
+        else if (value.isInt)
+        {
+            // Int
+            return value.interger;
+        }
+
+        return 0;
+    }
+
+    public int ValueListToInt(List<Value> valueList)
+    {
+        float waitCalcNum = 0;
+        float waitCalcNum2 = 0;
+        CalcSymbol calcSymbol = CalcSymbol.Null;
+        float respond = 0;
+
+        foreach (Value value in valueList)
+        {
+            if (waitCalcNum == 0)
+            {
+                waitCalcNum = ValueToFloat(value);
+            }
+            else if (calcSymbol == CalcSymbol.Null && value.isCalcSymbol)
+            {
+                calcSymbol = value.calcSymbol;
+            }
+            else if (waitCalcNum2 == 0)
+            {
+                waitCalcNum2 = ValueToFloat(value);
+            }
+            else
+            {
+                Debug.LogError("GameManager: Card or Status ValueList Data Error (Value List switch Error)");
+
+            }
+
+            if (waitCalcNum != 0 && calcSymbol != CalcSymbol.Null && waitCalcNum2 != 0)
+            {
+                // Calc
+                respond = FloatAndCalcSymbolToCalc(waitCalcNum, calcSymbol, waitCalcNum2);
+            }
+        }
+
+        // Is dont need calc
+        if (respond == 0)
+        {
+            respond = waitCalcNum;
+        }
+
+        Debug.Log($"{waitCalcNum} {calcSymbol} {waitCalcNum2} = {respond}"); //FIXME
+        return (int)respond;
     }
     #endregion
 
@@ -209,7 +342,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         // Check the confirm area count and other status effect
-        if(data.cardDetail.cardType == CardType.Move && GameStepToGetCurrentAttackCharacter().GetComponentInChildren<BaseStatusManager>()              
+        if (data.cardDetail.cardType == CardType.Move && GameStepToGetCurrentAttackCharacter().GetComponentInChildren<BaseStatusManager>()
                 .HaveStatus(EffectType.Imprison))
         {
             // Character have imprison status effect
@@ -250,12 +383,16 @@ public class GameManager : Singleton<GameManager>
 
         switch (temporaryData.cardDetail.cardUseGameStep)
         {
-            case GameStep.CommonStep:
+            case CardUseStep.CommondStep:
+                //Debug.Log("add temporay"); //FIXM
                 CommonCardActionList.Add(temporaryData);
                 break;
 
-            case GameStep.PlayerSettlement:
-                PlayerSettlementCardActionList.Add(temporaryData);//TODO: enemy
+            case CardUseStep.SettlementStep:
+                if (currentCharacter == Character.Player)
+                    PlayerSettlementCardActionList.Add(temporaryData);
+                else
+                    EnemySettlementCardActionList.Add(temporaryData);//TODO: enemy
                 break;
         }
 
@@ -269,17 +406,24 @@ public class GameManager : Singleton<GameManager>
 
     private void OnPlayerHurt(CardDetail_SO data)
     {
-        AttackCardHurtCharacter(data.attackTypeDetails.cardHurtHP, playerHealth, playerArmor);
+        int damage = ValueListToInt(data.attackTypeDetails.cardHurtHPCalc);
+        AttackCardHurtCharacter(damage, playerHealth, playerArmor);
         CardUseToGiveStatusEffect(data.attackTypeDetails.CardEffectList);
+        CardUseToRemoveStatusEffect(data.attackTypeDetails.RemoveEffectList);
+
+        playerHurtSumCurrent += damage;
     }
     private void OnEnemyHurt(CardDetail_SO data)
     {
-        AttackCardHurtCharacter(data.attackTypeDetails.cardHurtHP, enemyHealth, enemyArmor);
+        int damage = ValueListToInt(data.attackTypeDetails.cardHurtHPCalc);
+        AttackCardHurtCharacter(damage, enemyHealth, enemyArmor);
         CardUseToGiveStatusEffect(data.attackTypeDetails.CardEffectList);
-        //TODO: Give Effect
+        CardUseToRemoveStatusEffect(data.attackTypeDetails.RemoveEffectList);
+
+        enemyHurtSumCurrent += damage;
     }
 
-    private void OnCommandStepEnd()
+    protected virtual void OnCommandStepEnd()
     {
         ChangeGameStep(GameStep.EnemySettlement);
     }
@@ -294,28 +438,60 @@ public class GameManager : Singleton<GameManager>
         //          |- ...
 
         AllConfirmGridList.Clear();
-        foreach (ConfirmAreaGridData data in PlayerSettlementCardActionList)
-        {
-            foreach (ConfirmGrid grid in data.ConfirmGridsList)
-            {
-                //Debug.Log("AAAAA");//FIXM
 
-                AllConfirmGridList.Add(grid);
+        if (currentCharacter == Character.Player)
+        {
+            foreach (ConfirmAreaGridData data in PlayerSettlementCardActionList)
+            {
+                foreach (ConfirmGrid grid in data.ConfirmGridsList)
+                {
+                    //Debug.Log("AAAAA");//FIXM
+
+                    AllConfirmGridList.Add(grid);
+                }
             }
         }
+        else
+        {
+            //Enemy
+            foreach (ConfirmAreaGridData data in EnemySettlementCardActionList)
+            {
+                foreach (ConfirmGrid grid in data.ConfirmGridsList)
+                {
+                    //Debug.Log("AAAAA");//FIXM
+
+                    AllConfirmGridList.Add(grid);
+                }
+            }
+        }
+
 
         // Reload when function done
         EventHanlder.CallReloadGridColor(AllConfirmGridList); // To GridManager reload grid color
     }
 
+    protected void ChangeCardsOnStepStart(Character character)
+    {
+        switch (character)
+        {
+            case Character.Player:
+                EventHanlder.CallChangeCardsOnStepStart(PlayerGameObject.GetComponent<BaseCharacter>().CardsDetails);
+                break;
+
+            case Character.Enemy:
+                EventHanlder.CallChangeCardsOnStepStart(EnemyGameObject.GetComponent<BaseCharacter>().CardsDetails);
+                break;
+        }
+    }
 
     /// <summary>
     /// Execute CardActionList by step
     /// </summary>
     /// <param name="actionList">CardActionList</param>
-    IEnumerator ExecuteCardActionList(List<ConfirmAreaGridData> actionList)
+    protected IEnumerator ExecuteCardActionList(List<ConfirmAreaGridData> actionList)
     {
         WaitForSeconds wait;
+        Debug.Log("ExecuteCardActionList"); //FIXME
 
         // If don't setting wait time, this method will error 
         // (can't add item in list when coroutine not done )
@@ -364,8 +540,18 @@ public class GameManager : Singleton<GameManager>
                     break;
 
                 case CardType.Tank:
-                    playerArmor += skill.cardDetail.tankTypeDetails.addArmor;
-                    playerHealth += skill.cardDetail.tankTypeDetails.addHealth;
+                    if (currentCharacter == Character.Player)
+                    {
+                        playerArmor += skill.cardDetail.tankTypeDetails.addArmor;
+                        playerHealth += skill.cardDetail.tankTypeDetails.addHealth;
+                    }
+                    else
+                    {
+                        //Enemy
+                        enemyArmor += skill.cardDetail.tankTypeDetails.addArmor;
+                        enemyHealth += skill.cardDetail.tankTypeDetails.addHealth;
+                    }
+
                     EventHanlder.CallArmorChange();
                     EventHanlder.CallHealthChange();
                     break;
@@ -377,7 +563,7 @@ public class GameManager : Singleton<GameManager>
         //yield return null;
     }
 
-    IEnumerator ExecuteStatusEffectActionList(List<Effect> effectList)
+    protected IEnumerator ExecuteStatusEffectActionList(List<Effect> effectList)
     {
         WaitForSeconds wait = new WaitForSeconds(2);
 
@@ -457,6 +643,11 @@ public class GameManager : Singleton<GameManager>
         {
             CardManager.Instance.AddCard(newCardData);
         }
+
+        foreach (CardDetail_SO newCardData in data.tankTypeDetails.CardInstantiateCardList)
+        {
+            CardManager.Instance.AddCard(newCardData);
+        }
     }
 
     private void CardUseToGiveStatusEffect(List<Effect> effectList)
@@ -479,6 +670,29 @@ public class GameManager : Singleton<GameManager>
 
             // Add status effect to target
             target.GetComponentInChildren<BaseStatusManager>().AddStatusEffect(effect.effectData, effect.effectCount);
+        }
+    }
+
+    private void CardUseToRemoveStatusEffect(List<Effect> effectList)
+    {
+        GameObject target = null;
+
+        foreach (Effect effect in effectList)
+        {
+            // Check target of status effect to give
+            if ((effect.target == Character.Self && currentCharacter == Character.Player) ||
+                effect.target == Character.Enemy && currentCharacter == Character.Enemy)
+            {
+                target = PlayerGameObject;
+            }
+            else if ((effect.target == Character.Self && currentCharacter == Character.Enemy) ||
+                     effect.target == Character.Enemy && currentCharacter == Character.Player)
+            {
+                target = EnemyGameObject;
+            }
+
+            // Remove status effect to target
+            target.GetComponentInChildren<BaseStatusManager>().RemoveStatusEffect(effect.effectData, -1);
         }
     }
 }

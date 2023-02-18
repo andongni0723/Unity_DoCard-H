@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3087ffe51a4ef4f9c9184acb695cb0, type: 3}
+  m_Name: CardDetail- C1_FinalSkill
+  m_EditorClassIdentifier: 
+  cardType: 2
+  isFinalSkill: 1
+  cardName: "\u80CC\u6C34\u4E00\u6230!"
+  cardSkillSprite: {fileID: 21300000, guid: 90bb9d8a5fed560469640aeab664f079, type: 3}
+  payCardNum: 5
+  cardDestription: "\u5728\u7D50\u7B97\u56DE\u5408\uFF0C\\n\u5C0D\u6575\u65B93x3\u7BC4\u570D\u9020\u6210(\u4E0A\u56DE\u5408\u6240\u53D7\u50B7\u5BB3x2)\u9EDE\u50B7\u5BB3\uFF0C\u91CB\u653E\u5F8C\u7ACB\u523B\u7372\u5F975\u5F35\u683C\u64CB"
+  cardUseGameStep: 1
+  attackTypeDetails:
+    cardHurtHP: 0
+    cardHurtHPCalc:
+    - isGameData: 1
+      gameDataVar: 2
+      isGetStatusNum: 0
+      getEffect:
+        target: 0
+        effectData: {fileID: 0}
+        effectCount: 0
+      isCalcSymbol: 0
+      calcSymbol: 0
+      isInt: 0
+      interger: 0
+    - isGameData: 0
+      gameDataVar: 0
+      isGetStatusNum: 0
+      getEffect:
+        target: 0
+        effectData: {fileID: 0}
+        effectCount: 0
+      isCalcSymbol: 1
+      calcSymbol: 2
+      isInt: 0
+      interger: 0
+    - isGameData: 0
+      gameDataVar: 0
+      isGetStatusNum: 0
+      getEffect:
+        target: 0
+        effectData: {fileID: 0}
+        effectCount: 0
+      isCalcSymbol: 0
+      calcSymbol: 4
+      isInt: 1
+      interger: 2
+    cardAttackOffset: {x: 3, y: 3}
+    CardEffectList: []
+    RemoveEffectList: []
+    CardInstantiateCardList:
+    - {fileID: 11400000, guid: 02686d30a3e38354d91e3bdeda72ee7b, type: 2}
+    - {fileID: 11400000, guid: 02686d30a3e38354d91e3bdeda72ee7b, type: 2}
+    - {fileID: 11400000, guid: 02686d30a3e38354d91e3bdeda72ee7b, type: 2}
+    - {fileID: 11400000, guid: 02686d30a3e38354d91e3bdeda72ee7b, type: 2}
+    - {fileID: 11400000, guid: 02686d30a3e38354d91e3bdeda72ee7b, type: 2}
+  tankTypeDetails:
+    addArmor: 0
+    addHealth: 0
+    CardEffectList: []
+    CardInstantiateCardList: []
+  moveTypeDetails:
+    moveType: 0
+    cardMoveOffset: {x: 0, y: 0}

@@ -24,12 +24,12 @@ public class PlayerController : BaseCharacter
     #region Event
     private void OnEnable()
     {
-        EventHanlder.MoveAction += OnMoveAction; // Move action (animation)
+        EventHanlder.PlayerMoveAction += OnMoveAction; // Move action (animation)
         EventHanlder.PlayerHurt += Hurt; // hurt text
     }
     private void OnDisable() 
     {
-        EventHanlder.MoveAction -= OnMoveAction;
+        EventHanlder.PlayerMoveAction -= OnMoveAction;
         EventHanlder.PlayerHurt -= Hurt; // hurt text
     }
     #endregion

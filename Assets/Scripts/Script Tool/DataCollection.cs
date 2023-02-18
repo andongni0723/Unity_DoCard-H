@@ -20,6 +20,7 @@ public class ConfirmGrid
 public class ConfirmAreaGridData
 {
     public List<ConfirmGrid> ConfirmGridsList = new List<ConfirmGrid>();
+    public Character targetGridForCharacter;
     public CardDetail_SO cardDetail;
 }
 
@@ -52,6 +53,11 @@ public enum Character
 public enum CardType
 {
     Move, Tank, Attack
+}
+
+public enum CardUseStep
+{
+    CommondStep, SettlementStep
 }
 public enum EffectType
 {

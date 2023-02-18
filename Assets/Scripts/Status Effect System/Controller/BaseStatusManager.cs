@@ -12,7 +12,7 @@ public class BaseStatusManager : MonoBehaviour
         UpdateStatusIconWithList();
     }
 
-    
+
     public void AddStatusEffect(EffectDetail_SO newData, int newStatusCount)
     {
         // Loop effect List to find have same status
@@ -48,12 +48,12 @@ public class BaseStatusManager : MonoBehaviour
             if (status.effectData == targetData)
             {
                 // Same status
-                if (targetData.isAccumulate)
+                if (targetData.isAccumulate && newStatusCount != -1)
                 {
                     status.effectCount -= newStatusCount;
                 }
 
-                if(status.effectCount == 0)
+                if (status.effectCount == 0 || newStatusCount == -1)
                 {
                     currentEffectList.Remove(status);
                 }
@@ -69,10 +69,23 @@ public class BaseStatusManager : MonoBehaviour
     {
         foreach (Effect status in currentEffectList)
         {
-            if(status.effectData.effectType == targetStatusType) return true;
+            if (status.effectData.effectType == targetStatusType) return true;
         }
 
         return false;
+    }
+
+    public int GetStatusLevel(EffectType targetStatusType)
+    {
+        if (HaveStatus(targetStatusType))
+        {
+            foreach (Effect status in currentEffectList)
+            {
+                if (status.effectData.effectType == targetStatusType) return status.effectCount;
+            }
+        }
+        
+        return 0;
     }
 
     private void UpdateStatusIconWithList()
@@ -98,10 +111,11 @@ public class BaseStatusManager : MonoBehaviour
     {
         foreach (Effect status in currentEffectList)
         {
-            if(status.effectData.logicTrigger.isHurtLogic)
+            if (status.effectData.logicTrigger.isHurtLogic)
             {
                 // hurt status on settlement step will hurt self
                 // Add in gameManager list wait to hurt 
+                //Debug.Log($"{transform.parent.parent.name}: Add(status)");
                 GameManager.Instance.SettlementHurtStatusEffectActionList.Add(status);
             }
         }

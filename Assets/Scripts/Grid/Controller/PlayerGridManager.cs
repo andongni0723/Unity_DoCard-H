@@ -4,28 +4,16 @@ using UnityEngine;
 
 public class PlayerGridManager : BaseGridManager
 {
-    public static PlayerGridManager instance;
-
-    protected override void Awake() {
-        // Singleton
-        if(instance != null)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            instance = this;
-        }
-
-        base.Awake();
-    }
+    
     protected override void OnEnable()
     {
-        EventHanlder.EndDragPlayerGridUpdateData += UpdateData;
+        EventHanlder.EndDragPlayerGridUpdateData += UpdateData; // update data
+        EventHanlder.EnemyAttackGrid += OnAttackGridToCall; // Find the target grid and call the event 
     }
 
     protected override void OnDisable()
     {
         EventHanlder.EndDragPlayerGridUpdateData -= UpdateData;
+        EventHanlder.EnemyAttackGrid -= OnAttackGridToCall;
     }
 }

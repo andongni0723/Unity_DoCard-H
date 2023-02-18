@@ -169,18 +169,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f45ffd452ed65c4f87ac5c7285c3f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardDetail: {fileID: 11400000, guid: 175ed80d0d42ae949a5c10180aa2ce9a, type: 2}
+  cardNameText: {fileID: 0}
+  cardPayNumText: {fileID: 0}
+  cardImg: {fileID: 0}
+  cardDescriptionText: {fileID: 0}
   halfPadding: {x: 0, y: 0, z: 90, w: 0}
   zeroPadding: {x: 0, y: 0, z: 0, w: 0}
   image: {fileID: 0}
   originParent: {fileID: 0}
   playCardParent: {fileID: 0}
-  cardNameText: {fileID: 0}
-  cardPayNumText: {fileID: 0}
-  cardImg: {fileID: 0}
-  cardDescriptionText: {fileID: 0}
+  cardDetail: {fileID: 11400000, guid: 175ed80d0d42ae949a5c10180aa2ce9a, type: 2}
   id: 0
   yPos: 0
+  isDrag: 0
+  cantUse: 0
 --- !u!1 &1755290914982902649
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,10 +519,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u5728\u7D50\u7B97\u56DE\u5408\uFF0C\\n\u5C0D\u6575\u65B93x3\u7BC4\u570D\u9020\u6210(\u4E0A\u56DE\u5408\u6240\u53D7\u50B7\u5BB3x2)\u9EDE\u50B7\u5BB3\uFF0C\u4E26\u7372\u5F975\u9EDE\u8B77\u7532"
+  m_text: "\u5728\u7D50\u7B97\u56DE\u5408\uFF0C\\n\u5C0D\u6575\u65B93x3\u7BC4\u570D\u9020\u62102\u9EDE\u50B7\u5BB3\uFF0C\u4E26\u5C0D\u6575\u65B9\u9644\u52A0\u6D41\u8840\u72C0\u614B1\u56DE\u5408\u3002\u91CB\u653E\u5F8C\u7ACB\u523B\u7372\u5F972\u5F35\u5F13\u7BAD\u5305"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f68d6bebc4c20b44c9c69a65d6939d38, type: 2}
-  m_sharedMaterial: {fileID: -7739135056377280525, guid: f68d6bebc4c20b44c9c69a65d6939d38, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c158ec90ee2dcf940bcf4a4f1cc4cea2, type: 2}
+  m_sharedMaterial: {fileID: 3454009215131388801, guid: c158ec90ee2dcf940bcf4a4f1cc4cea2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

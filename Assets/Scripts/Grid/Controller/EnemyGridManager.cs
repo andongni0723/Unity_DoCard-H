@@ -6,8 +6,8 @@ public class EnemyGridManager : BaseGridManager
 {
     protected override void OnEnable()
     {
-        EventHanlder.EndDragEnemyGridUpdateData += UpdateData;
-        EventHanlder.PlayerAttackGrid += OnAttackGridToCall;
+        EventHanlder.EndDragEnemyGridUpdateData += UpdateData;  // update data
+        EventHanlder.PlayerAttackGrid += OnAttackGridToCall;  // Find the target grid and call the event 
     }
 
     protected override void OnDisable()

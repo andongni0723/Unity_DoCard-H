@@ -18,11 +18,13 @@ MonoBehaviour:
   cardSkillSprite: {fileID: 21300000, guid: a449b75e88369c54187821f7a255a9da, type: 3}
   payCardNum: 0
   cardDestription: "\u589E\u52A0\u8B77\u75321\u9EDE"
-  cardUseGameStep: 2
+  cardUseGameStep: 0
   attackTypeDetails:
     cardHurtHP: 0
+    cardHurtHPCalc: []
     cardAttackOffset: {x: 0, y: 0}
     CardEffectList: []
+    RemoveEffectList: []
     CardInstantiateCardList: []
   tankTypeDetails:
     addArmor: 1

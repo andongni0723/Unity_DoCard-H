@@ -8,7 +8,7 @@ public class Grid : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     [Header("Script Setting")]
-    public bool isEnemyGrid = false;
+    public Character gridForCharacter;
     public ConfirmGrid gridID;
 
     [Header("Grid Setting")]
@@ -34,8 +34,9 @@ public class Grid : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (CheckPlayingCardType())
+    {   
+        // Check Grid will open or close
+        if (CheckPlayingCardType() &&　CheckGridOpenWithCurrentCharacter())
         {
             // When Mouse Cofirm the area, the grid color will change
             if (other.CompareTag("mousePointer"))
@@ -120,10 +121,28 @@ public class Grid : MonoBehaviour
     {
         CardDetail_SO playingCard = GameManager.Instance.playingCard;
 
-        if (playingCard.cardType == CardType.Attack && isEnemyGrid) return true; //Playing a attack card
-        if (playingCard.cardType == CardType.Move && !isEnemyGrid) return true;  //Playing a move card
+        //Playing a attack card 
+        //Playing a move card
+        if (playingCard.cardType == CardType.Attack || playingCard.cardType == CardType.Move) return true;
 
-        return false; //Playing a tank card
+        //Playing a tank card
+        return false;
+    }
+
+    /// <summary>
+    /// If in Player Step, the Enemy's grids must be close, vice versa
+    /// </summary>
+    /// <returns></returns>
+    public bool CheckGridOpenWithCurrentCharacter()
+    {
+        bool isGridForCurrentCharacter = GameManager.Instance.currentCharacter == gridForCharacter;
+        bool isCardForSelfGrid = GameManager.Instance.playingCard.cardType == CardType.Move? true : false;
+
+        //self step play attack card: enemy grid
+        //self step play move card: self gird
+        if(isCardForSelfGrid == isGridForCurrentCharacter) return true;
+
+        return false;
     }
 
     public void CheckGridColor()
@@ -157,14 +176,14 @@ public class Grid : MonoBehaviour
     public void CallAttackGrid(GameObject animPrefabs, CardDetail_SO data)
     {
         // Play the animation object
-        var obj = Instantiate(animPrefabs, transform.position, Quaternion.identity, transform) as GameObject;       
+        var obj = Instantiate(animPrefabs, transform.position, Quaternion.identity, transform) as GameObject;
         obj.transform.localPosition = Vector3.up; // Set animation object position
 
         // Check character health
-        if(isCharacterOn)
+        if (isCharacterOn)
         {
             // Character hurt, need play animation and check hurt
-            //Debug.Log("hurtttttttttttt");//FIXM
+            Debug.Log("hurtttttttttttt");//FIXME
             EventHanlder.CallCaracterHurt(GameManager.Instance.currentCharacter, data);
         }
     }

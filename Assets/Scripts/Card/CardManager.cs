@@ -13,6 +13,8 @@ public class CardManager : Singleton<CardManager>
     public GameObject cardInstPoint;
     public GameObject discardPilePoint;
 
+    public int stepStartPlayCardNum = 8;
+
     private float cardMoveX;
     private int instCardNameNum;
 
@@ -26,18 +28,25 @@ public class CardManager : Singleton<CardManager>
     #region Event
     private void OnEnable()
     {
+        EventHanlder.ChangeCardsOnStepStart += ChangeCardsOnStepStart; // Change Cards with arg
         EventHanlder.PlayerStepAddCard += OnPlayerStepAddCard; // Init the some card
         EventHanlder.PayCardComplete += OnPayCardComplete; // Init the card position
     }
     private void OnDisable()
     {
+        EventHanlder.ChangeCardsOnStepStart += ChangeCardsOnStepStart;
         EventHanlder.PlayerStepAddCard -= OnPlayerStepAddCard;
         EventHanlder.PayCardComplete -= OnPayCardComplete;
     }
 
+    private void ChangeCardsOnStepStart(CharacterCards_SO data)
+    {
+        Cards = data;
+    }
+
     private void OnPlayerStepAddCard()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < stepStartPlayCardNum; i++)
         {
             AddCardButton();
         }

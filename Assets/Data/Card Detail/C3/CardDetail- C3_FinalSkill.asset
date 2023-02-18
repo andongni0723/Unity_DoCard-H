@@ -14,15 +14,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 2
   isFinalSkill: 1
-  cardName: 
-  cardSkillSprite: {fileID: 21300000, guid: 19370790a791d4fc99ee3830251366f8, type: 3}
-  payCardNum: 0
+  cardName: "\u6700\u7D42\u5BC6\u6CD5!"
+  cardSkillSprite: {fileID: 21300000, guid: 7f4a2c4defa0e9a4382b8694716f6e68, type: 3}
+  payCardNum: 5
   cardDestription: "\u5728\u7D50\u7B97\u56DE\u5408\uFF0C\u5C0D\u6575\u65B93x3\u7BC4\u570D\u9020\u6210(\u4E2D\u6BD2\u72C0\u614B\u5C64\u6578x2)\u9EDE\u50B7\u5BB3\uFF0C\u4E26\u6E05\u9664\u6575\u65B9\u4E2D\u6BD2\u72C0\u614B"
-  cardUseGameStep: 7
+  cardUseGameStep: 1
   attackTypeDetails:
     cardHurtHP: 0
+    cardHurtHPCalc:
+    - isGameData: 0
+      gameDataVar: 0
+      isGetStatusNum: 1
+      getEffect:
+        target: 1
+        effectData: {fileID: 11400000, guid: e0c12c9cefa90e04393d6212266b4067, type: 2}
+        effectCount: 0
+      isCalcSymbol: 0
+      calcSymbol: 4
+      isInt: 0
+      interger: 0
+    - isGameData: 0
+      gameDataVar: 0
+      isGetStatusNum: 0
+      getEffect:
+        target: 0
+        effectData: {fileID: 0}
+        effectCount: 0
+      isCalcSymbol: 1
+      calcSymbol: 2
+      isInt: 0
+      interger: 0
+    - isGameData: 0
+      gameDataVar: 0
+      isGetStatusNum: 0
+      getEffect:
+        target: 0
+        effectData: {fileID: 0}
+        effectCount: 0
+      isCalcSymbol: 0
+      calcSymbol: 4
+      isInt: 1
+      interger: 2
     cardAttackOffset: {x: 3, y: 3}
     CardEffectList: []
+    RemoveEffectList:
+    - target: 1
+      effectData: {fileID: 11400000, guid: e0c12c9cefa90e04393d6212266b4067, type: 2}
+      effectCount: 0
     CardInstantiateCardList: []
   tankTypeDetails:
     addArmor: 0
