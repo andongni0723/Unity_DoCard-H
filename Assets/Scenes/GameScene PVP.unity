@@ -4070,11 +4070,11 @@ MonoBehaviour:
   enemyHurtSumCurrent: 0
   playerLastHurtNum: 0
   enemyLastHurtNum: 0
-  playerHealth: 10
-  playerArmor: 0
+  playerHealth: 15
+  playerArmor: 5
   lastHurtNum: 0
-  enemyHealth: 10
-  enemyArmor: 0
+  enemyHealth: 15
+  enemyArmor: 5
   cardAttackSprite: {fileID: 21300000, guid: 30f806b6b053646499124886a706a201, type: 3}
   cardTankSprite: {fileID: 21300000, guid: e6d983d257b14b14e880dde3eab67a54, type: 3}
   cardMoveSprite: {fileID: 21300000, guid: 003b7493c11fe0a4197d73b4bb94aac1, type: 3}
@@ -8125,4 +8125,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da85c448150b6e64c84aa0f7a0456621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardsDetails: {fileID: 11400000, guid: d9260690fcaf0d845bc92e33154b9dc0, type: 2}
+  CardsDetails: {fileID: 11400000, guid: 7685a34fa3b458b4a86c744ef9adf746, type: 2}

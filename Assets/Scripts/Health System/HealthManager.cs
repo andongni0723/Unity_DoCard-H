@@ -43,8 +43,8 @@ public class HealthManager : MonoBehaviour
         // HP
         float characterHealth = isPlayer ? GameManager.Instance.playerHealth : GameManager.Instance.enemyHealth;
 
-        slider.value = characterHealth / 10;   //UI
-        hpText.text = $"{characterHealth}/10"; //UI
+        slider.value = characterHealth / 15;   //UI
+        hpText.text = $"{characterHealth}/15"; //UI
 
         // Armor
         float characterArmor = isPlayer ? GameManager.Instance.playerArmor : GameManager.Instance.enemyArmor;

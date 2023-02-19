@@ -386,8 +386,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u80CC\u6C34\u4E00\u6230!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8efa6597095b3ad4ba0a4ebb03baef89, type: 2}
-  m_sharedMaterial: {fileID: -2964399418766376596, guid: 8efa6597095b3ad4ba0a4ebb03baef89, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c158ec90ee2dcf940bcf4a4f1cc4cea2, type: 2}
+  m_sharedMaterial: {fileID: 3454009215131388801, guid: c158ec90ee2dcf940bcf4a4f1cc4cea2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535

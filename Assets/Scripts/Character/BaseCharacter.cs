@@ -31,20 +31,28 @@ public class BaseCharacter : MonoBehaviour
         // The Hurt text animation
 
         Debug.Log("Hurt text animation");//FIXME
-        GameObject obj = Instantiate(GameManager.Instance.attackTextPrefab, canvus.transform) as GameObject;
-        obj.GetComponent<HurtText>().SetText(GameManager.Instance.ValueListToInt(data.attackTypeDetails.cardHurtHPCalc));
-        // Character shake animation
-        transform.DOPunchPosition(Vector3.right, 0.5f);
-        // Camera shake animation
+
+        // If damage is 0, don't play animation
+        if (GameManager.Instance.ValueListToInt(data.attackTypeDetails.cardHurtHPCalc) != 0)
+        {
+            GameObject obj = Instantiate(GameManager.Instance.attackTextPrefab, canvus.transform) as GameObject;
+            obj.GetComponent<HurtText>().SetText(GameManager.Instance.ValueListToInt(data.attackTypeDetails.cardHurtHPCalc));
+
+            // Character shake animation
+            transform.DOPunchPosition(Vector3.right, 0.5f);
+        }
     }
 
     // GameManger Call
     public void StatusHurtText(int hurtNum)
     {
-        GameObject obj = Instantiate(GameManager.Instance.attackTextPrefab, canvus.transform) as GameObject;
-        obj.GetComponent<HurtText>().SetText(hurtNum);
-        // Character shake animation
-        transform.DOPunchPosition(Vector3.right, 0.2f);
-        // Camera shake animation
+        if (hurtNum != 0)
+        {
+            GameObject obj = Instantiate(GameManager.Instance.attackTextPrefab, canvus.transform) as GameObject;
+            obj.GetComponent<HurtText>().SetText(hurtNum);
+            // Character shake animation
+            transform.DOPunchPosition(Vector3.right, 0.2f);
+            // Camera shake animation
+        }
     }
 }

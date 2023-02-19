@@ -48,12 +48,12 @@ public class BaseStatusManager : MonoBehaviour
             if (status.effectData == targetData)
             {
                 // Same status
-                if (targetData.isAccumulate && newStatusCount != -1)
+                if (newStatusCount != -1)
                 {
                     status.effectCount -= newStatusCount;
                 }
 
-                if (status.effectCount == 0 || newStatusCount == -1)
+                if (status.effectCount <= 0 || newStatusCount == -1)
                 {
                     currentEffectList.Remove(status);
                 }
@@ -116,8 +116,9 @@ public class BaseStatusManager : MonoBehaviour
                 // hurt status on settlement step will hurt self
                 // Add in gameManager list wait to hurt 
                 //Debug.Log($"{transform.parent.parent.name}: Add(status)");
+                
+            } //FIXME
                 GameManager.Instance.SettlementHurtStatusEffectActionList.Add(status);
-            }
         }
     }
 
