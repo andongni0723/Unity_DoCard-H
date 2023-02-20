@@ -19,11 +19,19 @@ public class CardManager : Singleton<CardManager>
     private int instCardNameNum;
 
     [Header("Card Move Setting")]
-    public float cardWidth;
+    public float cardWidth = Screen.height / 7.55f; // 4KUHD  (286f)
     public float moveX;
 
     [Header("Card Soft Setting")]
     public int maxCardNum = 5;
+
+
+    protected override void Awake()
+    {
+        base.Awake();
+        cardWidth = Screen.height / 7.55f; // 4KUHD  (286f)
+    }
+
 
     #region Event
     private void OnEnable()
@@ -98,7 +106,7 @@ public class CardManager : Singleton<CardManager>
 
         EventHanlder.CallCardUpdeatePosition();
     }
-    
+
 
     /// <summary>
     /// Give the CardDetail to inst the card

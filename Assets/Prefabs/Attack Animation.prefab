@@ -279,14 +279,14 @@ Transform:
   m_GameObject: {fileID: 6667188161339822938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -0.040668342}
-  m_LocalScale: {x: 0.7692308, y: 0.7692308, z: 0.7692308}
+  m_LocalScale: {x: 1.4083846, y: 1.4083846, z: 1.4083846}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6667188159986016613}
   - {fileID: 6667188159875335826}
   - {fileID: 6667188161098900760}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6667188161339822936
 Animator:

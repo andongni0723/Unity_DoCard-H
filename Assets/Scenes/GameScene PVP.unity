@@ -221,7 +221,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -237,11 +249,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridForCharacter
@@ -249,7 +261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -265,7 +277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -281,7 +293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -499,7 +511,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -511,15 +535,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -535,7 +559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -551,7 +575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -684,7 +708,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -696,11 +732,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridForCharacter
@@ -708,7 +744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -724,7 +760,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -740,7 +776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -827,7 +863,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -839,11 +887,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridForCharacter
@@ -851,7 +899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -867,7 +915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -883,7 +931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -941,8 +989,8 @@ RectTransform:
   m_Father: {fileID: 1913277051}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1429,7 +1477,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.6226415, g: 0.39800262, b: 0.032306872, a: 0}
+  m_BackGroundColor: {r: 0.054901965, g: 0.53333336, b: 0.77647066, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1535,7 +1583,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -1547,15 +1607,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -1571,7 +1631,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -1587,7 +1647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -1996,7 +2056,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -2008,15 +2080,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -2032,7 +2104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -2048,7 +2120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -2283,7 +2355,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -2295,11 +2379,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridForCharacter
@@ -2307,7 +2391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -2323,7 +2407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -2347,7 +2431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -2962,7 +3046,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -2974,11 +3070,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridForCharacter
@@ -2986,7 +3082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -3002,7 +3098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -3018,7 +3114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -3800,7 +3896,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -3812,15 +3920,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -3836,7 +3944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -3852,7 +3960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -3935,7 +4043,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -3947,15 +4067,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -3971,7 +4091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -3987,7 +4107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -4183,7 +4303,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -4195,15 +4327,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -4219,7 +4351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -4235,7 +4367,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -4608,7 +4740,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -4620,11 +4764,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridForCharacter
@@ -4632,7 +4776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -4648,7 +4792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -4664,7 +4808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -5010,15 +5154,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2416243241756297469, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0000000012024001
+      value: -6.012007e-10
       objectReference: {fileID: 0}
     - target: {fileID: 2416243241756297469, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000036784016
+      value: 0.000000001839201
       objectReference: {fileID: 0}
     - target: {fileID: 2416243241756297469, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.09693948
+      value: 0.0969393
       objectReference: {fileID: 0}
     - target: {fileID: 2553485729695000282, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5106,27 +5250,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3584534737503976410, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalScale.x
-      value: -0.3846154
+      value: -0.92083544
       objectReference: {fileID: 0}
     - target: {fileID: 3584534737503976410, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3846154
+      value: 0.92083544
       objectReference: {fileID: 0}
     - target: {fileID: 3584534737503976410, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3846154
+      value: 0.92083544
       objectReference: {fileID: 0}
     - target: {fileID: 3584534737503976410, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.032937344
+      value: 0.07885767
       objectReference: {fileID: 0}
     - target: {fileID: 3584534737503976410, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7099999
+      value: 1.6998619
       objectReference: {fileID: 0}
     - target: {fileID: 3584534737503976410, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.07323045
+      value: -0.1753263
       objectReference: {fileID: 0}
     - target: {fileID: 3584534737503976410, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5178,15 +5322,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4897844215760625559, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.3077432
+      value: -0.30774346
       objectReference: {fileID: 0}
     - target: {fileID: 4897844215760625559, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.95146954
+      value: 0.9514694
       objectReference: {fileID: 0}
     - target: {fileID: 4973104003414887432, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.014598986
+      value: 0.014598927
       objectReference: {fileID: 0}
     - target: {fileID: 4973104003414887432, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
@@ -5218,11 +5362,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155395753960832622, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.31337628
+      value: 0.31337813
       objectReference: {fileID: 0}
     - target: {fileID: 6155395753960832622, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.94962907
+      value: -0.9496284
       objectReference: {fileID: 0}
     - target: {fileID: 6415002373446352753, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_Bounds.m_Center.x
@@ -5238,19 +5382,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6739069564202128477, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9269745
+      value: 0.92697453
       objectReference: {fileID: 0}
     - target: {fileID: 6739069564202128477, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 7.266442e-11
+      value: 3.633211e-11
       objectReference: {fileID: 0}
     - target: {fileID: 6739069564202128477, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000038385055
+      value: 0.0000000019192532
       objectReference: {fileID: 0}
     - target: {fileID: 6739069564202128477, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.37512428
+      value: 0.3751244
       objectReference: {fileID: 0}
     - target: {fileID: 6952847378977049896, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5278,15 +5422,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7583187034827871007, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -2.4836017e-11
+      value: -1.2418011e-11
       objectReference: {fileID: 0}
     - target: {fileID: 7583187034827871007, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000038698564
+      value: -0.0000000019349287
       objectReference: {fileID: 0}
     - target: {fileID: 7583187034827871007, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.40725097
+      value: -0.4072511
       objectReference: {fileID: 0}
     - target: {fileID: 7583187034827871007, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -5294,19 +5438,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7585728682828174526, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9245209
+      value: 0.9245215
       objectReference: {fileID: 0}
     - target: {fileID: 7585728682828174526, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0000000013555236
+      value: -6.77766e-10
       objectReference: {fileID: 0}
     - target: {fileID: 7585728682828174526, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000042553188
+      value: 0.000000002127658
       objectReference: {fileID: 0}
     - target: {fileID: 7585728682828174526, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.38113135
+      value: -0.38112992
       objectReference: {fileID: 0}
     - target: {fileID: 7688679614340648771, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_Bounds.m_Center.x
@@ -5334,19 +5478,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8100260391101763174, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.9335439
+      value: -0.93354386
       objectReference: {fileID: 0}
     - target: {fileID: 8100260391101763174, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 3.9101365e-12
+      value: 1.9550685e-12
       objectReference: {fileID: 0}
     - target: {fileID: 8100260391101763174, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000003839192
+      value: 0.0000000019195963
       objectReference: {fileID: 0}
     - target: {fileID: 8100260391101763174, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.35846326
+      value: 0.35846338
       objectReference: {fileID: 0}
     - target: {fileID: 8454055713887499689, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_Bounds.m_Center.y
@@ -5406,19 +5550,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8853369620076242986, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99785453
+      value: 0.99785477
       objectReference: {fileID: 0}
     - target: {fileID: 8853369620076242986, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -7.64439e-11
+      value: -3.8221953e-11
       objectReference: {fileID: 0}
     - target: {fileID: 8853369620076242986, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000004465348
+      value: -0.0000000022326743
       objectReference: {fileID: 0}
     - target: {fileID: 8853369620076242986, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.06546977
+      value: 0.06546629
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8358538203066619782, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
@@ -5578,7 +5722,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -5590,11 +5746,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridForCharacter
@@ -5602,7 +5758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -5618,7 +5774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -5634,7 +5790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -5990,7 +6146,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -6002,11 +6170,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridForCharacter
@@ -6014,7 +6182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -6030,7 +6198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -6046,7 +6214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -6134,7 +6302,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -6146,15 +6326,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -6170,7 +6350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -6186,7 +6366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -6266,10 +6446,10 @@ RectTransform:
   m_Father: {fileID: 1913277051}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1470, y: -610}
-  m_SizeDelta: {x: 375.6348, y: 141.5352}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -437, y: -610}
+  m_SizeDelta: {x: 375.63477, y: 141.53516}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1868911472
 MonoBehaviour:
@@ -6394,6 +6574,7 @@ GameObject:
   - component: {fileID: 1913277050}
   - component: {fileID: 1913277049}
   - component: {fileID: 1913277048}
+  - component: {fileID: 1913277052}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6430,12 +6611,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 3840, y: 2160}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -6496,6 +6677,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1913277052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913277047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1355b4e4dff6c584c95c178641683589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1929676445
 GameObject:
   m_ObjectHideFlags: 0
@@ -6663,10 +6856,10 @@ RectTransform:
   m_Father: {fileID: 1913277051}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -762.88}
-  m_SizeDelta: {x: 3840, y: 634.2456}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 317.1228}
+  m_SizeDelta: {x: 0, y: 634.2456}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1952079454
 MonoBehaviour:
@@ -6752,7 +6945,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -6764,15 +6969,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -6788,7 +6993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -6804,7 +7009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -7104,7 +7309,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -7116,11 +7333,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridForCharacter
@@ -7128,7 +7345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -7144,7 +7361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -7160,7 +7377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -7396,7 +7613,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: basicColor.a
-      value: 0.39215687
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: basicColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: gridID.GridX
@@ -7408,15 +7637,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: playerOnColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: dangerousColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: mouseAreaColor.b
@@ -7432,7 +7661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.b
@@ -7448,7 +7677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.b
@@ -7698,19 +7927,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2416243241756297469, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99529034
+      value: 0.9952903
       objectReference: {fileID: 0}
     - target: {fileID: 2416243241756297469, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000010821609
+      value: 0.000000012625226
       objectReference: {fileID: 0}
     - target: {fileID: 2416243241756297469, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000033105625
+      value: -0.000000038623234
       objectReference: {fileID: 0}
     - target: {fileID: 2416243241756297469, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.09693928
+      value: 0.09693948
       objectReference: {fileID: 0}
     - target: {fileID: 2553485729695000282, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7798,15 +8027,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3584534737503976410, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3846154
+      value: 0.92083544
       objectReference: {fileID: 0}
     - target: {fileID: 3584534737503976410, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3846154
+      value: 0.92083544
       objectReference: {fileID: 0}
     - target: {fileID: 3584534737503976410, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3846154
+      value: 0.92083544
       objectReference: {fileID: 0}
     - target: {fileID: 3584534737503976410, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7814,11 +8043,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3584534737503976410, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8
+      value: 1.9153377
       objectReference: {fileID: 0}
     - target: {fileID: 3584534737503976410, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: -2.394172
       objectReference: {fileID: 0}
     - target: {fileID: 3584534737503976410, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7870,19 +8099,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4897844215760625559, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.30774328
+      value: -0.30774358
       objectReference: {fileID: 0}
     - target: {fileID: 4897844215760625559, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.9514694
+      value: 0.95146936
       objectReference: {fileID: 0}
     - target: {fileID: 4973104003414887432, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.014598927
+      value: 0.014598942
       objectReference: {fileID: 0}
     - target: {fileID: 4973104003414887432, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.9998935
+      value: 0.9998934
       objectReference: {fileID: 0}
     - target: {fileID: 5610418111477225791, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -7910,11 +8139,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155395753960832622, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.31337583
+      value: 0.31337768
       objectReference: {fileID: 0}
     - target: {fileID: 6155395753960832622, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.9496292
+      value: -0.9496286
       objectReference: {fileID: 0}
     - target: {fileID: 6415002373446352753, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_Bounds.m_Center.x
@@ -7938,19 +8167,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6739069564202128477, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92697453
+      value: 0.9269745
       objectReference: {fileID: 0}
     - target: {fileID: 6739069564202128477, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -6.5397787e-10
+      value: -7.629751e-10
       objectReference: {fileID: 0}
     - target: {fileID: 6739069564202128477, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000003454656
+      value: -0.00000004030433
       objectReference: {fileID: 0}
     - target: {fileID: 6739069564202128477, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.3751244
+      value: 0.37512437
       objectReference: {fileID: 0}
     - target: {fileID: 6952847378977049896, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7974,19 +8203,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7583187034827871007, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.91331637
+      value: 0.9133162
       objectReference: {fileID: 0}
     - target: {fileID: 7583187034827871007, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 2.2352423e-10
+      value: 2.6077834e-10
       objectReference: {fileID: 0}
     - target: {fileID: 7583187034827871007, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000003482872
+      value: 0.00000004063352
       objectReference: {fileID: 0}
     - target: {fileID: 7583187034827871007, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.4072509
+      value: -0.40725136
       objectReference: {fileID: 0}
     - target: {fileID: 7583187034827871007, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -7994,19 +8223,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7585728682828174526, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92452073
+      value: 0.9245214
       objectReference: {fileID: 0}
     - target: {fileID: 7585728682828174526, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000012199696
+      value: 0.00000001423306
       objectReference: {fileID: 0}
     - target: {fileID: 7585728682828174526, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000038297877
+      value: -0.000000044680807
       objectReference: {fileID: 0}
     - target: {fileID: 7585728682828174526, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.38113168
+      value: -0.3811304
       objectReference: {fileID: 0}
     - target: {fileID: 7688679614340648771, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_Bounds.m_Center.x
@@ -8038,11 +8267,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8100260391101763174, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -3.5191232e-11
+      value: -4.105645e-11
       objectReference: {fileID: 0}
     - target: {fileID: 8100260391101763174, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000003455273
+      value: -0.000000040311534
       objectReference: {fileID: 0}
     - target: {fileID: 8100260391101763174, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
@@ -8086,19 +8315,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8853369620076242986, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9978546
+      value: 0.99785477
       objectReference: {fileID: 0}
     - target: {fileID: 8853369620076242986, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 6.8799527e-10
+      value: 8.0266066e-10
       objectReference: {fileID: 0}
     - target: {fileID: 8853369620076242986, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000040188144
+      value: 0.00000004688614
       objectReference: {fileID: 0}
     - target: {fileID: 8853369620076242986, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.06547065
+      value: 0.06546725
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8358538203066619782, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
@@ -8125,4 +8354,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da85c448150b6e64c84aa0f7a0456621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardsDetails: {fileID: 11400000, guid: 7685a34fa3b458b4a86c744ef9adf746, type: 2}
+  CardsDetails: {fileID: 11400000, guid: d9260690fcaf0d845bc92e33154b9dc0, type: 2}

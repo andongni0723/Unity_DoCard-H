@@ -184,7 +184,7 @@ public class GameManager : Singleton<GameManager>
                 return currentCharacter == Character.Enemy ? playerArmor : enemyArmor;
 
             case GameData.LastStepHurt:
-                if(currentCharacter == Character.Player)
+                if (currentCharacter == Character.Player)
                     return playerLastHurtNum;
                 else
                     return enemyLastHurtNum;
@@ -518,15 +518,21 @@ public class GameManager : Singleton<GameManager>
 
 
                         // 2. Remove the grid in AllConfirmGridList of now executing
-                        foreach (ConfirmGrid confirmGrid in AllConfirmGridList)
+                        
+                        // Commond don't need remove grid , because the grid of commond card didn't add in
+                        if (actionList != CommonCardActionList)
                         {
-                            if (confirmGrid == grid)
+                            foreach (ConfirmGrid confirmGrid in AllConfirmGridList)
                             {
-                                AllConfirmGridList.Remove(confirmGrid);
-                                Debug.Log("grid find to destroy"); //FIXME
-                                break;
+                                if (confirmGrid == grid)
+                                {
+                                    AllConfirmGridList.Remove(confirmGrid);
+                                    Debug.Log("grid find to destroy"); //FIXME
+                                    break;
+                                }
                             }
                         }
+
 
                         // 3. To GridManager reload grid color
                         EventHanlder.CallReloadGridColor(AllConfirmGridList);

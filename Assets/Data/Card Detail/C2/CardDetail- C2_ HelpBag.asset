@@ -33,6 +33,7 @@ MonoBehaviour:
     CardInstantiateCardList:
     - {fileID: 11400000, guid: ea152c7ecc64b394d83b2b9c5844ad0d, type: 2}
     - {fileID: 11400000, guid: ea152c7ecc64b394d83b2b9c5844ad0d, type: 2}
+    - {fileID: 11400000, guid: ea152c7ecc64b394d83b2b9c5844ad0d, type: 2}
     - {fileID: 11400000, guid: bed21d77293b8de4cb8269bdda07c709, type: 2}
   moveTypeDetails:
     moveType: 0

@@ -16,11 +16,11 @@ public class Grid : MonoBehaviour
     public bool isMouseOnArea = false;
     public bool isSkilArea = false;
 
-    public Color basicColor = new Color(255, 255, 255, 76);
-    public Color playerOnColor = new Color(0, 255, 40, 76);
+    public Color basicColor = new Color(255, 255, 255, 150);
+    public Color playerOnColor = new Color(0, 255, 40, 150);
 
-    public Color mouseAreaColor = new Color(255, 255, 255, 255);
-    public Color skillAreaColor = new Color(255, 255, 0, 255);
+    public Color mouseAreaColor = new Color(255, 255, 255, 150);
+    public Color skillAreaColor = new Color(255, 255, 0, 150);
 
     public Color dangerousColor = Color.black;
 

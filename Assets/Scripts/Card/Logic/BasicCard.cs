@@ -29,7 +29,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public int id;
     public float yPos;
 
-    float CardLinePosY = 540;
+    float CardLinePosY = Screen.height / 4; // 4KUHD (540f)
     float scale;
 
     [SerializeField] bool isDrag = false;
@@ -43,6 +43,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         playCardParent = GameObject.FindWithTag("PlayCardParent").transform;
         image = GetComponent<Image>();
         scale = transform.localScale.x;
+        CardLinePosY = Screen.height / 4; // 4KUHD (540f)
 
         // Get children gameObject
         cardNameText = transform.Find("card_name").GetComponent<TextMeshProUGUI>();
