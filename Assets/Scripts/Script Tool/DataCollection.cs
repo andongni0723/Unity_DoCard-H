@@ -5,6 +5,8 @@ using System.Collections.Generic;
 [System.Serializable]
 public class ConfirmGrid
 {
+    public Character GridForCharacter;
+
     public int GridX;
     public int GridY;
     // private ConfirmGrid gridID;

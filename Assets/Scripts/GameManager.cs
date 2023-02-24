@@ -167,6 +167,19 @@ public class GameManager : Singleton<GameManager>
         return null;
     }
 
+    public Character RelativeCharacterToAbsolueCharacter(Character relativeCharacter)
+    {
+        switch (relativeCharacter)
+        {
+            case Character.Self:
+                return currentCharacter == Character.Player? Character.Player : Character.Enemy;
+            case Character.Enemy:
+                return currentCharacter == Character.Player? Character.Enemy : Character.Player;
+            default:
+                return relativeCharacter;
+        }
+    }
+
     public float GameDataEnumToValue(GameData targetGamedata)
     {
         switch (targetGamedata)
@@ -283,7 +296,7 @@ public class GameManager : Singleton<GameManager>
             respond = waitCalcNum;
         }
 
-        Debug.Log($"{waitCalcNum} {calcSymbol} {waitCalcNum2} = {respond}"); //FIXME
+        //Debug.Log($"{waitCalcNum} {calcSymbol} {waitCalcNum2} = {respond}"); //FIXM
         return (int)respond;
     }
     #endregion
@@ -438,14 +451,25 @@ public class GameManager : Singleton<GameManager>
         //          |- ...
 
         AllConfirmGridList.Clear();
+        Debug.Log("Clear AllConfirmGridList");
 
         if (currentCharacter == Character.Player)
         {
+            foreach (ConfirmAreaGridData data in EnemySettlementCardActionList)
+            {
+                foreach (ConfirmGrid grid in data.ConfirmGridsList)
+                {
+                    Debug.Log("AAAAA");//FIXM
+
+                    AllConfirmGridList.Add(grid);
+                }
+            }
+
             foreach (ConfirmAreaGridData data in PlayerSettlementCardActionList)
             {
                 foreach (ConfirmGrid grid in data.ConfirmGridsList)
                 {
-                    //Debug.Log("AAAAA");//FIXM
+                    Debug.Log("AAAAA");//FIXM
 
                     AllConfirmGridList.Add(grid);
                 }
@@ -454,11 +478,21 @@ public class GameManager : Singleton<GameManager>
         else
         {
             //Enemy
+            foreach (ConfirmAreaGridData data in PlayerSettlementCardActionList)
+            {
+                foreach (ConfirmGrid grid in data.ConfirmGridsList)
+                {
+                    Debug.Log("AAAAA");//FIXM
+
+                    AllConfirmGridList.Add(grid);
+                }
+            }
+
             foreach (ConfirmAreaGridData data in EnemySettlementCardActionList)
             {
                 foreach (ConfirmGrid grid in data.ConfirmGridsList)
                 {
-                    //Debug.Log("AAAAA");//FIXM
+                    Debug.Log("AAAAA");//FIXM
 
                     AllConfirmGridList.Add(grid);
                 }
@@ -520,7 +554,7 @@ public class GameManager : Singleton<GameManager>
                         // 2. Remove the grid in AllConfirmGridList of now executing
                         
                         // Commond don't need remove grid , because the grid of commond card didn't add in
-                        if (actionList != CommonCardActionList)
+                        if (actionList == CommonCardActionList)
                         {
                             foreach (ConfirmGrid confirmGrid in AllConfirmGridList)
                             {
@@ -565,8 +599,9 @@ public class GameManager : Singleton<GameManager>
 
         }
 
+        
         actionList.Clear();
-        //yield return null;
+        yield return null;
     }
 
     protected IEnumerator ExecuteStatusEffectActionList(List<Effect> effectList)
