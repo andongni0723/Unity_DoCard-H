@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 226c06cd409f2a8448c61f2da27762ae, type: 3}
-  m_Name: Cards- Test
+  m_Name: Cards- Move
   m_EditorClassIdentifier: 
   Cards:
-  - {fileID: 11400000, guid: 7fd0e258f55cd3d4195d0eedf77609b7, type: 2}
-  - {fileID: 11400000, guid: 1a4bf7c6449b412478143fd227a19f50, type: 2}
+  - {fileID: 11400000, guid: a576e624f1225014e8b393b0d6e9a052, type: 2}

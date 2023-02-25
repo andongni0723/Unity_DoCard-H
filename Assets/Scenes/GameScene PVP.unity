@@ -291,6 +291,26 @@ PrefabInstance:
       propertyPath: skillAreaColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridID.GridForCharacter
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
       value: 0.5882353
@@ -573,6 +593,22 @@ PrefabInstance:
       propertyPath: skillAreaColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
       value: 0.5882353
@@ -774,6 +810,26 @@ PrefabInstance:
       propertyPath: skillAreaColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridID.GridForCharacter
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
       value: 0.5882353
@@ -927,6 +983,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridID.GridForCharacter
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
@@ -1118,7 +1194,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410800576
 GameObject:
@@ -1452,6 +1528,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1525,6 +1602,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 388d55f4771958b4085c7bc5935d8155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &591298377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1643,6 +1732,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
@@ -1981,7 +2086,7 @@ Transform:
   - {fileID: 437724786}
   - {fileID: 1241766992}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &670598161
 MonoBehaviour:
@@ -2116,6 +2221,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
@@ -2421,6 +2542,26 @@ PrefabInstance:
       propertyPath: skillAreaColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridID.GridForCharacter
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_FlipX
       value: 0
@@ -2568,7 +2709,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &920152366 stripped
 Transform:
@@ -2609,7 +2750,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &985531094 stripped
 Transform:
@@ -3110,6 +3251,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridID.GridForCharacter
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
@@ -3745,7 +3906,7 @@ Transform:
   - {fileID: 934911683}
   - {fileID: 2135259894}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1370646892
 MonoBehaviour:
@@ -3958,6 +4119,22 @@ PrefabInstance:
       propertyPath: skillAreaColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
       value: 0.5882353
@@ -4105,6 +4282,22 @@ PrefabInstance:
       propertyPath: skillAreaColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
       value: 0.5882353
@@ -4195,10 +4388,10 @@ MonoBehaviour:
   lastHurtNum: 0
   enemyHealth: 15
   enemyArmor: 5
-  cardAttackSprite: {fileID: 21300000, guid: 30f806b6b053646499124886a706a201, type: 3}
-  cardTankSprite: {fileID: 21300000, guid: e6d983d257b14b14e880dde3eab67a54, type: 3}
-  cardMoveSprite: {fileID: 21300000, guid: 003b7493c11fe0a4197d73b4bb94aac1, type: 3}
-  cardFinalSkillSprite: {fileID: 21300000, guid: beb352e9a26c30341b9b6f2ba9b8b34b, type: 3}
+  cardAttackSprite: {fileID: 21300000, guid: 1f6d33bae6ede6d4295b8560ec24471e, type: 3}
+  cardTankSprite: {fileID: 21300000, guid: 2d0328f8a9049db4bbd3e874bd0a7002, type: 3}
+  cardMoveSprite: {fileID: 21300000, guid: 624f9cce441d49f44b536d52ecf7c889, type: 3}
+  cardFinalSkillSprite: {fileID: 21300000, guid: 6838ec27180a4104dbb500a0b05f8930, type: 3}
   attackTextPrefab: {fileID: 8267077253753628130, guid: 65809021be847b44faafd76bd1115203, type: 3}
   gameStepText: {fileID: 1768472376}
 --- !u!1 &1540527675
@@ -4363,6 +4556,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
@@ -4804,6 +5013,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridID.GridForCharacter
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
@@ -5650,11 +5879,11 @@ Transform:
   m_GameObject: {fileID: 1698911389}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0009, y: 0.1804, z: 0}
-  m_LocalScale: {x: 1.80492, y: 1.095, z: 1}
+  m_LocalScale: {x: 3.3165405, y: 1.095, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1715980878
 PrefabInstance:
@@ -5786,6 +6015,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridID.GridForCharacter
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
@@ -6212,6 +6461,26 @@ PrefabInstance:
       propertyPath: skillAreaColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridID.GridForCharacter
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
       value: 0.5882353
@@ -6364,6 +6633,22 @@ PrefabInstance:
       propertyPath: skillAreaColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
       value: 0.5882353
@@ -6391,6 +6676,148 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+--- !u!1 &1861167850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1861167851}
+  - component: {fileID: 1861167853}
+  - component: {fileID: 1861167852}
+  m_Layer: 0
+  m_Name: Sound Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1861167851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861167850}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.081184745, y: -0.84283173, z: -0.1524308}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1861167852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861167850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061d6c8fc69387140b15fff5c472131c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playCardSE: {fileID: 8300000, guid: eb3dc4d9b1ef44747a15b862bd3e5fbe, type: 3}
+--- !u!82 &1861167853
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861167850}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1866279565 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3909525164774486646, guid: f1c65f8cc3faa724ba782d244276397e, type: 3}
@@ -6670,7 +7097,7 @@ RectTransform:
   - {fileID: 1987664779}
   - {fileID: 1868911471}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6874,13 +7301,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CardPositionList: []
+  CardRotationList: []
   Cards: {fileID: 11400000, guid: d9260690fcaf0d845bc92e33154b9dc0, type: 2}
   cardPrefabs: {fileID: 1567381325940116902, guid: d4acbdc9735e7f849b33b194044be59c, type: 3}
   cardInstPoint: {fileID: 1023761313}
   discardPilePoint: {fileID: 230354610}
-  stepStartPlayCardNum: 7
+  stepStartPlayCardNum: 8
   cardWidth: 286
   moveX: 20
+  rotateNum: 4
+  rotateDownY: 3
   maxCardNum: 5
 --- !u!4 &1953195651 stripped
 Transform:
@@ -7005,6 +7435,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
@@ -7245,7 +7691,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2128216186
 PrefabInstance:
@@ -7373,6 +7819,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: skillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: gridID.GridForCharacter
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
@@ -7675,6 +8141,22 @@ PrefabInstance:
       propertyPath: skillAreaColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433954534537949742, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
+      propertyPath: moreSkillAreaColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3433954534537949743, guid: d8ed6b9086eed274ba28ef4c03efab98, type: 3}
       propertyPath: m_Color.a
       value: 0.5882353
@@ -7712,7 +8194,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2972628092954646413, guid: 5fd72573fa8c78f41a44a810e3f3bbb2, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2972628092954646413, guid: 5fd72573fa8c78f41a44a810e3f3bbb2, type: 3}
       propertyPath: m_LocalPosition.x

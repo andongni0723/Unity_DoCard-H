@@ -7,6 +7,7 @@ public class ConfirmGrid
 {
     public int GridX;
     public int GridY;
+    public Character GridForCharacter;
     // private ConfirmGrid gridID;
 
     // public ConfirmGrid(ConfirmGrid gridID)

@@ -7,6 +7,7 @@ using DG.Tweening;
 public class CardManager : Singleton<CardManager>
 {
     public List<Vector2> CardPositionList = new List<Vector2>();
+    public List<Quaternion> CardRotationList = new List<Quaternion>();
     //public List<CardDetail_SO> CardDetailPrefabList = new List<CardDetail_SO>();
     public CharacterCards_SO Cards;
     public GameObject cardPrefabs;
@@ -21,6 +22,8 @@ public class CardManager : Singleton<CardManager>
     [Header("Card Move Setting")]
     public float cardWidth = Screen.height / 7.55f; // 4KUHD  (286f)
     public float moveX;
+    public float rotateNum = 4;
+    public float rotateDownY = 3;
 
     [Header("Card Soft Setting")]
     public int maxCardNum = 5;
@@ -81,11 +84,13 @@ public class CardManager : Singleton<CardManager>
     {
         // Init
         CardPositionList.Clear();
+        CardRotationList.Clear();
 
         cardMoveX = cardWidth + moveX;
 
         if (_childNum > maxCardNum)
         {
+            Debug.Log("bigger");//FIXME
             cardMoveX = cardMoveX / (1f + (_childNum - maxCardNum) / (maxCardNum - 1));
         }
 
@@ -95,13 +100,22 @@ public class CardManager : Singleton<CardManager>
         odd = (_childNum % 2 == 0) ? 1 : 0;
 
         // the xPos of the leftest card
-        float leftX = -(cardMoveX * (int)(_childNum / 2)) + cardMoveX / 2 * odd;
+        float leftX = -(cardMoveX * (int)(_childNum / 2f)) + cardMoveX / 2f * odd;
 
+        float z = rotateNum / (maxCardNum - 1f) * (_childNum - 1f);
+        z = z > rotateNum ? rotateNum : z;
 
         for (int i = 0; i < _childNum; i++)
         {
+            float z1 = ((float)_childNum - 1f);
+            z1 = z1 == 0 ? 1 : z1;
+            float rotateZ = z - (z * 2f) / z1 * i;
+
+            CardRotationList.Add(Quaternion.Euler(0f, 0f, rotateZ));
+
+
             // Add Position to List
-            CardPositionList.Add(new Vector2(transform.position.x + leftX + cardMoveX * i, transform.position.y));
+            CardPositionList.Add(new Vector2(transform.position.x + leftX + cardMoveX * i, transform.position.y - (Mathf.Abs(rotateZ)) * rotateDownY));
         }
 
         EventHanlder.CallCardUpdeatePosition();

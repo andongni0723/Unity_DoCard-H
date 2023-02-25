@@ -89,13 +89,22 @@ public static class EventHanlder
 
     public static void CallCardEndDrag()
     {
+        /* ConfirmAreaGridData */
+        /// data
+        /// |- cardDetail
+        /// |- targetGridForCharacter
+        /// |- ConfirmGridsList
+        ///     |- GridForCharacter
+        ///     |- ...
+
         ConfirmAreaGridData data = new ConfirmAreaGridData();
 
         // cardDetail: "GameManager" will sent CardDetail_SO
         data.cardDetail = GameManager.Instance.playingCard;
 
-        // Setting data target for grid
+        // Setting data target(Relative) for grid
         data.targetGridForCharacter =data.cardDetail.cardType == CardType.Move?  Character.Self : Character.Enemy;
+    
 
         // ConfirmGridsList: "GridManager" confirm the grid of mouse choose 
         if (GameManager.Instance.currentCharacter == Character.Player && data.cardDetail.cardType == CardType.Move ||
@@ -109,6 +118,12 @@ public static class EventHanlder
         {
             // Attack card will aim the Enemy's grid
             data.ConfirmGridsList = EndDragEnemyGridUpdateData?.Invoke();
+        }
+
+        // Setting data grid target(Absoulue)
+        foreach (ConfirmGrid grid in data.ConfirmGridsList)
+        {
+            grid.GridForCharacter = GameManager.Instance.RelativeCharacterToAbsolueCharacter(data.targetGridForCharacter);
         }
 
         CardEndDrag?.Invoke();

@@ -14,14 +14,14 @@ public class Grid : MonoBehaviour
     [Header("Grid Setting")]
     public bool isCharacterOn = false;
     public bool isMouseOnArea = false;
-    public bool isSkilArea = false;
+    public int skillAreaNum = 0;
 
     public Color basicColor = new Color(255, 255, 255, 150);
     public Color playerOnColor = new Color(0, 255, 40, 150);
 
     public Color mouseAreaColor = new Color(255, 255, 255, 150);
     public Color skillAreaColor = new Color(255, 255, 0, 150);
-
+    public Color moreSkillAreaColor = new Color(255, 190, 0, 150);
     public Color dangerousColor = Color.black;
 
     private void Awake()
@@ -71,16 +71,17 @@ public class Grid : MonoBehaviour
 
     private void OnReloadGridColor(List<ConfirmGrid> grids)
     {
-        isSkilArea = false;
-
+        skillAreaNum = 0;
+        
         foreach (ConfirmGrid grid in grids)
         {
-            if (grid == gridID)
+            if (grid == gridID && grid.GridForCharacter == gridForCharacter)
             {
-                isSkilArea = true;
-                CheckGridColor();
+                skillAreaNum++;
             }
         }
+
+        CheckGridColor();
     }
     #endregion
 
@@ -151,13 +152,17 @@ public class Grid : MonoBehaviour
         {
             spriteRenderer.color = mouseAreaColor;
         }
-        else if (isSkilArea && isCharacterOn) // Player on skill attack area
+        else if (skillAreaNum != 0 && isCharacterOn) // Player on skill attack area
         {
             spriteRenderer.color = dangerousColor;
         }
-        else if (isSkilArea)
+        else if (skillAreaNum == 1)
         {
             spriteRenderer.color = skillAreaColor;
+        }
+        else if(skillAreaNum > 1)
+        {
+            spriteRenderer.color = moreSkillAreaColor;
         }
         else if (isCharacterOn)
         {

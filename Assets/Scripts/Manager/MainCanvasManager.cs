@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+
 
 public class MainCanvasManager : MonoBehaviour
 {
@@ -26,4 +28,20 @@ public class MainCanvasManager : MonoBehaviour
         // Debug.Log("Screen Height : " + Screen.height);
         // //Screen Height : 1080
     }
+
+    #region Event
+    private void OnEnable() {
+        EventHanlder.PlayerHurt += CameraShake;
+        EventHanlder.EnemyHurt += CameraShake;
+    }
+    private void OnDisable() {
+        EventHanlder.PlayerHurt -= CameraShake;
+        EventHanlder.EnemyHurt -= CameraShake;
+    }
+
+    private void CameraShake(CardDetail_SO data)
+    {
+        transform.DOShakePosition(0.5f);
+    }
+    #endregion
 }

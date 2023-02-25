@@ -17,7 +17,7 @@ public class GameManager : Singleton<GameManager>
     public List<ConfirmAreaGridData> EnemySettlementCardActionList = new List<ConfirmAreaGridData>();
     public List<ConfirmAreaGridData> CommonCardActionList = new List<ConfirmAreaGridData>();
     public List<Effect> SettlementHurtStatusEffectActionList = new List<Effect>();
-    [SerializeField] List<ConfirmGrid> AllConfirmGridList = new List<ConfirmGrid>();
+    [SerializeField]protected List<ConfirmGrid> AllConfirmGridList = new List<ConfirmGrid>();
     public CardDetail_SO playingCard;
     public int playerHurtSumCurrent;
     public int enemyHurtSumCurrent;
@@ -79,8 +79,6 @@ public class GameManager : Singleton<GameManager>
                     break;
 
                 case GameStep.CommonStep:
-                    if (CommonCardActionList.Count != 0)
-                        yield return StartCoroutine(ExecuteCardActionList(CommonCardActionList));
                     break;
 
                 case GameStep.EnemySettlement:
@@ -88,6 +86,10 @@ public class GameManager : Singleton<GameManager>
                     currentCharacter = Character.Enemy;
                     yield return StartCoroutine(ExecuteCardActionList(EnemySettlementCardActionList));
                     yield return StartCoroutine(ExecuteStatusEffectActionList(SettlementHurtStatusEffectActionList));
+                    
+                    //Clear List
+                    AddAllConfirmGrid();
+
                     enemyLastHurtNum = enemyHurtSumCurrent;
                     enemyHurtSumCurrent = 0;
                     ChangeGameStep(GameStep.EnemyStep);
@@ -108,6 +110,10 @@ public class GameManager : Singleton<GameManager>
                     currentCharacter = Character.Player;
                     yield return StartCoroutine(ExecuteCardActionList(PlayerSettlementCardActionList));
                     yield return StartCoroutine(ExecuteStatusEffectActionList(SettlementHurtStatusEffectActionList));
+                    
+                    //Clear List
+                    AddAllConfirmGrid();
+
                     playerLastHurtNum = playerHurtSumCurrent;
                     playerHurtSumCurrent = 0;
                     ChangeGameStep(GameStep.StepEnd); //TODO: future
@@ -167,6 +173,94 @@ public class GameManager : Singleton<GameManager>
         return null;
     }
 
+    public Character RelativeCharacterToAbsolueCharacter(Character relativeCharacter)
+    {
+        switch (relativeCharacter)
+        {
+            case Character.Self:
+                return currentCharacter == Character.Player ? Character.Player : Character.Enemy;
+            case Character.Enemy:
+                return currentCharacter == Character.Player ? Character.Enemy : Character.Player;
+            default:
+                return relativeCharacter;
+        }
+    }
+
+    public int ValueListToInt(List<Value> valueList)
+    {
+        float waitCalcNum = 0;
+        float waitCalcNum2 = 0;
+        CalcSymbol calcSymbol = CalcSymbol.Null;
+        float respond = 0;
+
+        foreach (Value value in valueList)
+        {
+            if (waitCalcNum == 0)
+            {
+                waitCalcNum = ValueToFloat(value);
+            }
+            else if (calcSymbol == CalcSymbol.Null && value.isCalcSymbol)
+            {
+                calcSymbol = value.calcSymbol;
+            }
+            else if (waitCalcNum2 == 0)
+            {
+                waitCalcNum2 = ValueToFloat(value);
+            }
+            else
+            {
+                Debug.LogError("GameManager: Card or Status ValueList Data Error (Value List switch Error)");
+
+            }
+
+            if (waitCalcNum != 0 && calcSymbol != CalcSymbol.Null && waitCalcNum2 != 0)
+            {
+                // Calc
+                respond = FloatAndCalcSymbolToCalc(waitCalcNum, calcSymbol, waitCalcNum2);
+            }
+        }
+
+        // Is dont need calc
+        if (respond == 0)
+        {
+            respond = waitCalcNum;
+        }
+
+        //Debug.Log($"{waitCalcNum} {calcSymbol} {waitCalcNum2} = {respond}"); //FIXM
+        return (int)respond;
+    }
+
+    public float ValueToFloat(Value value)
+    {
+        // Need calcNum
+        if (value.isGameData)
+        {
+            // GameData
+            return GameDataEnumToValue(value.gameDataVar);
+        }
+        else if (value.isGetStatusNum)
+        {
+            // Effect 
+            if (value.getEffect.target == Character.Self && currentCharacter == Character.Player ||
+               value.getEffect.target == Character.Enemy && currentCharacter == Character.Enemy)
+            {
+                return PlayerGameObject.GetComponentInChildren<BaseStatusManager>().GetStatusLevel(value.getEffect.effectData.effectType);
+            }
+            else if (value.getEffect.target == Character.Self && currentCharacter == Character.Enemy ||
+                     value.getEffect.target == Character.Enemy && currentCharacter == Character.Player)
+            {
+                return EnemyGameObject.GetComponentInChildren<BaseStatusManager>().GetStatusLevel(value.getEffect.effectData.effectType);
+            }
+        }
+        else if (value.isInt)
+        {
+            // Int
+            return value.interger;
+        }
+
+        return 0;
+    }
+
     public float GameDataEnumToValue(GameData targetGamedata)
     {
         switch (targetGamedata)
@@ -210,81 +304,6 @@ public class GameManager : Singleton<GameManager>
             default:
                 return 0;
         }
-    }
-
-    public float ValueToFloat(Value value)
-    {
-        // Need calcNum
-        if (value.isGameData)
-        {
-            // GameData
-            return GameDataEnumToValue(value.gameDataVar);
-        }
-        else if (value.isGetStatusNum)
-        {
-            // Effect 
-            if (value.getEffect.target == Character.Self && currentCharacter == Character.Player ||
-               value.getEffect.target == Character.Enemy && currentCharacter == Character.Enemy)
-            {
-                return PlayerGameObject.GetComponentInChildren<BaseStatusManager>().GetStatusLevel(value.getEffect.effectData.effectType);
-            }
-            else if (value.getEffect.target == Character.Self && currentCharacter == Character.Enemy ||
-                     value.getEffect.target == Character.Enemy && currentCharacter == Character.Player)
-            {
-                return EnemyGameObject.GetComponentInChildren<BaseStatusManager>().GetStatusLevel(value.getEffect.effectData.effectType);
-            }
-        }
-        else if (value.isInt)
-        {
-            // Int
-            return value.interger;
-        }
-
-        return 0;
-    }
-
-    public int ValueListToInt(List<Value> valueList)
-    {
-        float waitCalcNum = 0;
-        float waitCalcNum2 = 0;
-        CalcSymbol calcSymbol = CalcSymbol.Null;
-        float respond = 0;
-
-        foreach (Value value in valueList)
-        {
-            if (waitCalcNum == 0)
-            {
-                waitCalcNum = ValueToFloat(value);
-            }
-            else if (calcSymbol == CalcSymbol.Null && value.isCalcSymbol)
-            {
-                calcSymbol = value.calcSymbol;
-            }
-            else if (waitCalcNum2 == 0)
-            {
-                waitCalcNum2 = ValueToFloat(value);
-            }
-            else
-            {
-                Debug.LogError("GameManager: Card or Status ValueList Data Error (Value List switch Error)");
-
-            }
-
-            if (waitCalcNum != 0 && calcSymbol != CalcSymbol.Null && waitCalcNum2 != 0)
-            {
-                // Calc
-                respond = FloatAndCalcSymbolToCalc(waitCalcNum, calcSymbol, waitCalcNum2);
-            }
-        }
-
-        // Is dont need calc
-        if (respond == 0)
-        {
-            respond = waitCalcNum;
-        }
-
-        Debug.Log($"{waitCalcNum} {calcSymbol} {waitCalcNum2} = {respond}"); //FIXME
-        return (int)respond;
     }
     #endregion
 
@@ -429,45 +448,97 @@ public class GameManager : Singleton<GameManager>
     }
     #endregion
 
-    private void AddAllConfirmGrid()
+    protected void AddAllConfirmGrid()
     {
         //SkillHurtGridListPlayerSettlementCardAction
         // |- ConfirmAreaGridData
+        //      |- ...
         //      |- ConfirmGridList
         //          |- ConfirmGrid <- Need
         //          |- ...
 
         AllConfirmGridList.Clear();
 
-        if (currentCharacter == Character.Player)
-        {
-            foreach (ConfirmAreaGridData data in PlayerSettlementCardActionList)
-            {
-                foreach (ConfirmGrid grid in data.ConfirmGridsList)
-                {
-                    //Debug.Log("AAAAA");//FIXM
 
-                    AllConfirmGridList.Add(grid);
-                }
-            }
-        }
-        else
+        foreach (ConfirmAreaGridData data in EnemySettlementCardActionList)
         {
-            //Enemy
-            foreach (ConfirmAreaGridData data in EnemySettlementCardActionList)
+            foreach (ConfirmGrid grid in data.ConfirmGridsList)
             {
-                foreach (ConfirmGrid grid in data.ConfirmGridsList)
-                {
-                    //Debug.Log("AAAAA");//FIXM
-
-                    AllConfirmGridList.Add(grid);
-                }
+                //Debug.Log("AAAAA");//FIXM
+                AllConfirmGridList.Add(grid);
             }
         }
 
+        foreach (ConfirmAreaGridData data in PlayerSettlementCardActionList)
+        {
+            foreach (ConfirmGrid grid in data.ConfirmGridsList)
+            {
+                //Debug.Log("AAAAA");//FIXM
+                AllConfirmGridList.Add(grid);
+            }
+        }
+
+        foreach (ConfirmAreaGridData data in CommonCardActionList)
+        {
+            foreach (ConfirmGrid grid in data.ConfirmGridsList)
+            {
+                //Debug.Log("AAAAA");//FIXM
+                AllConfirmGridList.Add(grid);
+            }
+        }
+
+        #region Del
+        // if (currentCharacter == Character.Player)
+        // {
+        //     foreach (ConfirmAreaGridData data in EnemySettlementCardActionList)
+        //     {
+        //         foreach (ConfirmGrid grid in data.ConfirmGridsList)
+        //         {
+        //             Debug.Log("AAAAA");//FIXM
+
+        //             AllConfirmGridList.Add(grid);
+        //         }
+        //     }
+
+        //     foreach (ConfirmAreaGridData data in PlayerSettlementCardActionList)
+        //     {
+        //         foreach (ConfirmGrid grid in data.ConfirmGridsList)
+        //         {
+        //             Debug.Log("AAAAA");//FIXM
+
+        //             AllConfirmGridList.Add(grid);
+        //         }
+        //     }
+        // }
+        // else
+        // {
+        //     //Enemy
+        //     foreach (ConfirmAreaGridData data in PlayerSettlementCardActionList)
+        //     {
+        //         foreach (ConfirmGrid grid in data.ConfirmGridsList)
+        //         {
+        //             Debug.Log("AAAAA");//FIXM
+
+        //             AllConfirmGridList.Add(grid);
+        //         }
+        //     }
+
+        //     foreach (ConfirmAreaGridData data in EnemySettlementCardActionList)
+        //     {
+        //         foreach (ConfirmGrid grid in data.ConfirmGridsList)
+        //         {
+        //             Debug.Log("AAAAA");//FIXM
+
+        //             AllConfirmGridList.Add(grid);
+        //         }
+        //     }
+        // }
+        #endregion
 
         // Reload when function done
         EventHanlder.CallReloadGridColor(AllConfirmGridList); // To GridManager reload grid color
+
+        StartCoroutine(ExecuteCardActionList(CommonCardActionList));
     }
 
     protected void ChangeCardsOnStepStart(Character character)
@@ -518,24 +589,21 @@ public class GameManager : Singleton<GameManager>
 
 
                         // 2. Remove the grid in AllConfirmGridList of now executing
-                        
-                        // Commond don't need remove grid , because the grid of commond card didn't add in
-                        if (actionList != CommonCardActionList)
-                        {
-                            foreach (ConfirmGrid confirmGrid in AllConfirmGridList)
-                            {
-                                if (confirmGrid == grid)
-                                {
-                                    AllConfirmGridList.Remove(confirmGrid);
-                                    Debug.Log("grid find to destroy"); //FIXME
-                                    break;
-                                }
-                            }
-                        }
+
+                        // // Commond don't need remove grid , because the grid of commond card didn't add in
+                        // foreach (ConfirmGrid confirmGrid in AllConfirmGridList)
+                        // {
+                        //     if (confirmGrid == grid)
+                        //     {
+                        //         AllConfirmGridList.Remove(confirmGrid);
+                        //         Debug.Log("grid find to destroy"); //FIXME
+                        //         break;
+                        //     }
+                        // }
 
 
-                        // 3. To GridManager reload grid color
-                        EventHanlder.CallReloadGridColor(AllConfirmGridList);
+                        // // 3. To GridManager reload grid color
+                        // EventHanlder.CallReloadGridColor(AllConfirmGridList);
                     }
 
                     yield return wait;
@@ -565,8 +633,10 @@ public class GameManager : Singleton<GameManager>
 
         }
 
+
         actionList.Clear();
-        //yield return null;
+        
+        yield return null;
     }
 
     protected IEnumerator ExecuteStatusEffectActionList(List<Effect> effectList)

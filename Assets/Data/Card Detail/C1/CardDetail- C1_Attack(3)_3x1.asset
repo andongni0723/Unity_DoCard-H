@@ -16,7 +16,7 @@ MonoBehaviour:
   isFinalSkill: 0
   cardName: "\u8DF3\u780D"
   cardSkillSprite: {fileID: 21300000, guid: 19370790a791d4fc99ee3830251366f8, type: 3}
-  payCardNum: 2
+  payCardNum: 1
   cardDestription: "\u5728\u7D50\u7B97\u56DE\u5408\uFF0C\u5C0D\u6575\u65B93x1\u7BC4\u570D\u9020\u62103\u9EDE\u50B7\u5BB3\uFF0C\u91CB\u653E\u5F8C\u7ACB\u523B\u7372\u5F971\u5F35\u683C\u64CB"
   cardUseGameStep: 1
   attackTypeDetails:

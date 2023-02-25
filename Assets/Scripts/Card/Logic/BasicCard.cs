@@ -123,6 +123,8 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                     yPos = transform.position.y;
                 }
             );
+
+            transform.rotation = GetComponentInParent<CardManager>().CardRotationList[id];
             // //The card maybe by payCard parent
             // if (transform.parent.TryGetComponent(out CardManager cardManager))
             // {
@@ -148,7 +150,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private void OnPayTheCardError(GameObject targetCard)
     {
         // This card haven't pay because the pay cards is enough
-        if(gameObject == targetCard)
+        if (gameObject == targetCard)
         {
             transform.parent = originParent;
             Debug.Log("OnPayTheCardError");
@@ -257,12 +259,12 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     /// <param name="eventData"></param>
     public void ScaleAtCardOnDrag(Vector3 pos)
     {
-        // Change Scale
-        if (pos.y > CardLinePosY) // Play the card
+        if (pos.y > CardLinePosY)
         {
+            // Play the card
             transform.DOScale(scale * 0.3f, 0.2f);
         }
-        else // Canel play the card
+        else
         {
             transform.DOScale(scale * 1f, 0.2f);
         }
@@ -290,6 +292,9 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             var lastPos = transform.position;
             transform.parent = null;
             transform.position = lastPos;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            SoundManager.Instance.PlaySound(SoundManager.Instance.playCardSE); // SE
 
             // Is play card to attack, OR want pay card to let other card attack
             if (GameManager.Instance.gameStep == GameStep.PayCardStep)

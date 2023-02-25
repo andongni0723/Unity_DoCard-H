@@ -16,6 +16,8 @@ public class PVPGameManager : GameManager
                     break;
 
                 case GameStep.PlayerStep:
+                    AddAllConfirmGrid();//FIXME
+
                     ChangeGameStep(GameStep.CommonStep);
                     ChangeCardsOnStepStart(currentCharacter);
                     yield return waitStepStart;//FIXME
@@ -23,8 +25,6 @@ public class PVPGameManager : GameManager
                     break;
 
                 case GameStep.CommonStep:
-                    if (CommonCardActionList.Count != 0)
-                        yield return StartCoroutine(ExecuteCardActionList(CommonCardActionList));
                     break;
 
                 case GameStep.EnemySettlement:
@@ -32,16 +32,21 @@ public class PVPGameManager : GameManager
                     currentCharacter = Character.Enemy;
                     yield return StartCoroutine(ExecuteCardActionList(EnemySettlementCardActionList));
                     yield return StartCoroutine(ExecuteStatusEffectActionList(SettlementHurtStatusEffectActionList));
+
+                    //Clear List
+                    //AddAllConfirmGrid();
+
                     enemyLastHurtNum = enemyHurtSumCurrent;
                     enemyHurtSumCurrent = 0;
                     ChangeGameStep(GameStep.EnemyStep);
                     break;
 
                 case GameStep.EnemyStep:
+                    AddAllConfirmGrid();//FIXME
                     ChangeGameStep(GameStep.CommonStep);
                     yield return waitStepStart;//FIXME
                     ChangeCardsOnStepStart(currentCharacter);
-                    EventHanlder.CallPlayerStepAddCard(); 
+                    EventHanlder.CallPlayerStepAddCard();
                     break;
 
 
@@ -49,6 +54,10 @@ public class PVPGameManager : GameManager
                     currentCharacter = Character.Player;
                     yield return StartCoroutine(ExecuteCardActionList(PlayerSettlementCardActionList));
                     yield return StartCoroutine(ExecuteStatusEffectActionList(SettlementHurtStatusEffectActionList));
+
+                    //Clear List
+                    //AddAllConfirmGrid();
+
                     playerLastHurtNum = playerHurtSumCurrent;
                     playerHurtSumCurrent = 0;
                     ChangeGameStep(GameStep.StepEnd); //TODO: future
@@ -64,12 +73,12 @@ public class PVPGameManager : GameManager
 
     protected override void OnCommandStepEnd()
     {
-        switch(currentCharacter)
+        switch (currentCharacter)
         {
             case Character.Player:
                 ChangeGameStep(GameStep.EnemySettlement);
                 break;
-            
+
             case Character.Enemy:
                 ChangeGameStep(GameStep.PlayerSettlement);
                 break;
