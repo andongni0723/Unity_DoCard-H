@@ -10,6 +10,6 @@ public class PlayerStatusManager : BaseStatusManager
     }
     private void OnDisable()
     {
-        EventHanlder.OnEnemySettlement += UpdataCurrentHurtStatusToGameManger;
+        EventHanlder.OnEnemySettlement -= UpdataCurrentHurtStatusToGameManger;
     }
 }

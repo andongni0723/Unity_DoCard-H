@@ -10,6 +10,7 @@ public class BaseStatusManager : MonoBehaviour
     protected void Awake()
     {
         UpdateStatusIconWithList();
+        currentEffectList.Clear();
     }
 
 
@@ -84,7 +85,7 @@ public class BaseStatusManager : MonoBehaviour
                 if (status.effectData.effectType == targetStatusType) return status.effectCount;
             }
         }
-        
+
         return 0;
     }
 
@@ -118,7 +119,8 @@ public class BaseStatusManager : MonoBehaviour
                 //Debug.Log($"{transform.parent.parent.name}: Add(status)");
                 
             } //FIXME
-                GameManager.Instance.SettlementHurtStatusEffectActionList.Add(status);
+            Debug.Log($"{transform.parent.parent}add status");
+            GameManager.Instance.SettlementHurtStatusEffectActionList.Add(status);
         }
     }
 
