@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class CardPayPanel : MonoBehaviour
 {
     [Header("UI Object")]
-    public GameObject panel;
+    public GameObject background;
+    public GameObject panelUI;
     public GameObject payCards;
     public GameObject confirmButton;
     public TextMeshProUGUI mainText;
@@ -18,7 +20,7 @@ public class CardPayPanel : MonoBehaviour
     bool isPayEnough; //FIXME:
     private void Awake()
     {
-        panel = transform.GetChild(0).gameObject;
+        //background = transform.GetChild(0).gameObject;
     }
 
 
@@ -38,7 +40,7 @@ public class CardPayPanel : MonoBehaviour
     private void Update()
     {
         // Reload 'payCards' horizontal layout group children position
-        if(payCards.transform.childCount != 0)
+        if (payCards.transform.childCount != 0)
         {
             payCards.transform.GetChild(0).gameObject.SetActive(false);
             payCards.transform.GetChild(0).gameObject.SetActive(true);
@@ -53,7 +55,9 @@ public class CardPayPanel : MonoBehaviour
         }
         else
         {
-            panel.SetActive(true);
+            PanelInAnimation();
+            background.SetActive(true);
+            panelUI.SetActive(true);
             cardData = data;
 
             PayCardTextCheck();
@@ -81,7 +85,7 @@ public class CardPayPanel : MonoBehaviour
             if (payCards.transform.childCount == data.payCardNum)
             {
                 // PayCards is Enough
-                confirmButton.SetActive(true);
+                confirmButton.GetComponent<Button>().interactable = true;
                 //Debug.Log($"PayCardIsDoneCheck , {payCards.transform.childCount} == {data.payCardNum}"); //FIXM
             }
         }
@@ -119,16 +123,37 @@ public class CardPayPanel : MonoBehaviour
         mainText.text = $"卡牌召喚還需要{needCardNum}張卡";
     }
 
+    private void PanelInAnimation()
+    {
+        float panelEndY = Screen.height * 0.175f; //Full HD(1080p) (190f)
+        Debug.Log(Screen.height);
+        panelUI.GetComponent<RectTransform>().DOAnchorPosY(panelEndY, 0.5f);
+    }
+
+    private void PanelOutAnimatiodn()
+    {
+        float panelEndY = Screen.height * 2; //Full HD(1080p) (2160f)
+        Debug.Log(Screen.height);
+        panelUI.GetComponent<RectTransform>().DOAnchorPosY(panelEndY, 0.5f);
+    }
+
     #region Button Event
     public void CancelPlayTheCard() // Cancel Button Event
     {
-        confirmButton.SetActive(false);
+        confirmButton.GetComponent<Button>().interactable = false;
+        PanelOutAnimatiodn();
         EventHanlder.CallCancelPlayTheCard();
+        background.SetActive(false);
+        panelUI.SetActive(false);
     }
 
     public void PayCardComplete()
     {
+        confirmButton.GetComponent<Button>().interactable = false;
+        PanelOutAnimatiodn();
         EventHanlder.CallPayCardComplete();
+        background.SetActive(false);
+        panelUI.SetActive(false);
     }
     #endregion
 }

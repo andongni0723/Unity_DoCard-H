@@ -174,7 +174,13 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (transform.parent != originParent)
         {
             Destroy(gameObject);
+
+            if (transform.parent == playCardParent)
+            {
+                Instantiate(CardManager.Instance.discardAnimationPrefabs, transform.position, Quaternion.identity, transform.parent);
+            }
         }
+
     }
 
 
@@ -183,7 +189,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         // animation move to discard pile
         cantUse = true;
         Vector3 beforePos = transform.position;
-        Vector3 discardPoint = transform.parent.GetComponent<CardManager>().discardPilePoint.transform.position;
+        Vector3 discardPoint = CardManager.Instance.discardPilePoint.transform.position;
         //transform.parent = null; // FIXM
 
         transform.position = beforePos; // Let position set same after change parent
@@ -219,7 +225,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (!eventData.fullyExited) return; // Unity bug "IPointerEnter/Exit"
+        //if (!eventData.fullyExited) return; // Unity bug "IPointerEnter/Exit"
         transform.SetSiblingIndex(id); // Let layer become before
         transform.DOScale(scale * 1f, 0.3f);
 
@@ -262,7 +268,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (pos.y > CardLinePosY)
         {
             // Play the card
-            transform.DOScale(scale * 0.3f, 0.2f);
+            transform.DOScale(scale * 0.5f, 0.2f);
         }
         else
         {

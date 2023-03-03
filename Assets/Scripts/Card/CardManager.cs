@@ -11,6 +11,7 @@ public class CardManager : Singleton<CardManager>
     //public List<CardDetail_SO> CardDetailPrefabList = new List<CardDetail_SO>();
     public CharacterCards_SO Cards;
     public GameObject cardPrefabs;
+    public GameObject discardAnimationPrefabs;
     public GameObject cardInstPoint;
     public GameObject discardPilePoint;
 
