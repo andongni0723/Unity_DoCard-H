@@ -242,6 +242,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (transform.parent != originParent || isDrag || cantUse) return; // Card was Paid
 
         isDrag = true;
+        
         image.raycastPadding = zeroPadding;  //FIXME: padding
     }
     public void OnDrag(PointerEventData eventData)
