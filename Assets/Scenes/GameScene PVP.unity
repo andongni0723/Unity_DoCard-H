@@ -7451,7 +7451,7 @@ MonoBehaviour:
   CardPositionList: []
   CardRotationList: []
   Cards: {fileID: 11400000, guid: d9260690fcaf0d845bc92e33154b9dc0, type: 2}
-  cardPrefabs: {fileID: 1567381325940116902, guid: d4acbdc9735e7f849b33b194044be59c, type: 3}
+  cardPrefabs: {fileID: 8297260201906617677, guid: ba6cfba8d23806943b6fa21e8c6ea3c7, type: 3}
   discardAnimationPrefabs: {fileID: 5860171399843009389, guid: e0a499f803c9d094f87cccc9dfa3c3f4, type: 3}
   cardInstPoint: {fileID: 1023761313}
   discardPilePoint: {fileID: 230354610}
@@ -7959,7 +7959,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -389, y: 226.97}
+  m_AnchoredPosition: {x: -389, y: 226.97021}
   m_SizeDelta: {x: 625.31006, y: 303.94104}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2120623498

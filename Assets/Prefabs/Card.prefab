@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f45ffd452ed65c4f87ac5c7285c3f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  card: {fileID: 0}
   cardNameText: {fileID: 0}
   cardPayNumText: {fileID: 0}
   cardImg: {fileID: 0}

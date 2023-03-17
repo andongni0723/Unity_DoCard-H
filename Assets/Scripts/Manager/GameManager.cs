@@ -51,6 +51,8 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
 
         // Setting
+        Application.targetFrameRate = 300;
+
         PlayerGameObject = GameObject.FindWithTag("Player");
         EnemyGameObject = GameObject.FindWithTag("Enemy");
 

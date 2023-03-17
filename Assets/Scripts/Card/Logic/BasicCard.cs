@@ -10,6 +10,7 @@ using System;
 public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     [Header("Children Component")]
+    public GameObject card;
     public TextMeshProUGUI cardNameText;
     public TextMeshProUGUI cardPayNumText;
     public Image cardImg;
@@ -37,20 +38,21 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private void Awake()
     {
+
+        // Get children gameObject
+        card = transform.Find("Card").gameObject;
+        cardNameText = card.transform.Find("card_name").GetComponent<TextMeshProUGUI>();
+        cardPayNumText = card.transform.Find("card_pay").GetComponent<TextMeshProUGUI>();
+        cardImg = card.transform.Find("card_img").GetComponent<Image>();
+        cardDescriptionText = card.transform.Find("card_description").GetComponent<TextMeshProUGUI>();
+
         // Get and Set self var
         id = transform.GetSiblingIndex();
         originParent = GameObject.FindWithTag("CardManager").transform; // CardManager
         playCardParent = GameObject.FindWithTag("PlayCardParent").transform;
         image = GetComponent<Image>();
-        scale = transform.localScale.x;
+        scale = card.transform.localScale.x;
         CardLinePosY = Screen.height / 4; // 4KUHD (540f)
-
-        // Get children gameObject
-        cardNameText = transform.Find("card_name").GetComponent<TextMeshProUGUI>();
-        cardPayNumText = transform.Find("card_pay").GetComponent<TextMeshProUGUI>();
-        cardImg = transform.Find("card_img").GetComponent<Image>();
-        cardDescriptionText = transform.Find("card_description").GetComponent<TextMeshProUGUI>();
-
 
         image.raycastPadding = halfPadding;
     }
@@ -139,7 +141,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private void OnCancelPlayTheCard()
     {
-        transform.DOScale(scale * 1f, 0.3f);
+        card.transform.DOScale(scale * 1f, 0.3f);
         transform.parent = originParent;
         //EventHanlder.CallCardUpdeatePosition();
 
@@ -212,7 +214,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (GameManager.Instance.gameStep != GameStep.PayCardStep)
             transform.SetAsLastSibling(); // Let layer on first
 
-        transform.DOScale(scale * 1.5f, 0.3f);
+        card.transform.DOScale(scale * 1.5f, 0.3f);
         //Debug.Log("enter");
     }
 
@@ -227,7 +229,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         //if (!eventData.fullyExited) return; // Unity bug "IPointerEnter/Exit"
         transform.SetSiblingIndex(id); // Let layer become before
-        transform.DOScale(scale * 1f, 0.3f);
+        card.transform.DOScale(scale * 1f, 0.3f);
 
         EventHanlder.CallCardOnClick(null);
 
@@ -269,11 +271,11 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (pos.y > CardLinePosY)
         {
             // Play the card
-            transform.DOScale(scale * 0.5f, 0.2f);
+            card.transform.DOScale(scale * 0.5f, 0.2f);
         }
         else
         {
-            transform.DOScale(scale * 1f, 0.2f);
+            card.transform.DOScale(scale * 1f, 0.2f);
         }
     }
 

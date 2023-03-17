@@ -138,7 +138,7 @@ public class CardManager : Singleton<CardManager>
         // Set new object var
         cardObj.name = $"Card{instCardNameNum}";
         cardObj.GetComponent<BasicCard>().cardDetail = data;
-        cardObj.GetComponent<Image>().sprite = cardSprite;
+        cardObj.transform.GetChild(0).GetComponent<Image>().sprite = cardSprite;
         instCardNameNum++;
 
         // Call the method let card update data
