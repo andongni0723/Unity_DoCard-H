@@ -65,7 +65,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             // Fix card move anim problem
             transform.position = Input.mousePosition;
 
-            ScaleAtCardOnDrag(transform.position); //FIXME
+            ScaleAndPositionAtCardOnDrag(transform.position); //FIXME
         }
     }
 
@@ -125,13 +125,10 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                     yPos = transform.position.y;
                 }
             );
-
             transform.rotation = GetComponentInParent<CardManager>().CardRotationList[id];
-            // //The card maybe by payCard parent
-            // if (transform.parent.TryGetComponent(out CardManager cardManager))
-            // {
-            //  
-            // }
+            
+            // Card Object
+            card.transform.position = transform.position;
         }
         else
         {
@@ -265,17 +262,20 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     /// <summary>
     /// Card on drag, if card yPos out a distance, scale will become small (play), or big (canel play)
     /// </summary>
-    /// <param name="eventData"></param>
-    public void ScaleAtCardOnDrag(Vector3 pos)
+    /// <param name="pos"></param>
+    private void ScaleAndPositionAtCardOnDrag(Vector3 pos)
     {
         if (pos.y > CardLinePosY)
         {
             // Play the card
             card.transform.DOScale(scale * 0.5f, 0.2f);
+            card.transform.position = transform.position;
         }
         else
         {
-            card.transform.DOScale(scale * 1f, 0.2f);
+            // Back to Hand
+            card.transform.DOScale(scale * 2f, 0.2f);
+            card.transform.position = transform.position + new Vector3(0, 400, 0);
         }
     }
 
@@ -286,14 +286,18 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         // Check the card PosY
         if (eventData.position.y < CardLinePosY)
         {
-            // Canel play the card
+            // Cancel play the card
+            card.transform.position = transform.position;
+
             if (GameManager.Instance.gameStep == GameStep.PayCardStep)
             {
                 Debug.Log("noYYYYYYy");
                 EventHanlder.CallPayTheCardError(gameObject);
             }
             else
+            {
                 EventHanlder.CallCancelPlayTheCard();
+            }
         }
         else // Play the card
         {
