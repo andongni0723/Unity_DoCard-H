@@ -91,7 +91,7 @@ public class CardManager : Singleton<CardManager>
 
         if (_childNum > maxCardNum)
         {
-            Debug.Log("bigger");//FIXME
+            //Debug.Log("bigger");//FIXME
             cardMoveX = cardMoveX / (1f + (_childNum - maxCardNum) / (maxCardNum - 1));
         }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Mathematics;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -63,6 +64,7 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(LoopGameStepAction());
 
     }
+    // ReSharper disable Unity.PerformanceAnalysis
     protected virtual IEnumerator LoopGameStepAction()
     {
         while (true)
@@ -363,6 +365,11 @@ public class GameManager : Singleton<GameManager>
         }
 
         // Check the confirm area count and other status effect
+        ConfirmGrid playerGrid = GameStepToGetCurrentAttackCharacter().transform.parent.GetComponent<Grid>().gridID;
+        int moveX = data.ConfirmGridsList.Count != 0? Mathf.Abs(playerGrid.GridX - data.ConfirmGridsList[0].GridX) : 0;
+        int moveY = data.ConfirmGridsList.Count != 0? Mathf.Abs(playerGrid.GridY - data.ConfirmGridsList[0].GridY) : 0;
+        //print($"{moveX}, {moveY}");
+        
         if (data.cardDetail.cardType == CardType.Move && GameStepToGetCurrentAttackCharacter().GetComponentInChildren<BaseStatusManager>()
                 .HaveStatus(EffectType.Imprison))
         {
@@ -373,6 +380,12 @@ public class GameManager : Singleton<GameManager>
         else if (gridCount != checkGridCount)
         {
             EventHanlder.CallSendGameMessage("請確認技能釋放範圍完整");
+            EventHanlder.CallCancelPlayTheCard();
+        }
+        else if (data.cardDetail.cardType == CardType.Move &&
+                 ((moveX > 1 || moveY > 1) || (moveX == 1 && moveY == 1)))
+        {
+            EventHanlder.CallSendGameMessage("請確認卡牌移動範圍(1格)");
             EventHanlder.CallCancelPlayTheCard();
         }
         else if (gridCount == checkGridCount)
@@ -488,54 +501,6 @@ public class GameManager : Singleton<GameManager>
                 AllConfirmGridList.Add(grid);
             }
         }
-
-        #region Del
-        // if (currentCharacter == Character.Player)
-        // {
-        //     foreach (ConfirmAreaGridData data in EnemySettlementCardActionList)
-        //     {
-        //         foreach (ConfirmGrid grid in data.ConfirmGridsList)
-        //         {
-        //             Debug.Log("AAAAA");//FIXM
-
-        //             AllConfirmGridList.Add(grid);
-        //         }
-        //     }
-
-        //     foreach (ConfirmAreaGridData data in PlayerSettlementCardActionList)
-        //     {
-        //         foreach (ConfirmGrid grid in data.ConfirmGridsList)
-        //         {
-        //             Debug.Log("AAAAA");//FIXM
-
-        //             AllConfirmGridList.Add(grid);
-        //         }
-        //     }
-        // }
-        // else
-        // {
-        //     //Enemy
-        //     foreach (ConfirmAreaGridData data in PlayerSettlementCardActionList)
-        //     {
-        //         foreach (ConfirmGrid grid in data.ConfirmGridsList)
-        //         {
-        //             Debug.Log("AAAAA");//FIXM
-
-        //             AllConfirmGridList.Add(grid);
-        //         }
-        //     }
-
-        //     foreach (ConfirmAreaGridData data in EnemySettlementCardActionList)
-        //     {
-        //         foreach (ConfirmGrid grid in data.ConfirmGridsList)
-        //         {
-        //             Debug.Log("AAAAA");//FIXM
-
-        //             AllConfirmGridList.Add(grid);
-        //         }
-        //     }
-        // }
-        #endregion
 
         // Reload when function done
         EventHanlder.CallReloadGridColor(AllConfirmGridList); // To GridManager reload grid color

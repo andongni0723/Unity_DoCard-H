@@ -17,7 +17,7 @@ public static class EventHanlder
     #endregion
 
 
-    /*Game Mangager*/
+    /*Game Manager*/
     #region GameManger
     // GameManager => Other Scripts
     public static event Action OnPlayerSettlement;

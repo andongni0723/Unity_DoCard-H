@@ -6,6 +6,7 @@ using DG.Tweening;
 public class BaseCharacter : MonoBehaviour
 {
     public CharacterCards_SO CardsDetails;
+    public Character character;
     GameObject canvus;
 
     private void Awake()

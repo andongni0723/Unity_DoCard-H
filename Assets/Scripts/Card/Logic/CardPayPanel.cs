@@ -126,14 +126,14 @@ public class CardPayPanel : MonoBehaviour
     private void PanelInAnimation()
     {
         float panelEndY = Screen.height * 0.175f; //Full HD(1080p) (190f)
-        Debug.Log(Screen.height);
+        //Debug.Log(Screen.height);
         panelUI.GetComponent<RectTransform>().DOAnchorPosY(panelEndY, 0.5f);
     }
 
     private void PanelOutAnimatiodn()
     {
         float panelEndY = Screen.height * 2; //Full HD(1080p) (2160f)
-        Debug.Log(Screen.height);
+        //Debug.Log(Screen.height);
         panelUI.GetComponent<RectTransform>().DOAnchorPosY(panelEndY, 0.5f);
     }
 
