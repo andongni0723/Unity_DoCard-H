@@ -3,17 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8146da12-52b9-4c02-9eaf-2396b7ca7226" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Game-Assets-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game-Assets-Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Font Assets/TaipeiSansTCBeta-Bold SDF - Outline.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Font Assets/TaipeiSansTCBeta-Bold SDF - Outline.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Font Assets/TaipeiSansTCBeta-Light SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Font Assets/TaipeiSansTCBeta-Light SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Font Assets/圓體中文 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Font Assets/圓體中文 SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/UI/Other UI/Button_v2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/UI/Other UI/Button_v2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene PVP.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene PVP.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Card/CardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Card/CardManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Card/Logic/CardPayPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Card/Logic/CardPayPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character/BaseCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character/BaseCharacter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Script Tool/EventHanlder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Script Tool/EventHanlder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Debug Scripts/TestBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Debug Scripts/TestBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +13,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Colourful Hierarchy Category GameObject/Editor/StyleHierarchy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Card/CardManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Card/Logic/CardPayPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/BaseCharacter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -37,23 +29,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\user\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "/Users/andongni/Library/Application Support/JetBrains/Rider2022.3/resharper-host/DecompilerCache",
+      "/Users/andongni/Library/Application Support/JetBrains/Rider2022.3/resharper-host/SourcesCache",
+      "/Users/andongni/.local/share/Symbols/src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$USER_HOME$/OneDrive/桌面/DoCard game\GameAssetsTest.exe" />
@@ -64,7 +56,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\2022.1.12f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2022.1.12f1/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;D:\unity\Game Assets Test\Game-Assets-Project&quot; -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\unity\Game Assets Test\Game-Assets-Project" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -72,7 +64,7 @@
       <method v="2" />
     </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\2022.1.12f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2022.1.12f1/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;D:\unity\Game Assets Test\Game-Assets-Project&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\unity\Game Assets Test\Game-Assets-Project" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -89,10 +81,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="10476">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="10476" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -113,6 +105,7 @@
       <workItem from="1679198059395" duration="330000" />
       <workItem from="1679198847282" duration="8685000" />
       <workItem from="1679212542293" duration="8581000" />
+      <workItem from="1679493125477" duration="732000" />
     </task>
     <servers />
   </component>
