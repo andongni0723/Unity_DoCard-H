@@ -27,7 +27,7 @@ ScriptedImporter:
     streamingMipmaps: 1
     streamingMipmapsPriority: 0
     vTOnly: 0
-    ignoreMasterTextureLimit: 0
+    ignoreMipmapLimit: 0
     nPOTScale: 1
     sRGBTexture: 1
     spriteMode: 2
@@ -49,6 +49,7 @@ ScriptedImporter:
     flipbookRows: 0
     flipbookColumns: 0
     ignorePngGamma: 0
+    cookieMode: 0
     filterMode: 1
     aniso: 1
     mipBias: 0
@@ -90,6 +91,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
   - name: Head
@@ -428,7 +430,8 @@ ScriptedImporter:
     - {x: 25, y: 26}
     - {x: 26, y: 27}
     tessellationDetail: 0
-    uvTransform: {x: 4, y: -102}
+    uvTransform: {x: 4, y: 239}
+    spritePosition: {x: 0, y: 341}
   - name: arm2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -754,7 +757,8 @@ ScriptedImporter:
     - {x: 24, y: 25}
     - {x: 25, y: 26}
     tessellationDetail: 0
-    uvTransform: {x: 142, y: -114}
+    uvTransform: {x: 142, y: 4}
+    spritePosition: {x: 0, y: 118}
   - name: arm
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1080,7 +1084,8 @@ ScriptedImporter:
     - {x: 24, y: 25}
     - {x: 25, y: 26}
     tessellationDetail: 0
-    uvTransform: {x: 259, y: -200}
+    uvTransform: {x: 259, y: 4}
+    spritePosition: {x: 0, y: 204}
   - name: leg2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1406,7 +1411,8 @@ ScriptedImporter:
     - {x: 24, y: 25}
     - {x: 25, y: 26}
     tessellationDetail: 0
-    uvTransform: {x: 116, y: 296}
+    uvTransform: {x: 142, y: 296}
+    spritePosition: {x: 26, y: 0}
   - name: leg1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1721,7 +1727,8 @@ ScriptedImporter:
     - {x: 23, y: 24}
     - {x: 24, y: 25}
     tessellationDetail: 0
-    uvTransform: {x: 233, y: 176}
+    uvTransform: {x: 259, y: 266}
+    spritePosition: {x: 26, y: 90}
   - name: Body
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2058,7 +2065,8 @@ ScriptedImporter:
     - {x: 25, y: 26}
     - {x: 26, y: 27}
     tessellationDetail: 0
-    uvTransform: {x: 4, y: -148}
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 0, y: 152}
   - name: leg2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2393,7 +2401,8 @@ ScriptedImporter:
     - {x: 24, y: 25}
     - {x: 25, y: 26}
     tessellationDetail: 0
-    uvTransform: {x: 121, y: -7}
+    uvTransform: {x: 201, y: 4}
+    spritePosition: {x: 80, y: 11}
   - name: leg1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2719,7 +2728,8 @@ ScriptedImporter:
     - {x: 24, y: 25}
     - {x: 25, y: 26}
     tessellationDetail: 0
-    uvTransform: {x: 121, y: 49}
+    uvTransform: {x: 201, y: 150}
+    spritePosition: {x: 80, y: 101}
   - name: arm2_R
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -3045,7 +3055,8 @@ ScriptedImporter:
     - {x: 24, y: 25}
     - {x: 25, y: 26}
     tessellationDetail: 0
-    uvTransform: {x: 47, y: 1}
+    uvTransform: {x: 142, y: 150}
+    spritePosition: {x: 95, y: 149}
   - name: arm_R
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -3380,7 +3391,8 @@ ScriptedImporter:
     - {x: 24, y: 25}
     - {x: 25, y: 26}
     tessellationDetail: 0
-    uvTransform: {x: 164, y: -105}
+    uvTransform: {x: 259, y: 135}
+    spritePosition: {x: 95, y: 240}
   characterData:
     bones:
     - name: bone_1
@@ -3588,6 +3600,7 @@ ScriptedImporter:
   keepDupilcateSpriteName: 1
   skeletonAssetReferenceID: 
   padding: 4
+  spriteSizeExpand: 0
   spriteCategoryList:
     categories: []
   spritePackingTag: 
@@ -3697,6 +3710,8 @@ ScriptedImporter:
   sharedRigPSDLayers: []
   pSDLayerImportSetting: []
   importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
   generateGOHierarchy: 0
   textureAssetName: 
   prefabAssetName: 

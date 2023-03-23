@@ -275,7 +275,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             // Back to Hand
             card.transform.DOScale(scale * 2f, 0.2f);
-            card.transform.position = transform.position + new Vector3(0, 400, 0);
+            card.transform.position = transform.position + new Vector3(0, Screen.height / 2.7f, 0);
         }
     }
 

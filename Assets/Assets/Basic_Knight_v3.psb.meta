@@ -27,7 +27,7 @@ ScriptedImporter:
     streamingMipmaps: 1
     streamingMipmapsPriority: 0
     vTOnly: 0
-    ignoreMasterTextureLimit: 0
+    ignoreMipmapLimit: 0
     nPOTScale: 1
     sRGBTexture: 1
     spriteMode: 2
@@ -49,6 +49,7 @@ ScriptedImporter:
     flipbookRows: 0
     flipbookColumns: 0
     ignorePngGamma: 0
+    cookieMode: 0
     filterMode: 1
     aniso: 1
     mipBias: 0
@@ -90,6 +91,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
   - name: Head
@@ -428,7 +430,8 @@ ScriptedImporter:
     - {x: 25, y: 26}
     - {x: 26, y: 27}
     tessellationDetail: 0
-    uvTransform: {x: -179, y: -102}
+    uvTransform: {x: 4, y: 239}
+    spritePosition: {x: 183, y: 341}
   - name: arm2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -754,7 +757,8 @@ ScriptedImporter:
     - {x: 24, y: 25}
     - {x: 25, y: 26}
     tessellationDetail: 0
-    uvTransform: {x: -41, y: -4}
+    uvTransform: {x: 142, y: 114}
+    spritePosition: {x: 183, y: 118}
   - name: arm
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1080,7 +1084,8 @@ ScriptedImporter:
     - {x: 24, y: 25}
     - {x: 25, y: 26}
     tessellationDetail: 0
-    uvTransform: {x: 76, y: -90}
+    uvTransform: {x: 259, y: 114}
+    spritePosition: {x: 183, y: 204}
   - name: sword
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1472,7 +1477,8 @@ ScriptedImporter:
     - {x: 30, y: 31}
     - {x: 31, y: 32}
     tessellationDetail: 0
-    uvTransform: {x: -67, y: -86}
+    uvTransform: {x: 142, y: 4}
+    spritePosition: {x: 209, y: 90}
   - name: leg2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1798,7 +1804,8 @@ ScriptedImporter:
     - {x: 24, y: 25}
     - {x: 25, y: 26}
     tessellationDetail: 0
-    uvTransform: {x: -8, y: 114}
+    uvTransform: {x: 201, y: 114}
+    spritePosition: {x: 209, y: 0}
   - name: leg1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2113,7 +2120,8 @@ ScriptedImporter:
     - {x: 23, y: 24}
     - {x: 24, y: 25}
     tessellationDetail: 0
-    uvTransform: {x: 50, y: 286}
+    uvTransform: {x: 259, y: 376}
+    spritePosition: {x: 209, y: 90}
   - name: Body
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2450,7 +2458,8 @@ ScriptedImporter:
     - {x: 25, y: 26}
     - {x: 26, y: 27}
     tessellationDetail: 0
-    uvTransform: {x: -179, y: -148}
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 183, y: 152}
   - name: leg2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2776,7 +2785,8 @@ ScriptedImporter:
     - {x: 24, y: 25}
     - {x: 25, y: 26}
     tessellationDetail: 0
-    uvTransform: {x: -62, y: 249}
+    uvTransform: {x: 201, y: 260}
+    spritePosition: {x: 263, y: 11}
   - name: leg1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -3091,7 +3101,8 @@ ScriptedImporter:
     - {x: 23, y: 24}
     - {x: 24, y: 25}
     tessellationDetail: 0
-    uvTransform: {x: 55, y: 13}
+    uvTransform: {x: 318, y: 114}
+    spritePosition: {x: 263, y: 101}
   - name: arm2_R
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -3417,7 +3428,8 @@ ScriptedImporter:
     - {x: 24, y: 25}
     - {x: 25, y: 26}
     tessellationDetail: 0
-    uvTransform: {x: -136, y: 111}
+    uvTransform: {x: 142, y: 260}
+    spritePosition: {x: 278, y: 149}
   - name: arm_R
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -3743,7 +3755,8 @@ ScriptedImporter:
     - {x: 24, y: 25}
     - {x: 25, y: 26}
     tessellationDetail: 0
-    uvTransform: {x: -19, y: 5}
+    uvTransform: {x: 259, y: 245}
+    spritePosition: {x: 278, y: 240}
   characterData:
     bones:
     - name: bone_1
@@ -3969,6 +3982,7 @@ ScriptedImporter:
   keepDupilcateSpriteName: 1
   skeletonAssetReferenceID: 
   padding: 4
+  spriteSizeExpand: 0
   spriteCategoryList:
     categories: []
   spritePackingTag: 
@@ -4088,6 +4102,8 @@ ScriptedImporter:
   sharedRigPSDLayers: []
   pSDLayerImportSetting: []
   importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
   generateGOHierarchy: 0
   textureAssetName: 
   prefabAssetName: 
