@@ -65,6 +65,11 @@ public enum EffectType
     Poisoned, Bleed, Imprison, Invincibility, Cure
 }
 
+public enum ChooseCharacterStep
+{
+    P1, P2, Ready, Go
+}
+
 public enum MoveType
 {
     Forward, Back, UpAndDown, Free

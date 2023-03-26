@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238047d3de50c46d8805c108bc6a2805, type: 3}
+  m_Name: ChooseCharacterDetails- P3
+  m_EditorClassIdentifier: 
+  characterName: "\u6CD5\u5E2B"
+  characterSprite: {fileID: 21300000, guid: ab31ab3e719c24f969d9f8b809fb3eec, type: 3}
+  characterDescription: "\u4F48\u9663\u3001\u4F4E\u82B1\u8CBB\u3001\u7589\u5C64\u3001\u7206\u767C"
