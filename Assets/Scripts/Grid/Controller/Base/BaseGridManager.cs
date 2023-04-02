@@ -28,7 +28,7 @@ public class BaseGridManager : MonoBehaviour
         //EventHanlder.ReloadGridData -= OnReloadGridData;
     }
 
-    protected virtual List<ConfirmGrid> UpdateData()
+    protected List<ConfirmGrid> UpdateData()
     {
         List<ConfirmGrid> dataList = new List<ConfirmGrid>();
 

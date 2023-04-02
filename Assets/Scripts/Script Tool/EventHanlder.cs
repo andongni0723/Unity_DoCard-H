@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public static class EventHanlder
 {
-    /* Message System */
     #region Message System
     // GameManager => MessageManager
     public static event Action<string> SendGameMessage;
@@ -15,9 +14,8 @@ public static class EventHanlder
         SendGameMessage?.Invoke(message);
     }
     #endregion
-
-
-    /*Game Manager*/
+    
+    
     #region GameManger
     // GameManager => Other Scripts
     public static event Action OnPlayerSettlement;
@@ -44,8 +42,8 @@ public static class EventHanlder
         }
     }
     #endregion
-
-    /* Card System */
+    
+    
     #region Card System
 
     // Softed Card Position
@@ -191,8 +189,7 @@ public static class EventHanlder
     }
     #endregion
 
-
-    /* Health System */
+    
     #region Health System
 
     // Game Data Change
@@ -250,5 +247,25 @@ public static class EventHanlder
             PlayerHurt(data);
         }
     }
+    #endregion
+
+    #region Choose Character System
+
+    public static event Action ChooseCharacterChangeStep;
+
+    public static void CallChooseCharacterChangeStep()
+    {
+        ChooseCharacterChangeStep?.Invoke();
+    }
+
+    public static event Func<ChooseCharacterDetails_SO> PlayerSendCharacterDetails;
+    public static event Func<ChooseCharacterDetails_SO> EnemySendCharacterDetails;
+
+    public static void CallSendCharacterDetails(out ChooseCharacterDetails_SO playerData, out ChooseCharacterDetails_SO enemyData)
+    {
+        playerData = PlayerSendCharacterDetails?.Invoke();
+        enemyData = EnemySendCharacterDetails?.Invoke();
+    }
+
     #endregion
 }

@@ -8,6 +8,8 @@ public class ChooseCharacterDetails_SO : ScriptableObject
     public string characterName;
     public Sprite characterSprite;
     public string characterDescription;
+
+    public CharacterCards_SO characterCards;
 }
 
     

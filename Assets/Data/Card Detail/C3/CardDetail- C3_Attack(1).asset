@@ -37,7 +37,7 @@ MonoBehaviour:
     CardEffectList:
     - target: 1
       effectData: {fileID: 11400000, guid: e0c12c9cefa90e04393d6212266b4067, type: 2}
-      effectCount: 1
+      effectCount: 2
     RemoveEffectList: []
     CardInstantiateCardList: []
   tankTypeDetails:

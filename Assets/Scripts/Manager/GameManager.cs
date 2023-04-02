@@ -12,8 +12,8 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Game Data")]
     public Character currentCharacter;
-    [HideInInspector] public GameObject PlayerGameObject;
-    [HideInInspector] public GameObject EnemyGameObject;
+    [HideInInspector] public GameObject PlayerGameObject => GameObject.FindWithTag("Player");
+    [HideInInspector] public GameObject EnemyGameObject => GameObject.FindWithTag("Enemy");
     public List<ConfirmAreaGridData> PlayerSettlementCardActionList = new List<ConfirmAreaGridData>();
     public List<ConfirmAreaGridData> EnemySettlementCardActionList = new List<ConfirmAreaGridData>();
     public List<ConfirmAreaGridData> CommonCardActionList = new List<ConfirmAreaGridData>();
@@ -54,8 +54,18 @@ public class GameManager : Singleton<GameManager>
         // Setting
         Application.targetFrameRate = 300;
 
-        PlayerGameObject = GameObject.FindWithTag("Player");
-        EnemyGameObject = GameObject.FindWithTag("Enemy");
+        if (ChooseCharacterManager.ChoosePlayerData.characterCards != null)
+        {
+            PlayerGameObject.GetComponent<BaseCharacter>().CardsDetails =
+                ChooseCharacterManager.ChoosePlayerData.characterCards;
+            EnemyGameObject.GetComponent<BaseCharacter>().CardsDetails =
+                ChooseCharacterManager.ChooseEnemyData.characterCards;
+        }
+        else
+        {
+            Debug.LogWarning("Not Choose the Character");
+        }
+        
 
         //FIXME: 未來
         ChangeGameStep(GameStep.StepStart);

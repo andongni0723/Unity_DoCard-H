@@ -15,3 +15,4 @@ MonoBehaviour:
   characterName: "\u9A0E\u58EB"
   characterSprite: {fileID: 21300000, guid: d30eefc0cea00438d992d6008f3176b1, type: 3}
   characterDescription: "\u4F48\u9663\u3001\u9AD8\u82B1\u8CBB\u3001\u9AD8\u751F\u547D\u3001\u7B28\u91CD"
+  characterCards: {fileID: 11400000, guid: 1b9960f352556dc44a497781d793e026, type: 2}
