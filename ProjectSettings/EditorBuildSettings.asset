@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Persistent.unity
+    guid: eaa752291e92c43f7bb617e3179d5a0e
+  - enabled: 1
     path: Assets/Scenes/ChooseCharcaterScene.unity
     guid: 3157169c0e5a54b3ca6048df26d793a3
   - enabled: 1
     path: Assets/Scenes/GameScene PVP.unity
     guid: 898fdd5bd724dd2488cd71a92c86c188
-  - enabled: 0
-    path: Assets/Scenes/GameScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

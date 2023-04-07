@@ -24,8 +24,8 @@ public class CharacterTurnPoint : MonoBehaviour
 
     private void OnDisable()
     {
-        EventHanlder.OnPlayerStep += OnOnPlayerStep;
-        EventHanlder.OnEnemyStep += OnOnEnemyStep;
+        EventHanlder.OnPlayerStep -= OnOnPlayerStep;
+        EventHanlder.OnEnemyStep -= OnOnEnemyStep;
     }
 
     private void OnOnEnemyStep()

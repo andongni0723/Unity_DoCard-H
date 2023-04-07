@@ -11,7 +11,7 @@ public class ChooseCharacterManager : Singleton<ChooseCharacterManager>
     public static ChooseCharacterDetails_SO ChoosePlayerData;
     public static ChooseCharacterDetails_SO ChooseEnemyData;
 
-    [Header("Setting")] 
+    [Header("Setting")] [SceneName] public string toScene;
     public GameObject bg;
     public GameObject bigPoint;
     public GameObject middlePoint;
@@ -78,7 +78,8 @@ public class ChooseCharacterManager : Singleton<ChooseCharacterManager>
                 break;
             
             case ChooseCharacterStep.Go:
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                TeleportManager.Instance.Transition(SceneManager.GetActiveScene().name, toScene);
                 break;
         }
     }

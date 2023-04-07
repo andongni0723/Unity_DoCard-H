@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,12 +7,24 @@ using DG.Tweening;
 public class BaseCharacter : MonoBehaviour
 {
     public CharacterCards_SO CardsDetails;
+    public ChooseCharacterDetails_SO CharacterDetails;
     public Character character;
+
+    public SpriteRenderer characterSprite;
+    
     GameObject canvus;
+    
 
     private void Awake()
     {
-        canvus = transform.Find("Canvas").gameObject;
+        canvus = transform.Find("#1Self Canvas").gameObject;
+    }
+
+    IEnumerator Start()
+    {
+        yield return new WaitUntil(() => CharacterDetails != null);
+        characterSprite.sprite = CharacterDetails.characterSprite;
+        Debug.Log($"{name} , sprite");
     }
 
     protected virtual void OnMoveAction(ConfirmAreaGridData data)

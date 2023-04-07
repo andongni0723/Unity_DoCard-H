@@ -8,7 +8,7 @@ public class PlayerController : BaseCharacter
 {
     private Animator anim;
 
-    private void Start()
+    /*private void Start()
     {
         anim = GetComponent<Animator>();
     }
@@ -19,9 +19,11 @@ public class PlayerController : BaseCharacter
         {
             anim.SetTrigger("slash01");
         }
-    }
+    }*/
+
 
     #region Event
+
     private void OnEnable()
     {
         EventHanlder.PlayerMoveAction += OnMoveAction; // Move action (animation)

@@ -56,14 +56,18 @@ public class GameManager : Singleton<GameManager>
 
         if (ChooseCharacterManager.ChoosePlayerData.characterCards != null)
         {
+            PlayerGameObject.GetComponent<BaseCharacter>().CharacterDetails = ChooseCharacterManager.ChoosePlayerData;
+            EnemyGameObject.GetComponent<BaseCharacter>().CharacterDetails = ChooseCharacterManager.ChooseEnemyData;
+
             PlayerGameObject.GetComponent<BaseCharacter>().CardsDetails =
                 ChooseCharacterManager.ChoosePlayerData.characterCards;
             EnemyGameObject.GetComponent<BaseCharacter>().CardsDetails =
                 ChooseCharacterManager.ChooseEnemyData.characterCards;
+            
         }
         else
         {
-            Debug.LogWarning("Not Choose the Character");
+            Debug.LogError("Not Choose the Character");
         }
         
 

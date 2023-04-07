@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneManager : MonoBehaviour
 {
-    public void ResetScene()
+    [SceneName]public string formScene;
+    [SceneName] public string toScene;
+    public void LeaveScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        TeleportManager.Instance.Transition(SceneManager.GetActiveScene().name, toScene);
     }
 }

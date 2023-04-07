@@ -1158,7 +1158,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1540527676}
         m_TargetAssemblyTypeName: LoadSceneManager, Assembly-CSharp
-        m_MethodName: ResetScene
+        m_MethodName: LeaveScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
