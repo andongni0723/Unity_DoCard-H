@@ -5217,7 +5217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   formScene: GameScene PVP
-  toScene: ChooseCharcaterScene
+  toScene: StartScene
 --- !u!4 &1540527677
 Transform:
   m_ObjectHideFlags: 0

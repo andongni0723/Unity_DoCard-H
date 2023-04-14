@@ -104,10 +104,7 @@ public class ChooseCharacterPanelController : MonoBehaviour
         float time = 0.4f;
 
         sequence.Append(setActiveParent.transform.DOLocalMoveX(isDisappear ? toX : 0, time));
-        //sequence.Append(characterName.transform.DOMoveX(toX, time));
-        //sequence.Join(characterImage.transform.DOMoveX(toX, time));
-        //sequence.Join(chooseBar.transform.DOMoveX(toX, time));
-        
-        
+
+
     }
 }
