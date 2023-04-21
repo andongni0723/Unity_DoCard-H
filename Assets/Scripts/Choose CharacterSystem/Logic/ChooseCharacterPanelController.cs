@@ -11,20 +11,30 @@ public class ChooseCharacterPanelController : MonoBehaviour
 {
     public ChooseCharacterDetails_SO currentShowCharacter;
 
-    [Header("Setting")] 
+    [Header("Object Setting")] 
     public Character character;
-
+    
+    [Space(5)]
     public GameObject setActiveParent;
     public TextMeshProUGUI characterName;
     public Image characterImage;
     public TextMeshProUGUI characterDescription;
-    public GameObject chooseBar;
-
+    public GameObject chooseBarObj;
+    public GameObject barObj;
     public GameObject disappearPoint;
 
-    private void Start()
+    [Space(10f)] 
+    public GameObject characterBarGrid;
+    
+    [Header("Scripts Setting")]
+    public List<ChooseCharacterDetails_SO> ChooseCharacterDetailsList = new List<ChooseCharacterDetails_SO>();
+
+    
+
+    protected virtual void Start()
     {
         OnChooseCharacterChangeStep();
+        LoadChooseCharacterBarElements(ChooseCharacterDetailsList);
     }
 
     #region Button Method
@@ -39,14 +49,23 @@ public class ChooseCharacterPanelController : MonoBehaviour
 
     #region Event
 
-    private void OnEnable()
+    protected void OnEnable()
     {
-        EventHanlder.ChooseCharacterChangeStep += OnChooseCharacterChangeStep;
+        //EventHanlder.ChooseCharacterGridButton += OnChooseCharacterGridButton; // After button selected character , display UI
+        EventHanlder.ChooseCharacterChangeStep += OnChooseCharacterChangeStep; // Play move animation and change display
     }
 
-    private void OnDisable()
+    protected void OnDisable()
     {
+        //EventHanlder.ChooseCharacterGridButton -= OnChooseCharacterGridButton;
         EventHanlder.ChooseCharacterChangeStep -= OnChooseCharacterChangeStep;
+    }
+
+    protected void OnChooseCharacterGridButton(ChooseCharacterDetails_SO data)
+    {
+        currentShowCharacter = data;
+        ReloadCharacterShow();
+        Debug.Log("UI");
     }
 
     protected void OnChooseCharacterChangeStep()
@@ -56,16 +75,25 @@ public class ChooseCharacterPanelController : MonoBehaviour
         {
             case ChooseCharacterStep.P1:
                 ObjectSetEnable(character == Character.Player);
-                MoveAnimation(character == Character.Enemy);
+                MoveAnimation(character == Character.Enemy || character == Character.AI);
                 break;
             case ChooseCharacterStep.P2:
-                ObjectSetEnable(character == Character.Enemy);
+                ObjectSetEnable(character == Character.Enemy || character == Character.AI);
                 MoveAnimation(character == Character.Player);
                 break;
             case ChooseCharacterStep.Ready:
                 ObjectSetEnable(false);
                 MoveAnimation(true);
                 break;
+        }
+    }
+
+    protected void LoadChooseCharacterBarElements(List<ChooseCharacterDetails_SO> list)
+    {
+        foreach (ChooseCharacterDetails_SO data in list)
+        {
+            GameObject obj = Instantiate(characterBarGrid, barObj.transform);
+            obj.GetComponent<ChooseBarElement>().SetDetails(character, data);
         }
     }
 
@@ -81,18 +109,17 @@ public class ChooseCharacterPanelController : MonoBehaviour
     /// <summary>
     /// According to 'character_SO' to show different character details on UI
     /// </summary>
-    protected void ReloadCharacterShow()
+    private void ReloadCharacterShow()
     {
         characterName.text = currentShowCharacter.characterName;
         characterImage.sprite = currentShowCharacter.characterSprite;
         characterDescription.text = currentShowCharacter.characterDescription;
-        
     }
 
     private void ObjectSetEnable(bool isEnable)
     {
         characterName.gameObject.SetActive(isEnable);
-        chooseBar.SetActive(isEnable);
+        chooseBarObj.SetActive(isEnable);
         characterDescription.gameObject.SetActive(isEnable);
         //Debug.Log(gameObject.name);
     }

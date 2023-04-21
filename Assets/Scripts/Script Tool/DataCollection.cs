@@ -46,9 +46,14 @@ public enum GameStep
     StepStart, PlayerStep, CommonStep, PayCardStep, EnemySettlement, EnemyStep, AIStep, PlayerSettlement, StepEnd
 }
 
+public enum GameMode
+{
+    Menu, PVP, PVE
+}
+
 public enum Character
 {
-    Player, Enemy, Self
+    Player, Enemy, AI,  Self
 }
 
 public enum CardType

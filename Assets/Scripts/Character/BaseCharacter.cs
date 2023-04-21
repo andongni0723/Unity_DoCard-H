@@ -44,7 +44,7 @@ public class BaseCharacter : MonoBehaviour
     {
         // The Hurt text animation
 
-        Debug.Log("Hurt text animation");//FIXME
+        //Debug.Log("Hurt text animation");//FIXME
 
         // If damage is 0, don't play animation
         if (GameManager.Instance.ValueListToInt(data.attackTypeDetails.cardHurtHPCalc) != 0)

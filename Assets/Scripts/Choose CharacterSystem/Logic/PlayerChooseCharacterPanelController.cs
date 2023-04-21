@@ -5,19 +5,25 @@ using UnityEngine;
 
 public class PlayerChooseCharacterPanelController : ChooseCharacterPanelController
 {
+    private void Awake()
+    {
+        character = Character.Player;
+    }
+    
+    
     #region Event
 
-    private void OnEnable()
+    public new void OnEnable()
     {
+        base.OnEnable();
+        EventHanlder.PlayerChooseCharacterGridButton += OnChooseCharacterGridButton; // After button selected character , display UI
         EventHanlder.PlayerSendCharacterDetails += OnSendCharacterDetails;
-        EventHanlder.ChooseCharacterChangeStep += OnChooseCharacterChangeStep;
-
     }
-    private void OnDisable()
+    private new void OnDisable()
     {
+        base.OnDisable();
+        EventHanlder.PlayerChooseCharacterGridButton -= OnChooseCharacterGridButton; // After button selected character , display UI
         EventHanlder.PlayerSendCharacterDetails -= OnSendCharacterDetails;
-        EventHanlder.ChooseCharacterChangeStep -= OnChooseCharacterChangeStep;
-
     }
 
     #endregion

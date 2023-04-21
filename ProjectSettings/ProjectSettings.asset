@@ -16,13 +16,13 @@ PlayerSettings:
   productName: DoCard
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
   m_SplashScreenLogoStyle: 1
-  m_SplashScreenDrawMode: 0
+  m_SplashScreenDrawMode: 1
   m_SplashScreenBackgroundAnimationZoom: 1
   m_SplashScreenLogoAnimationZoom: 1
   m_SplashScreenBackgroundLandscapeAspect: 1
@@ -39,7 +39,11 @@ PlayerSettings:
     y: 0
     width: 1
     height: 1
-  m_SplashScreenLogos: []
+  m_SplashScreenLogos:
+  - logo: {fileID: 10404, guid: 0000000000000000f000000000000000, type: 0}
+    duration: 2
+  - logo: {fileID: 21300000, guid: 4a2f458ba9306413aaf73b3a8898adc3, type: 3}
+    duration: 2
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1920
@@ -133,7 +137,7 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 0.7.3
+  bundleVersion: 0.7.4
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -251,7 +255,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: /Users/andongni/Documents/Myself_Folder/Other/unity KEY/andongni.keystore
+  AndroidKeystoreName: /Users/andongni/Documents/Myself_Folder/_Other/Unity KEY/andongni.keystore
   AndroidKeyaliasName: andongni0723
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidBuildApkPerCpuArchitecture: 0
@@ -343,43 +347,43 @@ PlayerSettings:
       m_Kind: 1
       m_SubKind: 
     - m_Textures:
+      - {fileID: 2800000, guid: 71ebafeef3c03457483266a33ab2b270, type: 3}
       - {fileID: 2800000, guid: a4cecd50ce5874273939b18f44187585, type: 3}
-      - {fileID: 0}
       m_Width: 432
       m_Height: 432
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
+      - {fileID: 2800000, guid: 71ebafeef3c03457483266a33ab2b270, type: 3}
       - {fileID: 2800000, guid: c41f9ff80368543d3be957f14dfd1956, type: 3}
-      - {fileID: 0}
       m_Width: 324
       m_Height: 324
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
+      - {fileID: 2800000, guid: 71ebafeef3c03457483266a33ab2b270, type: 3}
       - {fileID: 2800000, guid: e9e0a7d1bc6a34aca8bcb194cb5a9e5a, type: 3}
-      - {fileID: 0}
       m_Width: 216
       m_Height: 216
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
+      - {fileID: 2800000, guid: 71ebafeef3c03457483266a33ab2b270, type: 3}
       - {fileID: 2800000, guid: 7c26d6f688ee54af7b2319626fb9bd82, type: 3}
-      - {fileID: 0}
       m_Width: 162
       m_Height: 162
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
+      - {fileID: 2800000, guid: 71ebafeef3c03457483266a33ab2b270, type: 3}
       - {fileID: 2800000, guid: 3d2fbcdfe570e464bb4e8d5372b2e24f, type: 3}
-      - {fileID: 0}
       m_Width: 108
       m_Height: 108
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
+      - {fileID: 2800000, guid: 71ebafeef3c03457483266a33ab2b270, type: 3}
       - {fileID: 2800000, guid: 258d8b4c9ec2c423d97e9ad4d17f85f2, type: 3}
-      - {fileID: 0}
       m_Width: 81
       m_Height: 81
       m_Kind: 2

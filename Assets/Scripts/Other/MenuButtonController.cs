@@ -10,11 +10,12 @@ public class MenuButtonController : MonoBehaviour
     public GameObject mainButtonsGroup;
     public GameObject toPlayButtonsGroup;
 
+    [FormerlySerializedAs("pvpForm")]
     [Header("Setting")] 
     
-    [Header("PVP")] 
-    [SceneName] public string pvpForm;
-    [SceneName] public string pvpTo;
+    [Header("Battle")] 
+    [SceneName] public string battleForm;
+    [SceneName] public string battleTo;
     
     
 
@@ -29,7 +30,14 @@ public class MenuButtonController : MonoBehaviour
 
     public void PVPButton()
     {
-        TeleportManager.Instance.Transition(pvpForm, pvpTo);
+        ModeManager.Instance.ChangeGameMode(GameMode.PVP);
+        TeleportManager.Instance.Transition(battleForm, battleTo);
+    }
+    
+    public void PVEButton()
+    {
+        ModeManager.Instance.ChangeGameMode(GameMode.PVE);
+        TeleportManager.Instance.Transition(battleForm, battleTo);
     }
 
     public void BackButton()

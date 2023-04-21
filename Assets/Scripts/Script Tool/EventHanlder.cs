@@ -257,6 +257,17 @@ public static class EventHanlder
     {
         ChooseCharacterChangeStep?.Invoke();
     }
+    
+    public static event Action<ChooseCharacterDetails_SO> PlayerChooseCharacterGridButton;
+    public static event Action<ChooseCharacterDetails_SO> EnemyChooseCharacterGridButton;
+
+    public static void CallChooseCharacterGridButton(Character callTarget, ChooseCharacterDetails_SO data)
+    {
+        if(callTarget == Character.Player)
+            PlayerChooseCharacterGridButton?.Invoke(data);
+        else if(callTarget == Character.Enemy || callTarget == Character.AI)
+            EnemyChooseCharacterGridButton?.Invoke(data);
+    }
 
     public static event Func<ChooseCharacterDetails_SO> PlayerSendCharacterDetails;
     public static event Func<ChooseCharacterDetails_SO> EnemySendCharacterDetails;

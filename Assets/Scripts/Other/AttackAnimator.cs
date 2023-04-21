@@ -6,7 +6,7 @@ public class AttackAnimator : MonoBehaviour
 {
     Animator anim;
 
-    [SerializeField] int characterIndex = 0; //TODO: Check Player Index to change Var
+    //[SerializeField] int characterIndex = 0; //TODO: Check Player Index to change Var
 
     private void Awake()
     {
