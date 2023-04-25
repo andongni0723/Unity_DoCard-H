@@ -1554,7 +1554,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0f437c37ca6834403bff657fc0eb6bd3, type: 2}
   - {fileID: 11400000, guid: e1aa1673348e94847a5f8f398b19d261, type: 2}
   AIChooseCharacterDetailsList:
-  - {fileID: 11400000, guid: 0f437c37ca6834403bff657fc0eb6bd3, type: 2}
+  - {fileID: 11400000, guid: 6544b104a4875467e8c5258910db93c5, type: 2}
 --- !u!1001 &229990332005092870
 PrefabInstance:
   m_ObjectHideFlags: 0

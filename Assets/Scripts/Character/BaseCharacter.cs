@@ -27,7 +27,7 @@ public class BaseCharacter : MonoBehaviour
         Debug.Log($"{name} , sprite");
     }
 
-    protected virtual void OnMoveAction(ConfirmAreaGridData data)
+    protected void OnMoveAction(ConfirmAreaGridData data)
     {
         // The ConfirmAreaGridData list first element is the move target grid
         GameObject toMoveGrid = transform.parent.parent.GetComponent<BaseGridManager>().GridPosToFindGrid(data.ConfirmGridsList[0]);
@@ -57,16 +57,20 @@ public class BaseCharacter : MonoBehaviour
         }
     }
 
+    #region  Tools
+
     // GameManger Call
-    public void StatusHurtText(int hurtNum)
-    {
-        if (hurtNum != 0)
+        public void StatusHurtText(int hurtNum)
         {
-            GameObject obj = Instantiate(GameManager.Instance.attackTextPrefab, canvus.transform) as GameObject;
-            obj.GetComponent<HurtText>().SetText(hurtNum);
-            // Character shake animation
-            transform.DOPunchPosition(Vector3.right, 0.2f);
-            // Camera shake animation
+            if (hurtNum != 0)
+            {
+                GameObject obj = Instantiate(GameManager.Instance.attackTextPrefab, canvus.transform) as GameObject;
+                obj.GetComponent<HurtText>().SetText(hurtNum);
+                // Character shake animation
+                transform.DOPunchPosition(Vector3.right, 0.2f);
+                // Camera shake animation
+            }
         }
-    }
+
+    #endregion
 }

@@ -1,9 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PVPGameManager : GameManager
 {
+    public void Start()
+    {
+        if(ModeManager.Instance.gameMode == GameMode.PVE)
+            EventHanlder.CallSendGameMessage("人機模式 正在開發中，現在暫用 雙人模式 代替");
+    }
+
+
     protected override IEnumerator LoopGameStepAction()
     {
         WaitForSeconds waitStepStart = new WaitForSeconds(1);
@@ -25,6 +33,8 @@ public class PVPGameManager : GameManager
                     break;
 
                 case GameStep.CommonStep:
+                    if(playerHealth <= 0) EventHanlder.CallCharacterDead(Character.Player);
+                    if (enemyHealth <= 0) EventHanlder.CallCharacterDead(Character.Enemy);
                     break;
 
                 case GameStep.EnemySettlement:

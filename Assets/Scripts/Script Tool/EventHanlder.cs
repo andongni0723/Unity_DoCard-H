@@ -247,6 +247,13 @@ public static class EventHanlder
             PlayerHurt(data);
         }
     }
+
+    public static event Action<Character> CharacterDead;
+    public static void CallCharacterDead(Character character)
+    {
+        CharacterDead?.Invoke(character);
+    }
+    
     #endregion
 
     #region Choose Character System
