@@ -17,6 +17,7 @@ MonoBehaviour:
   cardName: "\u842C\u7BAD\u9F4A\u767C!"
   cardSkillSprite: {fileID: 21300000, guid: 7f4a2c4defa0e9a4382b8694716f6e68, type: 3}
   payCardNum: 5
+  cardColdDown: 3
   cardDestription: "\u5728\u7D50\u7B97\u56DE\u5408\uFF0C\\n\u5C0D\u6575\u65B93x3\u7BC4\u570D\u9020\u62102\u9EDE\u50B7\u5BB3\uFF0C\u4E26\u5C0D\u6575\u65B9\u9644\u52A0\u6D41\u8840\u72C0\u614B1\u56DE\u5408\u3002\u91CB\u653E\u5F8C\u7ACB\u523B\u7372\u5F972\u5F35\u5F13\u7BAD\u5305"
   cardUseGameStep: 1
   attackTypeDetails:

@@ -32,6 +32,9 @@ public class GameManager : Singleton<GameManager>
     public int enemyHealth = 10;
     public int enemyArmor = 0;
 
+    public int playerFinalSkillColdDown = 0;
+    public int enemyFinalSkillColdDown = 0;
+
     // If area grid count of playing card is corrent, the data will put in 'temporaryData'.
     // If pay card confirm, the data will put to skill arealist
     ConfirmAreaGridData temporaryData;
@@ -90,9 +93,9 @@ public class GameManager : Singleton<GameManager>
                     break;
 
                 case GameStep.PlayerStep:
-
                     ChangeGameStep(GameStep.CommonStep);
                     ChangeCardsOnStepStart(currentCharacter);
+                    ColdDownMiues(playerFinalSkillColdDown, out playerFinalSkillColdDown);
                     EventHanlder.CallPlayerStepAddCard();
                     break;
 
@@ -116,6 +119,7 @@ public class GameManager : Singleton<GameManager>
                 case GameStep.EnemyStep:
                     ChangeGameStep(GameStep.AIStep);
                     ChangeCardsOnStepStart(currentCharacter);
+                    ColdDownMiues(enemyFinalSkillColdDown, out enemyFinalSkillColdDown);
                     break;
 
                 case GameStep.AIStep:
@@ -154,6 +158,16 @@ public class GameManager : Singleton<GameManager>
         gameStep = _toChange;
         gameStepText.text = _toChange.ToString();
         EventHanlder.CallChangeGameStep(_toChange);
+    }
+
+    protected void ColdDownMiues(int coldDown, out int outColdDown)
+    {
+        outColdDown = 0;
+
+        if (coldDown != 0)
+            coldDown--;
+        
+        outColdDown = coldDown;
     }
 
     public Sprite CardTypeToCardBackgroud(CardDetail_SO data)
@@ -382,30 +396,61 @@ public class GameManager : Singleton<GameManager>
         ConfirmGrid playerGrid = GameStepToGetCurrentAttackCharacter().transform.parent.GetComponent<Grid>().gridID;
         int moveX = data.ConfirmGridsList.Count != 0? Mathf.Abs(playerGrid.GridX - data.ConfirmGridsList[0].GridX) : 0;
         int moveY = data.ConfirmGridsList.Count != 0? Mathf.Abs(playerGrid.GridY - data.ConfirmGridsList[0].GridY) : 0;
-        //print($"{moveX}, {moveY}");
         
+        // Have Imprison Status
         if (data.cardDetail.cardType == CardType.Move && GameStepToGetCurrentAttackCharacter().GetComponentInChildren<BaseStatusManager>()
                 .HaveStatus(EffectType.Imprison))
         {
             // Character have imprison status effect
             EventHanlder.CallSendGameMessage("身上有禁錮效果，禁止移動");
             EventHanlder.CallCancelPlayTheCard();
-        }
-        else if (gridCount != checkGridCount)
+            return;
+        } 
+        
+        // Grid Count Error
+        if (gridCount != checkGridCount)
         {
             EventHanlder.CallSendGameMessage("請確認技能釋放範圍完整");
             EventHanlder.CallCancelPlayTheCard();
+            return;
         }
-        else if (data.cardDetail.cardType == CardType.Move &&
+        
+        // Move Grid Over
+        if (data.cardDetail.cardType == CardType.Move &&
                  ((moveX > 1 || moveY > 1) || (moveX == 1 && moveY == 1)))
         {
             EventHanlder.CallSendGameMessage("請確認卡牌移動範圍(1格)");
             EventHanlder.CallCancelPlayTheCard();
+            return;
         }
-        else if (gridCount == checkGridCount)
+        
+        // Check Final Skill ColdDown
+        if (data.cardDetail.isFinalSkill)
         {
-            //Is right
-
+            // All Check correct and this is final card, reset the cold down
+            if (currentCharacter == Character.Player)
+            {
+                if (playerFinalSkillColdDown != 0)
+                {
+                    EventHanlder.CallSendGameMessage($"終結卡牌冷卻 (還有{playerFinalSkillColdDown}回合)");
+                    EventHanlder.CallCancelPlayTheCard();
+                    return;
+                }
+            }
+            else
+            {
+                if (enemyFinalSkillColdDown != 0)
+                {
+                    EventHanlder.CallSendGameMessage($"終結卡牌冷卻 (還有{enemyFinalSkillColdDown}回合)");
+                    EventHanlder.CallCancelPlayTheCard();
+                    return;
+                }
+            }
+        }
+        
+        // Is Correct
+        if (gridCount == checkGridCount)
+        {
             //card pay UI
             Debug.Log("GameManager: The confirm area count is right");
             temporaryData = data;
@@ -429,6 +474,15 @@ public class GameManager : Singleton<GameManager>
         ChangeGameStep(GameStep.CommonStep);
         CardUseToGiveCard(temporaryData.cardDetail); // Give Card about data list
 
+        // Check final skill card, and reset cold down
+        if (temporaryData.cardDetail.isFinalSkill)
+        {
+            if (currentCharacter == Character.Player)
+                playerFinalSkillColdDown = temporaryData.cardDetail.cardColdDown;
+            else
+                enemyFinalSkillColdDown = temporaryData.cardDetail.cardColdDown; 
+        }
+        
         switch (temporaryData.cardDetail.cardUseGameStep)
         {
             case CardUseStep.CommondStep:
@@ -443,8 +497,7 @@ public class GameManager : Singleton<GameManager>
                     EnemySettlementCardActionList.Add(temporaryData);//TODO: enemy
                 break;
         }
-
-        //Debug.Log("Before");
+        
         playingCard = null;
 
         AddAllConfirmGrid();

@@ -6,14 +6,18 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 using TMPro;
 using System;
+using UnityEngine.Serialization;
 
 public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     [Header("Children Component")]
     public GameObject card;
+
+    public Image cardBGImage;
     public TextMeshProUGUI cardNameText;
     public TextMeshProUGUI cardPayNumText;
     public Image cardImg;
+    public Image cardColdDownMask;
     public TextMeshProUGUI cardDescriptionText;
 
     [Header("Card Setting")]
@@ -40,11 +44,12 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
 
         // Get children gameObject
-        card = transform.Find("Card").gameObject;
-        cardNameText = card.transform.Find("card_name").GetComponent<TextMeshProUGUI>();
-        cardPayNumText = card.transform.Find("card_pay").GetComponent<TextMeshProUGUI>();
-        cardImg = card.transform.Find("card_img").GetComponent<Image>();
-        cardDescriptionText = card.transform.Find("card_description").GetComponent<TextMeshProUGUI>();
+        //card = transform.Find("Card").gameObject;
+        //cardNameText = card.transform.Find("card_name").GetComponent<TextMeshProUGUI>();
+        //cardPayNumText = card.transform.Find("card_pay").GetComponent<TextMeshProUGUI>();
+        //cardImg = card.transform.Find("card_img").GetComponent<Image>();
+        //cardDescriptionText = card.transform.Find("card_description").GetComponent<TextMeshProUGUI>();
+        //cardColdDownMask = card.transform.Find("ColdDown Mask").GetComponent<Image>();
 
         // Get and Set self var
         id = transform.GetSiblingIndex();
@@ -68,24 +73,31 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             ScaleAndPositionAtCardOnDrag(transform.position); //FIXME
         }
     }
-
+    
     /// <summary>
-    /// This method be call when cardManager set var done
+    /// This method be call when cardManager instantiate card object
     /// </summary>
-    public void AfterInit()
+    public void CardInit(CardDetail_SO data, Sprite cardBg)
     {
-        UpdateDetail();
-    }
-
-    /// <summary>
-    /// Update the detail about card (name, descripts...)
-    /// </summary>
-    private void UpdateDetail()
-    {
+        cardDetail = data;
+        cardBGImage.sprite = cardBg;
+        
+        // After Setting Done
         cardNameText.text = cardDetail.cardName;
         cardPayNumText.text = cardDetail.payCardNum.ToString();
         cardImg.sprite = cardDetail.cardSkillSprite;
         cardDescriptionText.text = cardDetail.cardDestription;
+
+        // Final Skill card setting cold down mask
+        if (cardDetail.isFinalSkill)
+        {
+            if (GameManager.Instance.currentCharacter == Character.Player)
+                cardColdDownMask.fillAmount = 
+                    GameManager.Instance.playerFinalSkillColdDown == 0 ? 0 : (float)GameManager.Instance.playerFinalSkillColdDown / cardDetail.cardColdDown;
+            else
+                cardColdDownMask.fillAmount = 
+                    GameManager.Instance.enemyFinalSkillColdDown == 0 ? 0 : (float)GameManager.Instance.enemyFinalSkillColdDown / cardDetail.cardColdDown;
+        }
     }
 
     #region Event
@@ -129,10 +141,6 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             
             // Card Object
             card.transform.position = transform.position;
-        }
-        else
-        {
-            //Debug.Log($"{gameObject.name}: No Parent"); //FIXM
         }
     }
 

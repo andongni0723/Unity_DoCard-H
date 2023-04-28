@@ -12,6 +12,7 @@ public class CardDetail_SO : ScriptableObject
     public string cardName;
     public Sprite cardSkillSprite;
     public int payCardNum = 0;
+    public int cardColdDown = 0;
     public string cardDestription;
     public CardUseStep cardUseGameStep;
 

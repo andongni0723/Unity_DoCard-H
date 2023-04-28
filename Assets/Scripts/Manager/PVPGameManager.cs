@@ -25,11 +25,12 @@ public class PVPGameManager : GameManager
 
                 case GameStep.PlayerStep:
                     AddAllConfirmGrid();//FIXME
-
                     ChangeGameStep(GameStep.CommonStep);
                     ChangeCardsOnStepStart(currentCharacter);
+                    ColdDownMiues(playerFinalSkillColdDown, out playerFinalSkillColdDown);
                     yield return waitStepStart;//FIXME
                     EventHanlder.CallPlayerStepAddCard();
+                    EventHanlder.CallChangeGameStep(GameStep.PlayerStep);
                     break;
 
                 case GameStep.CommonStep:
@@ -54,9 +55,11 @@ public class PVPGameManager : GameManager
                 case GameStep.EnemyStep:
                     AddAllConfirmGrid();//FIXME
                     ChangeGameStep(GameStep.CommonStep);
+                    ColdDownMiues(enemyFinalSkillColdDown, out enemyFinalSkillColdDown);
                     yield return waitStepStart;//FIXME
                     ChangeCardsOnStepStart(currentCharacter);
                     EventHanlder.CallPlayerStepAddCard();
+                    EventHanlder.CallChangeGameStep(GameStep.EnemyStep);
                     break;
 
 

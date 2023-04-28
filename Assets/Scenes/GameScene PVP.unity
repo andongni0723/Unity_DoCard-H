@@ -5499,11 +5499,13 @@ MonoBehaviour:
   enemyHurtSumCurrent: 0
   playerLastHurtNum: 0
   enemyLastHurtNum: 0
-  playerHealth: 10
+  playerHealth: 15
   playerArmor: 5
   lastHurtNum: 0
-  enemyHealth: 10
+  enemyHealth: 15
   enemyArmor: 5
+  playerFinalSkillColdDown: 0
+  enemyFinalSkillColdDown: 0
   cardAttackSprite: {fileID: 21300000, guid: 1f6d33bae6ede6d4295b8560ec24471e, type: 3}
   cardTankSprite: {fileID: 21300000, guid: 2d0328f8a9049db4bbd3e874bd0a7002, type: 3}
   cardMoveSprite: {fileID: 21300000, guid: 624f9cce441d49f44b536d52ecf7c889, type: 3}

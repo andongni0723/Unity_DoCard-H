@@ -130,19 +130,15 @@ public class CardManager : Singleton<CardManager>
     public void AddCard(CardDetail_SO data)
     {
         // Check the cardType of detail to change the card baclgroud image
-        Sprite cardSprite = GameManager.Instance.CardTypeToCardBackgroud(data);
+        Sprite cardBG = GameManager.Instance.CardTypeToCardBackgroud(data);
 
         // Instantiate the card prefabs
         var cardObj = Instantiate(cardPrefabs, cardInstPoint.transform.position, Quaternion.identity, this.transform) as GameObject;
 
         // Set new object var
         cardObj.name = $"Card{instCardNameNum}";
-        cardObj.GetComponent<BasicCard>().cardDetail = data;
-        cardObj.transform.GetChild(0).GetComponent<Image>().sprite = cardSprite;
+        cardObj.GetComponent<BasicCard>().CardInit(data, cardBG);
         instCardNameNum++;
-
-        // Call the method let card update data
-        cardObj.GetComponent<BasicCard>().AfterInit();
     }
 
 
