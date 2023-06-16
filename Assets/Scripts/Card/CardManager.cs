@@ -62,6 +62,8 @@ public class CardManager : Singleton<CardManager>
         {
             AddCardButton();
         }
+        
+        EventHanlder.CallAddCardDone();
     }
 
     private void OnPayCardComplete()

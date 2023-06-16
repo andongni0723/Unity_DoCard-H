@@ -596,7 +596,7 @@ public class GameManager : Singleton<GameManager>
     protected IEnumerator ExecuteCardActionList(List<ConfirmAreaGridData> actionList)
     {
         WaitForSeconds wait;
-        Debug.Log("ExecuteCardActionList"); //FIXME
+        //Debug.Log("ExecuteCardActionList"); //FIXME
 
         // If don't setting wait time, this method will error 
         // (can't add item in list when coroutine not done )

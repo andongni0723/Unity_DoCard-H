@@ -24,7 +24,7 @@ public class BaseCharacter : MonoBehaviour
     {
         yield return new WaitUntil(() => CharacterDetails != null);
         characterSprite.sprite = CharacterDetails.characterSprite;
-        Debug.Log($"{name} , sprite");
+        //Debug.Log($"{name} , sprite");
     }
 
     protected void OnMoveAction(ConfirmAreaGridData data)

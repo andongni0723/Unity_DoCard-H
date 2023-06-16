@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class CharacterTurnPoint : MonoBehaviour
 {
-    private Character parentCharacter;
+    [SerializeField] private Character parentCharacter;
+
+    [Header("Component")] 
+    public GameObject pointObject;
 
     private void Start()
     {
         parentCharacter = transform.parent.GetComponent<BaseCharacter>().character;
         
-        gameObject.SetActive(parentCharacter == GameManager.Instance.currentCharacter);
+        pointObject.SetActive(parentCharacter == GameManager.Instance.currentCharacter);
     }
 
     #region Event
@@ -30,11 +33,11 @@ public class CharacterTurnPoint : MonoBehaviour
 
     private void OnOnEnemyStep()
     {
-        gameObject.SetActive(parentCharacter == GameManager.Instance.currentCharacter);
+        pointObject.SetActive(parentCharacter == GameManager.Instance.currentCharacter);
     }
     private void OnOnPlayerStep()
     {
-        gameObject.SetActive(parentCharacter == GameManager.Instance.currentCharacter);
+        pointObject.SetActive(parentCharacter == GameManager.Instance.currentCharacter);
     }
     #endregion
     

@@ -41,6 +41,13 @@ public static class EventHanlder
                 break;
         }
     }
+
+    public static event Action<float> ChangeVolume;
+
+    public static void CallChangeVolume(float value)
+    {
+        ChangeVolume?.Invoke(value);
+    } 
     #endregion
     
     
@@ -52,8 +59,7 @@ public static class EventHanlder
     {
         CardUpdatePosition?.Invoke();
     }
-
-
+    
     // Card Event
     public static event Action<CharacterCards_SO> ChangeCardsOnStepStart;
     public static void CallChangeCardsOnStepStart(CharacterCards_SO cards)
@@ -64,6 +70,13 @@ public static class EventHanlder
     public static void CallPlayerStepAddCard()
     {
         PlayerStepAddCard?.Invoke();
+    }
+
+    public static event Action AddCardDone;
+
+    public static void CallAddCardDone()
+    {
+        AddCardDone?.Invoke();
     }
 
     public static event Action<CardDetail_SO> CardOnDrag;
@@ -88,6 +101,7 @@ public static class EventHanlder
     public static void CallCardEndDrag()
     {
         /* ConfirmAreaGridData */
+        // ReSharper disable once InvalidXmlDocComment
         /// data
         /// |- cardDetail
         /// |- targetGridForCharacter

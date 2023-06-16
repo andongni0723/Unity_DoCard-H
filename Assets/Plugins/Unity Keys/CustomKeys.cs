@@ -1,10 +1,12 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
-
 public class CustomKeys : Editor
 {
+
+
     [MenuItem("Custom Keys/Unload Scene %#U")]
     static void EditorCustomKeysUnloadScene()
     {
@@ -14,15 +16,17 @@ public class CustomKeys : Editor
             // Try to get scene to save and close it
             Scene tryGetScene = InstanceIDToScene(id);
 
-            if (tryGetScene != default)
+            if (tryGetScene != default && tryGetScene.isLoaded)
             {
                 EditorSceneManager.SaveScene(tryGetScene);
                 EditorSceneManager.CloseScene(tryGetScene, false);
+                
+                Debug.Log($"Save and Unload Scene \"{tryGetScene.name}\"");
             }
-            
-            Debug.Log($"Save and Unload Scene \"{tryGetScene.name}\"");
         }
     }
+    
+    
     
     [MenuItem("Custom Keys/Load Scene %#L")]
     static void EditorCustomKeysLoadScene()
@@ -32,12 +36,12 @@ public class CustomKeys : Editor
         {
             // Try to get scene and open it
             Scene tryGetScene = InstanceIDToScene(id);
-            
-            if(tryGetScene != default)
-                EditorSceneManager.OpenScene(tryGetScene.path, OpenSceneMode.Additive);
-            
-            Debug.Log($"Open Scene \"{tryGetScene.name}\"");
 
+            if (tryGetScene != default)
+            {
+                EditorSceneManager.OpenScene(tryGetScene.path, OpenSceneMode.Additive);
+                Debug.Log($"Open Scene \"{tryGetScene.name}\"");
+            }
         }
     }
 
@@ -63,4 +67,6 @@ public class CustomKeys : Editor
 
         return default;
     }
+
 }
+#endif

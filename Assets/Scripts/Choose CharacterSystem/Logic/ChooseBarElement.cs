@@ -34,7 +34,7 @@ public class ChooseBarElement : MonoBehaviour
 
     private void DisplayUI()
     {
-        Debug.Log(iconImage);
+        //Debug.Log(iconImage);
         iconImage.sprite = chooseCharacterDetails.characterSprite;
         
         button.onClick.AddListener(() =>
