@@ -40,7 +40,6 @@ public class ChooseBarElement : MonoBehaviour
         button.onClick.AddListener(() =>
         {
             EventHanlder.CallChooseCharacterGridButton(character, chooseCharacterDetails);
-            Debug.Log("C");
         });
     }
 }

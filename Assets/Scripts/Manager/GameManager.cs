@@ -14,11 +14,11 @@ public class GameManager : Singleton<GameManager>
     public Character currentCharacter;
     [HideInInspector] public GameObject PlayerGameObject => GameObject.FindWithTag("Player");
     [HideInInspector] public GameObject EnemyGameObject => GameObject.FindWithTag("Enemy");
-    public List<ConfirmAreaGridData> PlayerSettlementCardActionList = new List<ConfirmAreaGridData>();
-    public List<ConfirmAreaGridData> EnemySettlementCardActionList = new List<ConfirmAreaGridData>();
-    public List<ConfirmAreaGridData> CommonCardActionList = new List<ConfirmAreaGridData>();
-    public List<Effect> SettlementHurtStatusEffectActionList = new List<Effect>();
-    [SerializeField]protected List<ConfirmGrid> AllConfirmGridList = new List<ConfirmGrid>();
+    public List<ConfirmAreaGridData> PlayerSettlementCardActionList = new();
+    public List<ConfirmAreaGridData> EnemySettlementCardActionList = new();
+    public List<ConfirmAreaGridData> CommonCardActionList = new();
+    public List<Effect> SettlementHurtStatusEffectActionList = new();
+    [SerializeField]protected List<ConfirmGrid> AllConfirmGridList = new();
     public CardDetail_SO playingCard;
     public int playerHurtSumCurrent;
     public int enemyHurtSumCurrent;
@@ -35,8 +35,8 @@ public class GameManager : Singleton<GameManager>
     public int playerFinalSkillColdDown = 0;
     public int enemyFinalSkillColdDown = 0;
 
-    // If area grid count of playing card is corrent, the data will put in 'temporaryData'.
-    // If pay card confirm, the data will put to skill arealist
+    // If area grid count of playing card is correct, the data will put in 'temporaryData'.
+    // If pay card confirm, the data will put to skill area list
     ConfirmAreaGridData temporaryData;
 
     [Header("Game Prefab Assets")]
@@ -351,7 +351,7 @@ public class GameManager : Singleton<GameManager>
         EventHanlder.EnemyHurt += OnEnemyHurt;   // change enemy health
         EventHanlder.CommandStepEnd += OnCommandStepEnd; // change gameStep
     }
-    private void OnDisable()
+    private void OnDisable()  
     {
         EventHanlder.CardOnDrag -= OnCardOnDrag;
         EventHanlder.CardEndDrag -= OnCardEndDrag;
@@ -360,7 +360,7 @@ public class GameManager : Singleton<GameManager>
         EventHanlder.PayCardComplete -= OnPayCardComplete;
         EventHanlder.PlayerHurt -= OnPlayerHurt;
         EventHanlder.EnemyHurt -= OnEnemyHurt;
-        EventHanlder.CommandStepEnd += OnCommandStepEnd;
+        EventHanlder.CommandStepEnd -= OnCommandStepEnd;
     }
 
     private void OnCardOnDrag(CardDetail_SO data)
@@ -452,7 +452,6 @@ public class GameManager : Singleton<GameManager>
         if (gridCount == checkGridCount)
         {
             //card pay UI
-            Debug.Log("GameManager: The confirm area count is right");
             temporaryData = data;
             EventHanlder.CallPlayTheCard(data.cardDetail);
         }
@@ -486,7 +485,6 @@ public class GameManager : Singleton<GameManager>
         switch (temporaryData.cardDetail.cardUseGameStep)
         {
             case CardUseStep.CommondStep:
-                //Debug.Log("add temporay"); //FIXM
                 CommonCardActionList.Add(temporaryData);
                 break;
 
@@ -546,7 +544,6 @@ public class GameManager : Singleton<GameManager>
         {
             foreach (ConfirmGrid grid in data.ConfirmGridsList)
             {
-                //Debug.Log("AAAAA");//FIXM
                 AllConfirmGridList.Add(grid);
             }
         }
@@ -555,7 +552,6 @@ public class GameManager : Singleton<GameManager>
         {
             foreach (ConfirmGrid grid in data.ConfirmGridsList)
             {
-                //Debug.Log("AAAAA");//FIXM
                 AllConfirmGridList.Add(grid);
             }
         }
@@ -564,7 +560,6 @@ public class GameManager : Singleton<GameManager>
         {
             foreach (ConfirmGrid grid in data.ConfirmGridsList)
             {
-                //Debug.Log("AAAAA");//FIXM
                 AllConfirmGridList.Add(grid);
             }
         }
@@ -616,28 +611,8 @@ public class GameManager : Singleton<GameManager>
                     // Call Grid of in skill area
                     foreach (ConfirmGrid grid in skill.ConfirmGridsList)
                     {
-                        //Debug.Log("BBBBB");// FIXM
-
                         // 1. Call grid to play animation and check character health
                         EventHanlder.CallAttackGrid(grid, skill.cardDetail);
-
-
-                        // 2. Remove the grid in AllConfirmGridList of now executing
-
-                        // // Commond don't need remove grid , because the grid of commond card didn't add in
-                        // foreach (ConfirmGrid confirmGrid in AllConfirmGridList)
-                        // {
-                        //     if (confirmGrid == grid)
-                        //     {
-                        //         AllConfirmGridList.Remove(confirmGrid);
-                        //         Debug.Log("grid find to destroy"); //FIXME
-                        //         break;
-                        //     }
-                        // }
-
-
-                        // // 3. To GridManager reload grid color
-                        // EventHanlder.CallReloadGridColor(AllConfirmGridList);
                     }
 
                     yield return wait;
@@ -702,9 +677,7 @@ public class GameManager : Singleton<GameManager>
 
     private void AttackCardHurtCharacter(int hurtNum, int health, int armor)
     {
-        //int hurtNum = data.attackTypeDetails.cardHurtHP;
 
-        //Debug.Log("Chageeeeeeeeeeeeeeeeeeeee"); //FIXM
         //  Change Health
         if (armor != 0)
         {

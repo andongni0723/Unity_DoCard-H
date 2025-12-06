@@ -15,6 +15,8 @@ public class PVPGameManager : GameManager
     protected override IEnumerator LoopGameStepAction()
     {
         WaitForSeconds waitStepStart = new WaitForSeconds(1);
+        bool isCharacterDead = false;
+        
         while (true)
         {
             switch (gameStep)
@@ -34,8 +36,17 @@ public class PVPGameManager : GameManager
                     break;
 
                 case GameStep.CommonStep:
-                    if(playerHealth <= 0) EventHanlder.CallCharacterDead(Character.Player);
-                    if (enemyHealth <= 0) EventHanlder.CallCharacterDead(Character.Enemy);
+                    if (playerHealth <= 0)
+                    {
+                        EventHanlder.CallCharacterDead(Character.Player);
+                        isCharacterDead = true;
+                    }
+
+                    if (enemyHealth <= 0)
+                    {
+                        EventHanlder.CallCharacterDead(Character.Enemy);
+                        isCharacterDead = true;
+                    }
                     break;
 
                 case GameStep.EnemySettlement:
@@ -80,6 +91,9 @@ public class PVPGameManager : GameManager
                     ChangeGameStep(GameStep.StepStart); //TODO: future
                     break;
             }
+            
+            if (isCharacterDead) break;
+            
             yield return null;
         }
     }

@@ -121,7 +121,7 @@ public class CardManager : Singleton<CardManager>
             CardPositionList.Add(new Vector2(transform.position.x + leftX + cardMoveX * i, transform.position.y - (Mathf.Abs(rotateZ)) * rotateDownY));
         }
 
-        EventHanlder.CallCardUpdeatePosition();
+        EventHanlder.CallCardUpdatePosition();
     }
 
 

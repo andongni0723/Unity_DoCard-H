@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class EnemyStatusManager : BaseStatusManager
 {
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         EventHanlder.OnPlayerSettlement += UpdataCurrentHurtStatusToGameManger;
     }
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         EventHanlder.OnPlayerSettlement -= UpdataCurrentHurtStatusToGameManger;
     }
 }

@@ -40,6 +40,7 @@ public class HurtText : MonoBehaviour
 
     private void TextAnimation()
     {
+        // ReSharper disable once InvalidXmlDocComment
         /// Animation Time Line ///
         /// 
         /// MoveUp -------------------> UP
@@ -68,8 +69,6 @@ public class HurtText : MonoBehaviour
 
         // Color
         colorSequence.Append(text.DOColor(Color.red, BigAnimTime));
-        colorSequence.Append(text.DOColor(Color.white, SmallAnimTime));
-
-
+        colorSequence.Append(text.DOColor(Color.white, SmallAnimTime).OnComplete(() => Destroy(gameObject)));
     }
 }

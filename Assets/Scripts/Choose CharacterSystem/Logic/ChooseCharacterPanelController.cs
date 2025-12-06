@@ -65,7 +65,6 @@ public class ChooseCharacterPanelController : MonoBehaviour
     {
         currentShowCharacter = data;
         ReloadCharacterShow();
-        Debug.Log("UI");
     }
 
     protected void OnChooseCharacterChangeStep()

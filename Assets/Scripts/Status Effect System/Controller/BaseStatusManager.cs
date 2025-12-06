@@ -13,6 +13,27 @@ public class BaseStatusManager : MonoBehaviour
         currentEffectList.Clear();
     }
 
+    #region Event
+
+    protected virtual void OnEnable()
+    {
+        EventHanlder.CharacterDead += OnCharacterDead;
+    }
+
+    protected virtual void OnDisable()
+    {
+        EventHanlder.CharacterDead -= OnCharacterDead;
+    }
+
+    private void OnCharacterDead(Character character)
+    {
+        // Remove all status
+        currentEffectList.Clear();
+        UpdateStatusIconWithList();
+        Debug.Log("Clear Status");
+    }
+
+    #endregion 
 
     public void AddStatusEffect(EffectDetail_SO newData, int newStatusCount)
     {

@@ -55,7 +55,7 @@ public static class EventHanlder
 
     // Softed Card Position
     public static event Action CardUpdatePosition;
-    public static void CallCardUpdeatePosition()
+    public static void CallCardUpdatePosition()
     {
         CardUpdatePosition?.Invoke();
     }
@@ -178,16 +178,9 @@ public static class EventHanlder
     {
         GameManager.Instance.ChangeGameStep(GameStep.CommonStep);
         PayCardComplete?.Invoke();
-        EventHanlder.CallCardUpdeatePosition();
+        EventHanlder.CallCardUpdatePosition();
     }
 
-
-    // // GameManager Reload confirm data 
-    // public static event Action<List<ConfirmGrid>> ReloadGridData;
-    // public static void CallReloadGridData(List<ConfirmGrid> grids)
-    // {
-    //     ReloadGridData?.Invoke(grids);
-    // }
 
     // GridManager => Grid
     public static event Action<List<ConfirmGrid>> ReloadGridColor;

@@ -161,18 +161,7 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             transform.parent = originParent;
             Debug.Log("OnPayTheCardError");
-            //OnCancelPlayTheCard();
         }
-
-        // if (transform.parent == null)
-        // {
-        //     transform.parent = originParent;
-        // }
-        // else
-        // {
-        //     //OnCancelPlayTheCard();
-        //     //OnCardUpdatePosition(); FIXME
-        // }
     }
 
     private void OnPayCardComplete()
@@ -197,7 +186,6 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         cantUse = true;
         Vector3 beforePos = transform.position;
         Vector3 discardPoint = CardManager.Instance.discardPilePoint.transform.position;
-        //transform.parent = null; // FIXM
 
         transform.position = beforePos; // Let position set same after change parent
 
@@ -299,7 +287,6 @@ public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
             if (GameManager.Instance.gameStep == GameStep.PayCardStep)
             {
-                Debug.Log("noYYYYYYy");
                 EventHanlder.CallPayTheCardError(gameObject);
             }
             else
